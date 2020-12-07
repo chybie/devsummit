@@ -62,5 +62,5 @@
 }
 
 .border-squiggle-top {
-  bottom: 100%;
+  bottom: calc(100% - 1px);
 }
