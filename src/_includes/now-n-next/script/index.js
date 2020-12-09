@@ -1,4 +1,4 @@
-import { html } from '../../../script/escape-html';
+import { html, safe } from '../../../script/escape-html';
 import * as styles from 'classnames:_includes/now-n-next/style.css';
 import * as speakerStyles from 'classnames:_includes/speakers.css';
 import * as utilsStyles from 'classnames:_includes/utils.css';
@@ -8,7 +8,15 @@ const upNextEl = document.querySelector('.' + styles.upNext);
 const onNowEl = document.querySelector('.' + styles.onNow);
 const rootEl = document.querySelector('.' + styles.root);
 const livestreamEl = document.querySelector('.' + styles.livestream);
+const viewToggleEl = document.querySelector('.' + styles.toggle);
+const [detailsRadio, chatRadio] = viewToggleEl.querySelectorAll(
+  'input[type=radio]',
+);
+const chatEl = document.querySelector('.' + styles.chat);
 const schedule = self.basicSchedule;
+
+// 5 hours before the first day 2 session.
+const day2LivestreamSwitchover = 1607603400000;
 
 const getNow = () =>
   Number(new URL(location).searchParams.get('now')) || Date.now();
@@ -108,11 +116,20 @@ function updateOnNow(item, now) {
         ? html`
             <a href="${path}sessions/${item.fileSlug}/">${item.title}</a>
           `
+        : item.nowNextLink
+        ? html`
+            <a href="${item.nowNextLink}">${item.title}</a>
+          `
         : item.title}
     </h1>
     ${item.livestreamed
       ? html`
           <rel-time class="${styles.relTime}" time="${item.start}"></rel-time>
+        `
+      : ''}
+    ${item.nowNextHTML
+      ? html`
+          <p class="${styles.nowNextDesc}">${safe(item.nowNextHTML)}</p>
         `
       : ''}
     ${item.speakers
@@ -175,27 +192,65 @@ function update() {
   const now = getNow();
 
   const currentIndex = getCurrentScheduleIndex(now);
-  const nowItem = schedule[currentIndex] || {
-    title: 'Getting everything ready…',
-    end: Infinity,
-  };
+  const excuses = [
+    'Checking the internet pipes…',
+    'Rehearsing the dances…',
+    'Herding the speakers…',
+    'Last-minute debugging…',
+    `Wait, it's today already??`,
+    'Learning our lines…',
+    'Pacing nervously…',
+    'Last-minute slide changes…',
+    'Warming up the YouTubes',
+    'Memorising the acronyms…',
+    `Trying to find the 'on' button…`,
+    `Arguing over who was supposed to write the keynote…`,
+    `Hyperventilating…`,
+    `Backstage pep talk…`,
+    `Trying to find a slide clicker…`,
+    `Final health and safety checks…`,
+    `Finishing the risk assessment…`,
+    `Shedding the bikes…`,
+    `Sending 'intent to broadcast'…`,
+    `Enabling the flags…`,
+    `Waiting for the build to finish…`,
+    `Turning it off and on again…`,
+  ];
+  const nowItem =
+    schedule[currentIndex] &&
+    !(
+      now > day2LivestreamSwitchover &&
+      schedule[currentIndex].start < day2LivestreamSwitchover
+    )
+      ? schedule[currentIndex]
+      : {
+          title: excuses[Math.floor(Math.random() * excuses.length)],
+          end: Infinity,
+        };
   const nextItem = schedule
     .slice(currentIndex + 1)
-    .find(item => item.livestreamed);
+    .find(item => item.livestreamed || item.event);
 
   onNowEl.innerHTML = updateOnNow(nowItem, now);
   upNextEl.innerHTML = updateOnNext(nextItem);
 
-  if (!schedule[currentIndex + 1]) return;
+  if (!schedule[currentIndex + 1]) {
+    viewToggleEl.style.display = 'none';
+    return;
+  }
   setTimeout(() => update(), schedule[currentIndex + 1].start - now);
 }
 
 (() => {
   if (!self.showNowNext) return;
-  const now = getNow();
-  const day2LivestreamSwitchover = 1573560000000;
-  const youtubeId =
-    now > day2LivestreamSwitchover ? '7ohLjc9-FT4' : 'gUteNZ0IvrE';
+  const youtubeId = 'NkIi7h8NnS4';
+
+  viewToggleEl.style.visibility = 'visible';
+
+  viewToggleEl.addEventListener('change', () => {
+    chatEl.style.display = detailsRadio.checked ? 'none' : '';
+    onNowEl.style.display = detailsRadio.checked ? '' : 'none';
+  });
 
   livestreamEl.innerHTML = html`
     <iframe
@@ -206,6 +261,16 @@ function update() {
       allowfullscreen
     ></iframe>
   `;
+
+  chatEl.innerHTML = html`
+    <iframe
+      title="web.dev YouTube live chat"
+      class="${styles.chatIframe}"
+      src="https://www.youtube.com/live_chat?v=${youtubeId}&amp;embed_domain=${location.hostname}"
+      frameborder="0"
+    ></iframe>
+  `;
+
   update();
   rootEl.style.display = '';
   bodyBlocker.remove();

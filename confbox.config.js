@@ -1,12 +1,16 @@
+const origin = 'https://developer.chrome.com';
+const path = '/devsummit/';
+const confRoot = origin + path;
+
 module.exports = {
   /**
    * Origin of the conference, for creating absolute URLs.
    */
-  origin: 'https://developer.chrome.com',
+  origin,
   /**
    * Path of the site. / if it's top-level.
    */
-  path: '/devsummit/',
+  path,
   /**
    * Name of the conference.
    */
@@ -60,9 +64,33 @@ module.exports = {
       livestreamed: true,
     })),
     {
-      title: 'Day 1 complete!',
+      title: 'After Hours in CDS Adventure',
+      nowNextLink: confRoot + 'adventure/',
+      nowNextHTML: `Join Googlers, GDEs and other CDS attendees in our <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
       start: '2020/12/09 12:30',
-      end: '2020/12/09 12:31',
+      end: '2020/12/09 13:30',
+      event: true,
+    },
+    {
+      title: 'Day 2 Kick off in CDS Adventure',
+      nowNextLink: confRoot + 'adventure/',
+      nowNextHTML: `Start day 2 of Chrome Dev Summit early. Join Googlers, GDEs and other CDS attendees in the <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
+      start: '2020/12/10 08:30',
+      end: '2020/12/10 09:30',
+      event: true,
+    },
+    {
+      title: 'After Hours in CDS Adventure',
+      nowNextLink: confRoot + 'adventure/',
+      nowNextHTML: `Join Googlers, GDEs and other CDS attendees in our <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
+      start: '2020/12/10 12:00',
+      end: '2020/12/10 13:00',
+      event: true,
+    },
+    {
+      title: 'Day 1 complete!',
+      start: '2020/12/09 13:30',
+      end: '2020/12/09 13:31',
     },
     {
       title: `It's over 😢`,

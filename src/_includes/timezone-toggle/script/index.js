@@ -5,7 +5,7 @@ import {
   localOffset,
 } from './option';
 import { utcOffset as venueOffset } from 'confbox-config:';
-import { staticLabel } from 'classnames:_includes/timezone-toggle/style.css';
+import { staticLabel } from 'classnames:_includes/toggle.css';
 
 function formatTimezone(offset) {
   if (offset === 0) return '';

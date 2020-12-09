@@ -24,6 +24,7 @@ description: Everything that's happening at Chrome Dev Summit.
         <p>
           All sessions will be streamed live during the event, and will be available after the event on the
           <a href="https://www.youtube.com/user/ChromeDevelopers" rel="noopener noreferrer" target="_blank">Chrome Developers YouTube channel</a>.
+          We've also got a <a href="{{conf.path}}schedule/#bonus-content">line up of bonus content</a> that you can watch any time.
         </p>
         <div class="{% className css, 'tz-switch' %}">
           <div class="{% className css, 'tz-switch-title' %}">Schedule timezone</div>
@@ -45,6 +46,7 @@ description: Everything that's happening at Chrome Dev Summit.
   <script>
     self.schedule = {% json collections.jsSchedule %};
   </script>
+  <script type="module" async src="confboxAsset(/schedule/script/index.js)"></script>
 
   <section class="{% className moduleCSS, 'root' %} {% className css, 'overflow' %}">
     <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Overflow" %}</h1>
@@ -52,38 +54,112 @@ description: Everything that's happening at Chrome Dev Summit.
 
     <div class="{% className css, 'split-boxes' %}">
       <div>
-        <div class="{% className css, 'content-box' %}">
-          <div id="workshops">
-            <h2>Workshops</h2>
-            <p>
-              We’ll be running limited capacity workshops with leading experts from the community.
-              These workshops will take place over two days (in two parts) before the event dates, on 7 & 8 December, 2020.
-              Invite requests for workshops are now closed. We hope you can still join us for the livestream on Dec 9-10, 2020.
-            </p>
-            <div class="{% className css, 'workshops-tz-switch' %}">{% include 'timezone-toggle/index.njk' %}</div>
-            <div class="workshops-block">
-              <script>
-                // Avoid visible date switch:
-                if (localStorage.timezoneOption !== 'venue') {
-                  document.currentScript.parentNode.style.visibility = 'hidden';
-                }
-              </script>
-              {% workshops collections.workshop, collections.speakers %}
+        <div class="{% className css, 'content-box' %}" id="learning-content">
+          <h2>Learning Pathways</h2>
+          <div class="{% className css, 'pathway' %}">
+            <a class="{% className css, 'pathway-split-heading' %}" href="https://developers.devsite.corp.google.com/learn/pathways/web-vitals" rel="noopener noreferrer" target="_blank">
+              <h3>
+                Improve your website with Web Vitals
+              </h3>
+              <div>Explore</div>
+            </a>
+            <p class="{% className css, 'pathway-desc' %}">Learn how to improve your website with Web Vitals, essential metrics for a healthy website.</p>
+          </div>
+          <div class="{% className css, 'pathway' %}">
+            <a class="{% className css, 'pathway-split-heading' %}" href="https://developers.devsite.corp.google.com/learn/pathways/pwa-push-notifications" rel="noopener noreferrer" target="_blank">
+              <h3>
+                Engage your web app's users with push notifications
+              </h3>
+              <div>Explore</div>
+            </a>
+            <p class="{% className css, 'pathway-desc' %}">Learn how to engage your web app's users with push notifications.</p>
+          </div>
+          <div class="{% className css, 'pathway' %}">
+            <a class="{% className css, 'pathway-split-heading' %}" href="https://developers.devsite.corp.google.com/learn/pathways/webrtc-media-capture" rel="noopener noreferrer" target="_blank">
+              <h3>
+                Capture media with WebRTC
+              </h3>
+              <div>Explore</div>
+            </a>
+            <p class="{% className css, 'pathway-desc' %}">Learn how to capture media with WebRTC, a free and open source project that provides web browsers and mobile apps with real-time communication through simple APIs.</p>
+          </div>
+          <div class="{% className css, 'pathway-more' %}">
+            <a href="https://developers.devsite.corp.google.com/learn/topics/web" rel="noopener noreferrer" target="_blank">View more at the DevSite</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="{% className css, 'content-box' %}" id="bonus-content">
+          <h2>Bonus content</h2>
+          <p>Check out some deep dive content on topics we weren’t able to cover during the main event. These videos will be available at all times on our YouTube channel.</p>
+          {% for session in collections.extraVideos %}
+            <div class="{% className css, 'extra-video' %}">
+              <div class="{% className css, 'icon-bubble' %}">
+                <div class="{% className css, 'avatars' %}">
+                  {% if session.data.speakers %}
+                    {% for sessionSpeaker in session.data.speakers %}
+                      {% for speaker in collections.speakers %}
+                        {% if speaker.fileSlug == sessionSpeaker %}
+                          <img
+                            src="confboxAsset('{{speaker.data.avatar}}')"
+                            alt="{% if speaker.data.avatarAlt %}{{speaker.data.avatarAlt}}{% else %}{{speaker.data.name}}{% endif %}"
+                            decoding="async"
+                            loading="lazy"
+                          />
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  {% else %}
+                    <img
+                      src="confboxAsset('/assets/speakers/default.svg')"
+                      alt="Default avatar"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  {% endif %}
+                </div>
+              </div>
+              <div>
+                <a class="{% className css, 'extra-video-title' %}" href="https://www.youtube.com/watch?v={{session.data.youtubeId}}" rel="noopener noreferrer" target="_blank">{{session.data.title}}</a>
+                {% for sessionSpeaker in session.data.speakers %}
+                  {% for speaker in collections.speakers %}
+                    {% if speaker.fileSlug == sessionSpeaker %}
+                      <span class="{% className css, 'extra-video-speaker' %}">{{speaker.data.name}}</span>
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
             </div>
-          </div>
-          <script>
-            self.workshops = {% json collections.jsWorkshops %};
-          </script>
-          <script type="module" async src="confboxAsset(/schedule/script/index.js)"></script>
-          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="{% className css, 'split-boxes' %}">
+      <div id="extended">
+        <h1 class="{% className css, 'extended-heading' %}">CDS Extended</h1>
+        <p>We’re working with communities across the globe to host CDS Extended events where developers can join their peers to experience the latest from CDS by joining in their own cities.</p>
       </div>
       <div>
         <div class="{% className css, 'content-box' %}">
-          <div id="office-hours">
-            <h2>Office Hours</h2>
-            <p>Over the two days, we’ll have Google engineers, product managers and developer advocates from various areas of expertise available for private office hours with developers.</p>
-            <p>Invite requests for office hours are now closed. We hope you can still join us for the livestream on Dec 9-10, 2020.</p>
-          </div>
+          <h2>Join a CDS Extended event</h2>
+          <p>CDS Extended events are all about our remote audience, enabling developers from across the globe to gather with their peers and experience Chrome Dev Summit within their own community. Find an Extended event in your city and join the excitement at a watch party or meetup.</p>
+          <h3>Locations</h3>
+          <ul>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-moscow-presents-cds-extended-2020-russia/#/">Russia</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-london-presents-chrome-dev-summit-extended-uk-ireland/">United Kingdom</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-cloud-los-angeles-presents-chrome-developers-summit-extended-2020/">United States of America</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-bucharest-presents-chrome-dev-summit-extended-2020/">Romania</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-west-sweden-presents-chrome-dev-summit-extended/">Sweden</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-port-of-spain-presents-chrome-dev-summit-extended-2020/">Trynidad and Tobago</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-madrid-presents-chrome-dev-summit-extended-spain/">Spain</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-sorocaba-presents-chrome-dev-summit-2020-extended/">Brazil</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-hsinchu-presents-chrome-dev-summit-2020-improve-your-web-authentication-security/">Taiwan</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-maroua-presents-chrome-dev-summit-2020/">Cameroon</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-bandung-presents-chrome-dev-summit-extended-2020-2021-01-15/">Indonesia</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-georgetown-presents-chrome-dev-summit-extended-2020/">Guyana</a></li>
+            <li><a rel="noopener noreferrer" target="_blank" href="https://gdg.community.dev/events/details/google-gdg-lahore-presents-chrome-dev-summit-2020-extended/">Pakistan</a></li>
+          </ul>
         </div>
       </div>
     </div>

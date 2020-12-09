@@ -25,6 +25,9 @@ function buildScheduleData(sessions, speakers, { basic = false } = {}) {
         session: true,
         livestreamed: true,
         fileSlug: session.fileSlug,
+        nowNextLink: session.data.nowNextLink,
+        nowNextHTML: session.data.nowNextHTML,
+        event: !!session.data.event,
       };
 
       if (!basic) {

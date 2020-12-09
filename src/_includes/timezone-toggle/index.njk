@@ -1,17 +1,19 @@
 {%- set css = "/_includes/timezone-toggle/style.css" -%}
 {% css page, css %}
+{%- set toggleCSS = "/_includes/toggle.css" -%}
+{% css page, toggleCSS %}
 
 <section>
-  <form class="{% className css, 'root' %}">
-    <label class="{% className css, 'label' %} js-venue-time">
-      <input name="timezone" type="radio" class="{% className css, 'radio' %}" checked>
-      <span class="{% className css, 'fake-label' %}">
+  <form class="{% className toggleCSS, 'root' %} {% className css, 'root' %}">
+    <label class="{% className toggleCSS, 'label' %} js-venue-time">
+      <input name="timezone" type="radio" class="{% className toggleCSS, 'radio' %}" checked>
+      <span class="{% className toggleCSS, 'fake-label' %}">
         <span>Event time <span class="{% className css, 'zone' %}">(UTC<span class="js-zone"></span>)</span></span>
       </span>
     </label>
-    <label class="{% className css, 'label' %} js-your-time">
-      <input name="timezone" type="radio" class="{% className css, 'radio' %}">
-      <span class="{% className css, 'fake-label' %}">
+    <label class="{% className toggleCSS, 'label' %} js-your-time">
+      <input name="timezone" type="radio" class="{% className toggleCSS, 'radio' %}">
+      <span class="{% className toggleCSS, 'fake-label' %}">
         <span>Your time <span class="{% className css, 'zone' %}">(UTC<span class="js-zone"></span>)</span></span>
       </span>
     </label>

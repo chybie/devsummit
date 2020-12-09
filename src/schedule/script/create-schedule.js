@@ -62,6 +62,8 @@ module.exports = function createScheduleHtml(
                               <img
                                 src="${item.avatar}"
                                 alt="${item.avatarAlt}"
+                                decoding="async"
+                                loading="lazy"
                               />
                             </div>
                           </div>

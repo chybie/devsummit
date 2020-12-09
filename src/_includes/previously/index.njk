@@ -40,9 +40,9 @@
   <img decoding="async" alt="{{ image.alt }}" loading="lazy" src="confboxAsset(/_includes/previously/assets/{{ image.url }}.jpg)">
 {% endmacro %}
 
-<section class="{% className moduleCSS, 'root' %} {% className contentCSS, 'content-area' %}">
+<section class="{% className moduleCSS, 'root-alt' %} {% className contentCSS, 'content-area' %}">
   {% from 'squiggle-banner/index.njk' import squiggleTop %}
-  {{ squiggleTop(page, gray=false) }}
+  {{ squiggleTop(page, gray=true) }}
 
   <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Previously" %}</h1>
 

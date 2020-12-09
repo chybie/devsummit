@@ -7,18 +7,20 @@
 {%- set adventureCSS = "/_includes/adventure/style.css" -%}
 {% css page, adventureCSS %}
 
-<section class="{% className moduleCSS, 'root-alt' %} {% className mediaCSS, 'root' %} {% className adventureCSS, 'root' %}">
+<section class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %} {% className adventureCSS, 'root' %}">
+  {% from 'squiggle-banner/index.njk' import squiggleTop %}
+  {{ squiggleTop(page, gray=false) }}
+
   <div class="{% className mediaCSS, 'media' %}">
     {%- set utilsCSS = "/_includes/utils.css" -%}
     {% css page, utilsCSS %}
     <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
-      <video class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset(/assets/adventure.mp4)" playsinline controls autoplay loop muted></video>
+      <video class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset(/assets/adventure.mp4)" playsinline controls loop muted></video>
     </div>
   </div>
   <div class="{% className mediaCSS, 'main' %} {% className contentCSS, 'content-area' %}">
     <div class="{% className adventureCSS, 'heading' %}">
-      <div class="{% className adventureCSS, 'date-coming' %}">Coming <span class="date">December 9<sup>th</sup></span></div>
-      <h1>A <span class="{% className adventureCSS, 'code' %}">new <span class="{% className adventureCSS, 'code-word' %}">Adventure</span><span class="{% className adventureCSS, 'code-bracket' %}">()</span></span> awaits you!</h1>
+      <h1>Start a <span class="{% className adventureCSS, 'code' %}">new <span class="{% className adventureCSS, 'code-word' %}">Adventure</span><span class="{% className adventureCSS, 'code-bracket' %}">()</span></span> now!</h1>
     </div>
     <p>
       To keep the spirit of Chrome Dev Summit alive and stay connected, we’ve created <strong>CDS Adventure</strong>
@@ -32,10 +34,13 @@
       <li>discover demos, complete codelabs, or unlock virtual swag</li>
       <li>…of course, find a few surprises</li>
     </ul>
-    <p>Stay up to date on all things CDS as well as the latest news and techniques for web development.</p>
+    <p>Join the adventure now!</p>
     <p>
-      <a href="{{ conf.updatesLink }}" target="_blank" rel="noopener noreferrer" class="{% className adventureCSS, 'updates-btn' %}">
-        Get notified
+      <a href="{{conf.path}}adventure/" class="{% className adventureCSS, 'updates-btn' %}">
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false" aria-label="retro gamepad" class="{% className adventureCSS, 'updates-btn-icon' %}">
+          <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+        </svg>
+        Launch CDS Adventure
       </a>
     </p>
   </div>

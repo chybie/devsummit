@@ -18,16 +18,16 @@ description: Join the Chrome team for our two-day summit on the latest technique
     }
   </script>
 
+  {% include 'now-n-next/index.njk' %}
   {% include 'adventure/index.njk' %}
-  {% include 'main-intro/index.njk' %}
   {% from 'squiggle-banner/index.njk' import squiggleBanner %}
-  {{ squiggleBanner(page, '--green', grayBottom=true, grayTop=true) }}
+  {{ squiggleBanner(page, '--orange') }}
+  {% include 'main-intro-during/index.njk' %}
+  {{ squiggleBanner(page, '--green', grayTop=true) }}
   {% include 'schedule/index.njk' %}
-  {{ squiggleBanner(page, '--red', grayTop=true) }}
-  {% include 'office-hours/index.njk' %}
-  {{ squiggleBanner(page, '--orange', grayBottom=true) }}
-  {% include 'workshops/index.njk' %}
+  {{ squiggleBanner(page, '--red', grayBottom=true) }}
   {% include 'previously/index.njk' %}
+  {{ squiggleBanner(page, '--orange', grayTop=true) }}
   {% include 'faq/index.njk' %}
   {% include 'subscribe-promo/index.njk' %}
 {% endblock %}

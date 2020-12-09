@@ -7,17 +7,18 @@
 {%- set contentCSS = "/_includes/content.css" -%}
 {% css page, contentCSS %}
 
-<section class="{% className moduleCSS, 'root-alt' %} {% className mediaCSS, 'root' %}">
+<section class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %}">
   <div class="{% className mediaCSS, 'main' %} {% className contentCSS, 'content-area' %}">
-    <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Schedule" %}</h1>
+    <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Talks" %}</h1>
     <p>
       As always, we’re keeping things simple with a single track of content. Over the two days, we’ll
       show what’s possible on the web by focusing on solid foundations and how to build beautiful,
       engaging experiences on top.
     </p>
     <p>
-      <a href="{{conf.path}}schedule/">View Schedule</a>
+      <a href="{{conf.path}}schedule/">View Talks</a>
     </p>
+    <p>We've also got a <a href="{{conf.path}}schedule/#bonus-content">line up of bonus content</a> that you can watch any time.</p>
   </div>
   <div class="{% className mediaCSS, 'media-decorative' %} {% className scheduleCSS, 'decoration' %}"></div>
 </section>

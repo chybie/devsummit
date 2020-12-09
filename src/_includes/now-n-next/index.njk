@@ -7,6 +7,8 @@
 {%- set nowNextCSS = "/_includes/now-n-next/style.css" -%}
 {% css page, nowNextCSS %}
 {% set headerCSS = "/_includes/header/style.css" %}
+{%- set toggleCSS = "/_includes/toggle.css" -%}
+{% css page, toggleCSS %}
 
 <section style="display:none" class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %} {% className nowNextCSS, 'root' %}">
   <script>
@@ -32,7 +34,24 @@
     <div class="{% className utilsCSS, 'aspect-ratio' %} {% className nowNextCSS, 'livestream' %}" style="--aspect-ratio: calc(16/9)"></div>
   </div>
   <div class="{% className mediaCSS, 'main' %}">
-    <section class="{% className nowNextCSS, 'on-now' %}"></section>
+    <section class="{% className nowNextCSS, 'on-now-container' %}">
+      <form class="{% className toggleCSS, 'root' %} {% className nowNextCSS, 'toggle' %}">
+        <label class="{% className toggleCSS, 'label' %}">
+          <input name="timezone" type="radio" class="{% className toggleCSS, 'radio' %}" checked>
+          <span class="{% className toggleCSS, 'fake-label' %}">
+            <span>Details</span>
+          </span>
+        </label>
+        <label class="{% className toggleCSS, 'label' %}">
+          <input name="timezone" type="radio" class="{% className toggleCSS, 'radio' %}">
+          <span class="{% className toggleCSS, 'fake-label' %}">
+            <span>Chat</span>
+          </span>
+        </label>
+      </form>
+      <div class="{% className nowNextCSS, 'on-now' %}"></div>
+      <div class="{% className nowNextCSS, 'chat' %}" style="display: none"></div>
+    </section>
   </div>
   <section class="{% className nowNextCSS, 'up-next' %}"></section>
   <link rel="modulepreload" href="confboxAsset(/_includes/now-n-next/script/index.js)" />

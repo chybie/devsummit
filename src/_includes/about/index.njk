@@ -5,27 +5,29 @@
 {%- set aboutCSS = "/_includes/about/style.css" -%}
 {% css page, aboutCSS %}
 
-<section class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %} {% className aboutCSS, 'root' %}">
+<section class="{% className moduleCSS, 'root-alt' %} {% className mediaCSS, 'root' %} {% className aboutCSS, 'root' %}">
   {% from 'squiggle-banner/index.njk' import squiggleTop %}
-  {{ squiggleTop(page, gray=false) }}
+  {{ squiggleTop(page, gray=true) }}
   <div class="{% className mediaCSS, 'media' %} {% className aboutCSS, 'media' %}">
     {%- set utilsCSS = "/_includes/utils.css" -%}
     {% css page, utilsCSS %}
     <div class="{% className utilsCSS, 'aspect-ratio' %} {% className aboutCSS, 'livestream' %}" style="--aspect-ratio: calc(16/9)">
       <iframe class="{% className utilsCSS, 'media-fill' %}" src="https://www.youtube.com/embed/7Kfh-Mem1b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
     </div>
-    <a href="https://www.youtube.com/channel/UCnUYZLuoy1rq1aVMwx4aTzw?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="{% className aboutCSS, 'subscribe' %}">Subscribe</a>
   </div>
   <div class="{% className mediaCSS, 'main' %}">
     <h1 id="livestream" class="{% className moduleCSS, 'heading' %}">{% headingSlug "About" %}</h1>
+    <p>Welcome to Chrome Dev Summit 2020!</p>
     <p>
-      <strong>Chrome Dev Summit</strong>
-      is back with its 8th chapter, but this time we’re coming to you. We’re bringing all the latest updates, just as much content, and many more Chromies.
+      Over the next two days, we’ll take you through the latest updates coming to the web platform
+      and its tools through byte-size sessions, bonus deepdive content and live Q&A with Googlers
+      on YouTube chat.
     </p>
     <p>
-      All our sessions and interactions on YouTube will be open to everyone and do not need registrations.
-      To stay up to date with the event and other news and techniques for the web,
-      <a href="{{conf.updatesLink}}" rel="noopener noreferrer" target="_blank">sign up here</a>.
+      Experience an event like never before with <a href="{{conf.path}}adventure/">CDS Adventure</a>
+      - an experimental virtual world where you can interact with Googlers and other developers,
+      check out demos and codelabs, earn virtual swag and bump into some fun surprises!
     </p>
+
   </div>
 </section>
