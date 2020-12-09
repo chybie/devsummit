@@ -7,10 +7,13 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"strings"
 )
 
 const (
-	target = "https://chromedevsummit-site.firebaseapp.com/"
+	siteTarget      = "https://chromedevsummit-site.firebaseapp.com/"
+	adventureTarget = "https://cds-adventure-corp-2.web.app"
+	adventurePrefix = "/devsummit/adventure"
 )
 
 func main() {
@@ -20,20 +23,44 @@ func main() {
 		log.Printf("Defaulting to port %s", port)
 	}
 
-	targetURL, err := url.Parse(target)
+	siteTargetURL, err := url.Parse(siteTarget)
 	if err != nil {
 		panic(err)
 	}
-	reverseProxy := &httputil.ReverseProxy{
+	adventureTargetURL, err := url.Parse(adventureTarget)
+	if err != nil {
+		panic(err)
+	}
+
+	siteReverseProxy := &httputil.ReverseProxy{
 		Director: func(req *http.Request) {
-			req.URL.Scheme = targetURL.Scheme
-			req.URL.Host = targetURL.Host
-			req.Host = targetURL.Host
-			req.Header.Set("Host", targetURL.Host)
+			req.URL.Scheme = siteTargetURL.Scheme
+			req.URL.Host = siteTargetURL.Host
+			req.Host = siteTargetURL.Host
+			req.Header.Set("Host", siteTargetURL.Host)
 		},
 	}
 
-	err = http.ListenAndServe(fmt.Sprintf(":%s", port), reverseProxy)
+	adventureReverseProxy := &httputil.ReverseProxy{
+		Director: func(req *http.Request) {
+			req.URL.Scheme = adventureTargetURL.Scheme
+			req.URL.Host = adventureTargetURL.Host
+			req.Host = adventureTargetURL.Host
+			req.Header.Set("Host", adventureTargetURL.Host)
+		},
+	}
+
+	err = http.ListenAndServe(fmt.Sprintf(":%s", port), http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		if strings.HasPrefix(req.URL.Path, adventurePrefix) {
+			req.URL.Path = strings.Replace(req.URL.Path, adventurePrefix, "", -1)
+			if req.URL.Path == "" {
+				http.Redirect(w, req, adventurePrefix+"/", http.StatusTemporaryRedirect)
+			}
+			adventureReverseProxy.ServeHTTP(w, req)
+			return
+		}
+		siteReverseProxy.ServeHTTP(w, req)
+	}))
 	if err != nil {
 		log.Fatalf("Could not start reverse proxy: %s", err)
 	}
