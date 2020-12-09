@@ -19,9 +19,8 @@ description: Join the Chrome team for our two-day summit on the latest technique
   </script>
 
   {% include 'now-n-next/index.njk' %}
-  {% include 'adventure/index.njk' %}
   {% from 'squiggle-banner/index.njk' import squiggleBanner %}
-  {{ squiggleBanner(page, '--orange') }}
+  {{ squiggleBanner(page, '--orange', grayTop=true) }}
   {% include 'main-intro-during/index.njk' %}
   {{ squiggleBanner(page, '--green', grayTop=true) }}
   {% include 'schedule/index.njk' %}

@@ -92,6 +92,7 @@ description: Everything that's happening at Chrome Dev Summit.
         <div class="{% className css, 'content-box' %}" id="bonus-content">
           <h2>Bonus content</h2>
           <p>Check out some deep dive content on topics we weren’t able to cover during the main event. These videos will be available at all times on our YouTube channel.</p>
+          <p><strong>Coming soon!</strong></p>
           {% for session in collections.extraVideos %}
             <div class="{% className css, 'extra-video' %}">
               <div class="{% className css, 'icon-bubble' %}">
@@ -120,7 +121,7 @@ description: Everything that's happening at Chrome Dev Summit.
                 </div>
               </div>
               <div>
-                <a class="{% className css, 'extra-video-title' %}" href="https://www.youtube.com/watch?v={{session.data.youtubeId}}" rel="noopener noreferrer" target="_blank">{{session.data.title}}</a>
+                <span class="{% className css, 'extra-video-title' %}">{{session.data.title}}</span>
                 {% for sessionSpeaker in session.data.speakers %}
                   {% for speaker in collections.speakers %}
                     {% if speaker.fileSlug == sessionSpeaker %}
