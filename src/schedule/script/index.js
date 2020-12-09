@@ -25,8 +25,6 @@ function render() {
 
 onChange(render);
 
-if (getTimezoneOption() === 'local') {
-  render();
-  sheduleEl.style.visibility = 'visible';
-  //workshopsEl.style.visibility = 'visible';
-}
+render();
+sheduleEl.style.visibility = 'visible';
+//workshopsEl.style.visibility = 'visible';
