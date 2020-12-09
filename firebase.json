@@ -29,6 +29,10 @@
             "value": "text/calendar"
           }
         ]
+      },
+      {
+        "source": "**/*.avif",
+        "headers": [{ "key": "Content-Type", "value": "image/avif" }]
       }
     ],
     "rewrites": [
