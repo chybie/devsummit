@@ -3,8 +3,8 @@ layout: layouts/session/index.njk
 title: Debugging WebAssembly with modern tools
 speakers:
   - ingvar-stepanyan
-start: 2020/12/10 10:00
-end: 2020/12/10 10:10
+start: 2020/12/10 10:02
+end: 2020/12/10 10:11
 description: Debugging WebAssembly has gotten a lot better in the last year, here's how…
 #youtubeId: VBMHswhun-s
 ---

@@ -3,8 +3,8 @@ layout: layouts/session/index.njk
 title: Structured data for developers
 speakers:
   - martin-splitt
-start: 2020/12/10 11:25
-end: 2020/12/10 10:30
+start: 2020/12/10 11:27
+end: 2020/12/10 10:32
 description: This session looks at structured data and how you can use it to make your website eligible for rich results in Google Search.
 #youtubeId: bUwmHX_EPmw
 ---

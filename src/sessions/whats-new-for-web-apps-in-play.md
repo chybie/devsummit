@@ -4,8 +4,8 @@ title: What’s new for web apps in Play
 speakers:
   - adriana-jara
   - andre-bandarra
-start: 2020/12/10 10:50
-end: 2020/12/10 11:00
+start: 2020/12/10 10:49
+end: 2020/12/10 10:58
 description: A lightning tour of new features for web apps in Google’s Play Store.
 #youtubeId: K_TTyg2wJWM
 ---

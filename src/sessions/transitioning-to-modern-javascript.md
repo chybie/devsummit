@@ -4,7 +4,7 @@ title: Transitioning to modern JavaScript
 speakers:
   - houssein-djirdeh
   - jason-miller
-start: 2020/12/10 10:15
+start: 2020/12/10 10:16
 end: 2020/12/10 10:30
 description: Over 90% of web traffic comes from browsers that support modern JavaScript, yet most websites ship legacy syntax in order to support a small number of very old browsers.
 #youtubeId: cLxNdLK--yI

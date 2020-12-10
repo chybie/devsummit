@@ -4,7 +4,7 @@ title: Extending CSS with Houdini
 speakers:
   - una-kravets
 start: 2020/12/10 09:50
-end: 2020/12/10 10:00
+end: 2020/12/10 10:02
 description: CSS Houdini gives you many new powerful tools to work with that you can use today.
 #youtubeId: 5eBar5TI71M
 ---

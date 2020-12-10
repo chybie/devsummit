@@ -6,8 +6,8 @@ speakers:
   - gordon-williams
   - henrik-joreteg
   - olivier-gay
-start: 2020/12/10 11:10
-end: 2020/12/10 11:20
+start: 2020/12/10 11:12
+end: 2020/12/10 11:22
 description: The web platform is opening up incredible opportunities by letting web developers communicate with hardware devices.
 avatar: /assets/speakers/francois-beaufort.jpg
 #youtubeId: ZIZqmXfrRLI

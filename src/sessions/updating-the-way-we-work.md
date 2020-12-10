@@ -4,7 +4,7 @@ title: Updating the way we work
 speakers:
   - mariko-kosaka
 start: 2020/12/10 09:30
-end: 2020/12/10 09:40
+end: 2020/12/10 09:39
 description: The year 2020 changed the way we work and how we look at the current status quo.
 #youtubeId: n2uhKBPf6OY
 ---

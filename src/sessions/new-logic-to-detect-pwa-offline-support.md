@@ -4,7 +4,7 @@ title: New logic to detect PWA offline support
 speakers:
   - asami-doi
 start: 2020/12/10 10:40
-end: 2020/12/10 10:50
+end: 2020/12/10 10:49
 description: Chrome is researching to ship some new logic to detect if a PWA really works while offline before offering an install button.
 #youtubeId: hoEE39yB2Pg
 ---

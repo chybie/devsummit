@@ -3,8 +3,8 @@ layout: layouts/session/index.njk
 title: Making the web more visual with Web Stories
 speakers:
   - terry-ednacot
-start: 2020/12/10 11:30
-end: 2020/12/10 11:40
+start: 2020/12/10 11:32
+end: 2020/12/10 11:41
 description: Web Stories are a web-based version of the popular "Stories" format that blend video, audio, images, animation, and text to create a dynamic consumption experience.
 #youtubeId: mp6IUgUXJds
 ---
