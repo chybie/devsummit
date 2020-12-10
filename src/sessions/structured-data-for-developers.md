@@ -6,7 +6,7 @@ speakers:
 start: 2020/12/10 11:27
 end: 2020/12/10 10:32
 description: This session looks at structured data and how you can use it to make your website eligible for rich results in Google Search.
-#youtubeId: bUwmHX_EPmw
+youtubeId: bUwmHX_EPmw
 ---
 
 This session looks at structured data and how you can use it to make your website eligible for rich results in Google Search.
