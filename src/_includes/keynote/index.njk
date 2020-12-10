@@ -1,0 +1,35 @@
+{%- set moduleCSS = "/_includes/module.css" -%}
+{% css page, moduleCSS %}
+{%- set mediaCSS = "/_includes/layouts/media-module/style.css" -%}
+{% css page, mediaCSS %}
+{%- set keynoteCSS = "/_includes/keynote/style.css" -%}
+{% css page, keynoteCSS %}
+
+
+<section class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %} {% className keynoteCSS, 'root' %}">
+  <div class="{% className mediaCSS, 'media' %} {% className keynoteCSS, 'media' %}">
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+    <div class="{% className utilsCSS, 'aspect-ratio' %} {% className keynoteCSS, 'livestream' %}" style="--aspect-ratio: calc(16/9)">
+      <iframe class="{% className utilsCSS, 'media-fill' %}" src="https://www.youtube.com/embed/CNhrQH0HVNU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="{% className mediaCSS, 'main' %}">
+    <h1 id="livestream" class="{% className moduleCSS, 'heading' %}">{% headingSlug "Thanks" %}</h1>
+    <p>
+      Thank you for joining us for Chrome Dev Summit 2020! We hope you enjoyed the
+      <a href="{{conf.path}}schedule/">content</a>, interactions, and of course
+      <a href="{{conf.path}}adventure/" rel="noopener noreferrer" target="_blank">CDS Adventure</a>.
+    </p>
+    <p>
+      All videos are now available
+      <a href="{{conf.path}}schedule/">here on the CDS website</a> and on
+      <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIDzLmWaDwfHVZJl1Q5RFgOR" rel="noopener noreferrer" target="_blank">our YouTube channel</a>.
+    </p>
+    <p>To stay up to date the latest news and techniques for web development, subscribe to the web.dev newsletter.</p>
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+    <p><a href="{{conf.updatesLink}}" rel="noopener noreferrer" target="_blank" class="{% className utilsCSS, 'register' %} {% className keynoteCSS, 'register' %}">Get updates</a></p>
+    <p>See you next year!</p>
+  </div>
+</section>
