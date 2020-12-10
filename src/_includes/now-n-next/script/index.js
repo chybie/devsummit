@@ -243,7 +243,7 @@ function update() {
 
 (() => {
   if (!self.showNowNext) return;
-  const youtubeId = 'NkIi7h8NnS4';
+  const youtubeId = 'ggVsEl7xl9g';
 
   viewToggleEl.style.visibility = 'visible';
 
