@@ -14,10 +14,8 @@ function render(el) {
 }
 
 export function enhance(el) {
-  if (getTimezoneOption() === 'local') {
-    el.style.visibility = 'visible';
-    render(el);
-  }
+  el.style.visibility = 'visible';
+  render(el);
 
   onChange(() => render(el));
 }
