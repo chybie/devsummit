@@ -1,25 +1,22 @@
 .root {
-  --icon-size: 1.6em;
-  padding-bottom: 0;
-  padding-top: 6rem;
+  --icon-size: 1.41rem;
+  padding: var(--side-margin);
+  background: var(--footer-bg-color);
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - var(--side-margin) * 2);
 
-  @media (min-width: 720px) {
-    display: grid;
-    grid-template-rows: 1fr auto auto;
-    grid-template-columns: 1fr auto auto;
-    grid-template-areas:
-      'logo . nav'
-      'divider divider divider'
-      'social language legal';
-  }
-
-  @media (max-width: 840px) {
-    --side-margin: 2.4rem;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: var(--footer-height);
   }
 
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   a:hover {
@@ -27,31 +24,57 @@
     text-decoration: underline;
     text-decoration-color: var(--blue);
   }
+
+  @media (min-width: 720px) {
+    --icon-size: 1.09rem;
+
+    padding-bottom: 0;
+    padding-top: 0;
+    > div {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 840px) {
+    > div {
+      --side-margin: 2.4rem;
+    }
+  }
+}
+
+.logo-legal {
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 720px) {
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .logo {
-  background-image: url('confboxAsset(/_includes/footer/assets/g.svg)');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  grid-area: logo;
-  height: 2.6rem;
-  margin: 5.9rem 0;
+  display: flex;
+  margin: 0;
+  img {
+    width: 82px;
+  }
+
   @media (min-width: 720px) {
-    background-image: url('confboxAsset(/_includes/footer/assets/fullgoogle.svg)');
-    margin: 0;
-    background-position: top left;
+    img {
+      width: 70px;
+    }
   }
 }
 
 .social {
-  grid-area: social;
-
-  margin: 1rem 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+
   > li {
     margin: 0 0.5rem;
     &:first-of-type {
@@ -63,60 +86,33 @@
     line-height: var(--icon-size);
     height: var(--icon-size);
   }
+
   @media (min-width: 720px) {
     justify-content: flex-start;
   }
 }
 
 .legal {
-  grid-area: legal;
-
-  white-space: nowrap;
-  margin: 1rem 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--midgrey);
+  transform: translateY(50%);
   a {
-    color: var(--midgrey);
+    font: normal 0.7rem 'Google Sans', roboto, sans-serif;
+    font-weight: 500;
+    color: var(--footer-link-color);
     text-decoration: none;
-  }
-  > li {
-    margin: 1rem 0;
-    --icon-size: 1.4em;
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: 0;
-    }
-    > a {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      > span {
-        margin-right: 0.5em;
-      }
+
+    &:hover {
+      color: var(--lightlightgrey);
+      text-decoration: none;
     }
   }
 
   @media (min-width: 720px) {
-    font-size: 0.6rem;
-    flex-direction: row;
-    > li {
-      margin: 0 0.8rem;
+    transform: translateY(0);
+    margin-left: 2.28rem;
+    a {
+      font-size: 0.8rem;
     }
-  }
-}
-
-.divider {
-  display: none;
-  grid-area: divider;
-  margin-top: 1.1rem;
-  @media (min-width: 720px) {
-    display: block;
-    border-top: 1px solid var(--darkoffwhite);
   }
 }
 
@@ -137,7 +133,7 @@
 }
 
 .icon-mask {
-  background: var(--midgrey);
+  background: var(--white);
   -webkit-mask-image: var(--icon);
   mask-image: var(--icon);
   -webkit-mask-size: contain;
@@ -146,26 +142,37 @@
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--black);
+  }
 }
 
 .icon-twitter {
   --icon: url('confboxAsset(/_includes/footer/assets/twitter.svg)');
   &:hover {
-    background-color: var(--twitter);
+    background-color: var(--lightlightgrey);
   }
 }
 
 .icon-youtube {
   --icon: url('confboxAsset(/_includes/footer/assets/youtube.svg)');
   &:hover {
-    background-color: var(--youtube);
+    background-color: var(--lightlightgrey);
   }
 }
 
 .icon-email {
   --icon: url('confboxAsset(/_includes/footer/assets/email.svg)');
   &:hover {
-    background-color: var(--grey);
+    background-color: var(--lightlightgrey);
+  }
+}
+
+.icon-github {
+  --icon: url('confboxAsset(/_includes/footer/assets/github.svg)');
+  &:hover {
+    background-color: var(--lightlightgrey);
   }
 }
 

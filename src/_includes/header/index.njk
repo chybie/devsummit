@@ -1,31 +1,51 @@
 {% set utilsCSS = "/_includes/utils.css" %}
-{% css page,
-utilsCSS %}
+{% css page,utilsCSS %}
 {% set css = "/_includes/header/style.css" %}
-{% css page,
-css %}
+{% css page,css %}
+{%- set menuCss = "/_includes/main-menu/style.css" -%}
+{% css page, menuCss %}
 
 <div class="{% className css, 'root' %}">
   <a class="{% className css, 'title' %}" href="{{conf.path}}">
     <div class="{% className css, 'logo-container' %}">
-      <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: 1">
-        <img class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset(/assets/site-logo.png)" alt="">
-      </div>
-    </div>
-    <div class="{% className css, 'title-text' %}">
-      <div class="{% className css, 'title-main' %}">Chrome</div>
-      <div class="{% className css, 'title-sub' %}">Dev Summit</div>
-      <time class="{% className css, 'title-year' %}">{% confDate conf.start,
-        'YYYY' %}</time>
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="confboxAsset(/assets/cds_logo_mobile_darkmode.svg)">
+        <img class="{% className css, 'logo-mobile' %}"
+             src="confboxAsset(/assets/cds_logo_mobile.svg)"
+             width="95"
+             height="40.53"
+             alt="Chrome Dev Summit">
+      </picture>
+
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="confboxAsset(/assets/cds_logo_darkmode.svg)">
+        <img class="{% className css, 'logo-desk' %}"
+             src="confboxAsset(/assets/cds_logo.svg)"
+             width="210"
+             height="34"
+             alt="Chrome Dev Summit">
+      </picture>
     </div>
   </a>
   <div class="{% className css, 'extra-links' %}">
-    <a href="{{conf.path}}schedule/">Talks</a>
-    <a href="{{conf.path}}schedule/#learning-content">Learning Content</a>
-    <a href="{{conf.path}}schedule/#extended">CDS Extended</a>
-    <a href="{{conf.path}}faqs/">FAQs</a>
-    <a href="{{conf.path}}community-guidelines/">Guidelines</a>
+    <main-menu class="{% className menuCss, 'root' %}">
+      <a href="{{conf.path}}faqs/">FAQs</a>
+      <a href="{{conf.path}}community-guidelines/">Guidelines</a>
+      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className css, 'request-btn' %}">Request an invite</a>
+      <button class="{% className menuCss, 'menu-toggle' %}" aria-label="Open menu"></button>
+
+      <div class="{% className menuCss, 'mobile-menu' %}">
+        <a href="{{conf.path}}faqs/">FAQs</a>
+        <a href="{{conf.path}}community-guidelines/">Guidelines</a>
+      </div>
+    </main-menu>
+    <script>
+      {
+        const el = document.currentScript.previousElementSibling;
+        el.classList.add('{% className menuCss, "js-enabled" %}');
+      }
+    </script>
   </div>
-  {% from 'squiggle-banner/index.njk' import squiggleBottom %}
-  {{ squiggleBottom(page, gray=false) }}
+  <link rel="modulepreload" href="confboxAsset(/_includes/main-menu/script/index.js)" />
+  <script type="module" async src="confboxAsset(/_includes/main-menu/script/index.js)"></script>
 </div>

@@ -1,11 +1,12 @@
-An opportunity to hear directly from Chrome leadership, product and engineering teams about the latest innovations and updates through technical sessions, office hours, workshops, and more.
+---
+title: What can I expect at Chrome Dev Summit 2021?
+---
 
-**Sessions:** Over the two days, we’ll bring a single track of byte-sized sessions across multiple topics while being available online to answer your questions through YouTube live chat. Day 1 sessions will focus on building strong foundations for the modern web, while Day 2 sessions will show how you can focus on building incredible experiences on top of the solid foundations.
+You'll have the opportunity to hear directly from Chrome leadership, industry experts, and our product and engineering teams about the latest innovations and updates. You'll also get access to helpful product demos and resources, office hours, workshops, and more.
 
-**Live Chat Q&A:** While we can’t replicate the experience of bumping into your favourite Google experts to ask them your burning questions or to just have a chat, we’ll ensure that they are on stand by via live chat on YouTube until the sessions last.
-
-**Workshops:** Conducted by experts from the community (non Googlers), these workshops will bring exclusive content to a limited number of developers. The limit is purely due to technical constraints in order to make the workshops interactive. Workshops will be focused on beginner-to-intermediate level, on topics ranging from PWA to CSS. Invite requests for workshops are now closed. We hope you can still join us for the livestream on Dec 9-10, 2020.
-
-**Office Hours:** We’ll also have representatives from various teams joining us to meet with you in a 1:1 setting and discuss challenges and opportunities for your web experience. Invite requests for office hours are now closed. We hope you can still join us for the livestream on Dec 9-10, 2020.
-
-**And more:** In these ever changing times, we’re working hard to bring as much flavour of past events as possible. We’ll be sharing more of what’s in store on [this website](/devsummit/) and through our <a href="https://twitter.com/ChromiumDev" target="_blank" rel="noopener noreferrer">social channels</a> so look for more updates as we finalize more fun activities for Chrome Dev Summit 2020!
+- **Keynote**: Learn more about exciting new products and platform updates; tools to build better web experiences and beautiful, responsive sites; and top examples of developers who are making the most of Chrome's advanced capabilities.
+- **AMA**: Join a panel of Google leaders from the Chrome browser, web platform engineering, product management, and developer relations teams to ask your burning questions about building great web experiences and the future of Chrome.
+- **Live chat**: Connect with Google experts and developers around the world live. We'll keep the channel open 24/7, so you can ask questions during the keynote or simply stop by to chat and share ideas with fellow developers.
+- **Workshops**: Conducted by industry experts from across the web community, these interactive workshops will give a limited number of developers access to helpful content and personal support. Workshops will be focused on developing skills at a beginner-to-intermediate level and will cover topics ranging from PWA to CSS.
+- **Learning lounges**: Consult with Google engineers in a limited capacity group setting to learn tips and best practices, and get your site or app audited by an expert in real time.
+- **Office hours**: Meet with representatives from various teams in a one-on-one setting to discuss challenges and opportunities to improve your web experience.

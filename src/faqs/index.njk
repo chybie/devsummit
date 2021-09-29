@@ -1,19 +1,29 @@
 ---
 title: FAQs
-description: Everything you need to know about Chrome Dev Summit.
+description: If your question isn’t listed here, please <a href="mailto:chrome-dev-summit@google.com">email us</a>.
 ---
 {% extends 'layouts/content/index.njk' %}
 
-{% from 'squiggle-banner/index.njk' import squiggleBanner %}
+{% block left %}
+   {%- set faqCSS = "/faqs/styles.css" -%}
+   {% css page, faqCSS %}
 
-{% block content %}
-  {{ super() }}
-  {% include 'subscribe-promo/index.njk' %}
-  {{ squiggleBanner(page, '--green') }}
+   {%- set moduleCSS = "/_includes/module.css" -%}
+   {% css page, moduleCSS %}
+
+   <div class="{% className faqCSS, 'content-left' %}">
+      {{ super() }}
+
+      <nav class="{% className faqCSS, 'nav' %}">
+         {% for section in collections.faqs %}
+            <a href="#{% idify section.title %}" class="{% className moduleCSS, 'tertiary-text' %}">{{ section.title }}</a>
+         {% endfor %}
+      </nav>
+   </div>
 {% endblock %}
 
-{% block innerContent %}
-  <script type="application/ld+json">
+{% block rightInner %}
+   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -30,55 +40,49 @@ description: Everything you need to know about Chrome Dev Summit.
         {% if not loop.last %}
         ,
         {% endif %}
-        {% endfor %}
+      {% endfor %}
       ]
     }
   </script>
 
-  {%- set contentCSS = "/_includes/content.css" -%}
-  {% css page, contentCSS %}
-  {%- set faqCSS = "/faqs/styles.css" -%}
-  {% css page, faqCSS %}
-  <section class="{% className contentCSS, 'category' %}">
-    <h1 class="{% className contentCSS, 'category-heading' %}">FAQs</h1>
-    <aside class="{% className contentCSS, 'category-meta' %}">
-      <blockquote>Everything you need to know</blockquote>
-      <p>If your question isn't listed here, please <a href="mailto:chrome-dev-summit@google.com">email us.</a><p>
-    </aside>
-    <div class="{% className contentCSS, 'box' %} {% className contentCSS, 'section' %}">
-      {% for section in collections.faqs %}
-        {% if (loop.index !== 1) %}<hr class="{% className contentCSS, 'divider' %}">{% endif %}
-        <h2 class="{% className contentCSS, 'section-heading' %}"><a href="#{% idify section.title %}">{{ section.title }}</a></h2>
+   {%- set faqCSS = "/faqs/styles.css" -%}
+   {% css page, faqCSS %}
 
-        <div class="{% className faqCSS, 'markdown' %}">
-          <ul>
-            {% for faq in section.items %}
-              {% if (faq.data.title) and (faq.data.title != section.title) %}
-                <li><a href="#{% idify faq.data.title %}">{{ faq.data.title }}</a></li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
-  {% for section in collections.faqs %}
-    <section class="{% className contentCSS, 'category' %}">
-      <h1 id="{% idify section.title %}" class="{% className contentCSS, 'category-heading' %}">{{ section.title }}</h1>
-      <aside class="{% className contentCSS, 'category-meta' %}">
-        <blockquote>{{ section.question }}</blockquote>
-        <p>{{ section.answer | safe }}<p>
-      </aside>
-      <div class="{% className contentCSS, 'box' %} {% className contentCSS, 'section' %}">
-        {% for faq in section.items %}
-          {% if (loop.index !== 1) %}<hr class="{% className contentCSS, 'divider' %}">{% endif %}
-          {% if (faq.data.title) and (faq.data.title != section.title) %}<h2 id="{% idify faq.data.title %}" class="{% className contentCSS, 'section-heading' %}">{{ faq.data.title }}</h2>{% endif %}
-          <div class="{% className faqCSS, 'markdown' %}">
-            {{ faq.templateContent | safe }}
-          </div>
-        {% endfor %}
+   {% for section in collections.faqs %}
+      <p id="{% idify section.title %}"  class="{% className faqCSS, 'section-title' %}">{{ section.title }}</p>
+
+      <div class="{% className faqCSS, 'accordion' %}" no-js>
+         {% for faq in section.items %}
+            {% if (faq.data.title) and (faq.data.title != section.title) %}
+               <div class="{% className faqCSS, 'accordion-item' %}" accordion-item>
+                  <p slot="title">
+                     <span>{{ faq.data.title }}</span>
+
+                      <picture>
+                          <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/arrow_left.svg')">
+                          <img src="confboxAsset('/assets/arrow_left-black.svg')"
+                               alt="Show"
+                               loading="lazy"
+                          />
+                      </picture>
+                  </p>
+                  <div>
+                     {{ faq.templateContent | safe }}
+                  </div>
+               </div>
+            {% endif %}
+         {% endfor %}
       </div>
-    </section>
-  {% endfor %}
+   {% endfor %}
+
+    <script>
+        {
+            const elements = document.querySelectorAll('.{% className faqCSS, 'accordion' %}');
+            import('confboxAsset(/_includes/accordion/script/index.js)').then(
+                ({ enhance }) => enhance(elements)
+            );
+        }
+    </script>
 {% endblock %}
+
 

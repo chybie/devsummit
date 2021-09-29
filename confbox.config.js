@@ -14,7 +14,7 @@ module.exports = {
   /**
    * Name of the conference.
    */
-  conferenceName: 'Chrome Dev Summit 2020',
+  conferenceName: 'Chrome Dev Summit 2021',
   teaser:
     "Join the Chrome team for our two-day summit to learn about the latest techniques for building for the modern Web, get an early insight into what we're working on, and to share your thoughts on how we can move the platform forward, together.",
   /** Link for registration */
@@ -22,6 +22,9 @@ module.exports = {
     'https://events.withgoogle.com/chrome-dev-summit-2020/registrations/new/details/',
   /** Link for updates */
   updatesLink: 'https://web.dev/newsletter/',
+  /** Link for requesting invite */
+  requestInviteLink:
+    'https://events.withgoogle.com/chrome-dev-summit-2021/registrations/new',
   /**
    * Data of the conference venue.
    */
@@ -34,19 +37,20 @@ module.exports = {
    * Timezone of the conference, in the form [+-]HHMM.
    * Examples: -0700, +0100, +0530
    */
-  timezone: '-0800',
+  timezone: '-0700',
   /**
    * Start of conference in the above timezone, in the format: YYYY/MM/DD HH:mm.
    */
-  start: '2020/12/09 09:00',
+  start: '2021/11/03 08:30',
   /**
    * Start of conference in the above timezone, in the format: YYYY/MM/DD HH:mm.
    */
-  end: '2020/12/10 23:59',
+  end: '2021/11/03 11:30',
   /**
    * Additional schedule items. These are merged with the content in /sessions/.
    */
   extraSchedule: [
+    /*
     // breaks
     ...[
       // day, start time, end time
@@ -64,30 +68,6 @@ module.exports = {
       livestreamed: true,
     })),
     {
-      title: 'After Hours in CDS Adventure',
-      nowNextLink: confRoot + 'adventure/',
-      nowNextHTML: `Join Googlers, GDEs and other CDS attendees in our <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
-      start: '2020/12/09 12:30',
-      end: '2020/12/09 13:30',
-      event: true,
-    },
-    {
-      title: 'Day 2 Kick off in CDS Adventure',
-      nowNextLink: confRoot + 'adventure/',
-      nowNextHTML: `Start day 2 of Chrome Dev Summit early. Join Googlers, GDEs and other CDS attendees in the <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
-      start: '2020/12/10 08:30',
-      end: '2020/12/10 09:30',
-      event: true,
-    },
-    {
-      title: 'After Hours in CDS Adventure',
-      nowNextLink: confRoot + 'adventure/',
-      nowNextHTML: `Join Googlers, GDEs and other CDS attendees in our <a href="${confRoot}adventure/">experimental virtual conference world</a> where you’ll be able to interact with each other, check out demos & codelabs, play mini games and so just have some fun.`,
-      start: '2020/12/10 12:00',
-      end: '2020/12/10 13:00',
-      event: true,
-    },
-    {
       title: 'Day 1 complete!',
       start: '2020/12/09 13:30',
       end: '2020/12/09 13:31',
@@ -97,5 +77,6 @@ module.exports = {
       start: '2020/12/10 13:00',
       end: '2020/12/10 13:01',
     },
+    */
   ],
 };

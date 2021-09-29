@@ -1,36 +1,76 @@
 .root,
 .root-alt {
-  --vertical-padding: 2.4rem;
   background-color: var(--white);
   padding: var(--vertical-padding) var(--side-margin);
   position: relative;
 
-  @media (min-width: 1280px) {
-    --vertical-padding: 4.5rem;
-  }
-}
+  --vertical-padding: 3.5rem;
 
-.root-alt {
-  background-color: var(--offwhite);
+  @media (min-width: 720px) {
+    --vertical-padding: 4.25rem;
+  }
+
+  @media (min-width: 1440px) {
+    --vertical-padding: 5.5rem;
+  }
+
+  @media (min-width: 1600px) {
+    --vertical-padding: 6.9rem;
+  }
 }
 
 .heading {
-  font: bold 2rem 'Google Sans', roboto, sans-serif;
-  color: var(--grey);
-  text-align: center;
-  position: relative;
+  font: 2.75rem 'Google Sans', roboto, sans-serif;
+  color: var(--black);
+  margin-top: 0;
+  letter-spacing: -2.5px;
+  line-height: 3rem;
+  font-weight: 500;
+  margin-bottom: 1.17rem;
+
+  @media (min-width: 1024px) {
+    font-size: 2.25rem;
+    line-height: 2.55rem;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 3.8rem;
+    line-height: 3.85rem;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 4.5rem;
+    line-height: 4.65rem;
+  }
+
+  @media (min-width: 1760px) {
+    font-size: 5.7rem;
+    line-height: 6.19rem;
+  }
+}
+
+.subheading {
+  font: normal 1.22rem 'Google Sans', roboto, sans-serif;
+  color: var(--black);
+  font-weight: 500;
   margin-top: 0;
 
-  @media (min-width: 480px) {
-    text-transform: lowercase;
-    text-align: left;
-    white-space: nowrap;
-
-    &::before {
-      content: 'chrome://';
-      color: var(--lightgrey);
-    }
+  @media (min-width: 1024px) {
+    font-size: 1rem;
   }
+
+  @media (min-width: 1440px) {
+    font-size: 1.42rem;
+  }
+
+  @media (min-width: 1760px) {
+    font-size: 1.6rem;
+  }
+}
+
+.tertiary-text {
+  font: normal 1rem 'Google Sans', roboto, sans-serif;
+  margin-top: 0;
 }
 
 .slug-dash {
@@ -62,6 +102,33 @@
     & > * {
       margin-top: 0;
       margin-bottom: 0;
+    }
+  }
+}
+
+.section {
+  background-color: var(--white);
+  padding: var(--vertical-padding) var(--side-margin) 0 var(--side-margin);
+  position: relative;
+
+  --vertical-padding: 3.5rem;
+
+  @media (min-width: 720px) {
+    --vertical-padding: 4.25rem;
+  }
+
+  @media (min-width: 1440px) {
+    --vertical-padding: 5.5rem;
+  }
+
+  > div {
+    border-bottom: 1px solid var(--black);
+    padding-bottom: var(--vertical-padding);
+  }
+
+  &:last-of-type {
+    > div {
+      border-bottom: none;
     }
   }
 }

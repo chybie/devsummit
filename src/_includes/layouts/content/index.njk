@@ -1,19 +1,42 @@
 {% extends 'layouts/main/index.njk' %}
 
 {% block content %}
-  {%- set moduleCSS = "/_includes/module.css" -%}
-  {% css page, moduleCSS %}
-  {%- set css = "/_includes/content.css" -%}
-  {% css page, css %}
-  <div class="{% className moduleCSS, 'root-alt' %}">
-    <header class="{% className css, 'heading' %}">
-      <h1 class="{% className moduleCSS, 'heading' %}">
-        {% headingSlug title %}
-      </h1>
-      <div class="{% className css, 'squiggles' %}"></div>
-    </header>
-    <section class="{% className css, 'content-area' %}">
-      {% block innerContent %}{{ content | safe }}{% endblock %}
-    </section>
-  </div>
+    {%- set moduleCSS = "/_includes/module.css" -%}
+    {% css page, moduleCSS %}
+
+    {%- set fiftyFiftyCss = "/_includes/layouts/fifty-fifty-module/style.css" -%}
+    {% css page, fiftyFiftyCss %}
+
+    {%- set contentCss = "/_includes/content.css" -%}
+    {% css page, contentCss %}
+
+    <div class="{% className moduleCSS, 'root' %}">
+        <div class="{% className fiftyFiftyCss, 'fifty-fifty' %}">
+            <div>
+                {% block left %}
+                    {%- set moduleCSS = "/_includes/module.css" -%}
+                    {% css page, moduleCSS %}
+
+                    {%- set css = "/_includes/layouts/content/style.css" -%}
+                    {% css page, css %}
+
+                    <header class="{% className css, 'header' %}">
+                        <h1 class="{% className moduleCSS, 'heading' %}">{{ title}}</h1>
+                        <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle }}</p>
+
+                        {% if description %}
+                            <p class="{% className moduleCSS, 'tertiary-text' %}">{{ description | safe}}</p>
+                        {% endif %}
+                    </header>
+                {% endblock %}
+            </div>
+            <div>
+                {% block right %}
+                    <section class="{% className contentCss, 'content-area' %} {% className contentCss, 'content-area-flush' %}">
+                        {% block rightInner %}{{ content | safe }}{% endblock %}
+                    </section>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

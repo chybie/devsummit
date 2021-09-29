@@ -1,0 +1,41 @@
+{%- set moduleCSS = "/_includes/module.css" -%}
+{% css page, moduleCSS %}
+{%- set css = "/_includes/home-faqs/style.css" -%}
+{% css page, css %}
+{%- set contentCSS = "/_includes/content.css" -%}
+{% css page, contentCSS %}
+
+
+<section class="{% className moduleCSS, 'section' %} {% className css, 'home-faqs' %}">
+  <div>
+    <div class="{% className css, 'heading-container' %}">
+      <h2 class="{% className contentCSS, 'section-heading' %}">FAQs</h2>
+
+      <a class="{% className css, 'view-all' %}" href="{{conf.path}}faqs/">View all FAQs</a>
+    </div>
+
+    <div class="{% className css, 'faqs-container' %}">
+      {% for faq in collections.featuredFaqs %}
+        <article class="{% className css, 'card' %}">
+          <div>
+            <header>{{ faq.data.title }}</header>
+
+            <div>
+              {% if faq.data.summary %}
+                <p>
+                  {{  faq.data.summary  | safe }}...
+                </p>
+              {% else %}
+                {{  faq.templateContent  | safe }}
+              {% endif %}
+            </div>
+          </div>
+
+          <a href="{{conf.path}}faqs/">Read more</a>
+        </article>
+      {% endfor %}
+    </div>
+
+    <a class="{% className css, 'mobile-link' %} {% className css, 'view-all' %}" href="{{conf.path}}faqs/">View all FAQs</a>
+  </div>
+</section>

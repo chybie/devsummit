@@ -2,11 +2,12 @@
 title: Will the sessions be in English?
 ---
 
-All presentations are in English but we’ll be translating captions to the following languages:
+The keynote and AMA will be in English, but they'll also be available in the following languages after the event:
 
-- Simplified Chinese
-- Japanese
 - Bahasa
 - French
+- Japanese
 - Portuguese (BR)
+- Russian
+- Simplified Chinese
 - Spanish (LATAM)

@@ -1,0 +1,57 @@
+{% extends 'layouts/fifty-fifty-module/index.njk' %}
+
+{%- set moduleCSS = "/_includes/module.css" -%}
+{% css page, moduleCSS %}
+
+{%- set utilsCSS = "/_includes/utils.css" -%}
+{% css page, utilsCSS %}
+
+{% block left %}
+  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
+  {% css page, keynoteCss %}
+
+  <h1 class="{% className keynoteCss, 'heading' %}">Discover. Connect. Inspire. <br/> Get ready for CDS 2021!</h1>
+
+  <p>
+  The countdown to Chrome Dev Summit 2021 is on — and we can't wait to share what we have in store. We'll kick things off by sharing the latest product updates in our keynote and hosting a live ask me anything (AMA) with Chrome leaders.
+  </p>
+
+  <p>
+    You'll also have the chance to chat live with Googlers and developers around the world, participate in workshops with industry experts, attend interactive learning lounges to consult with engineers in a group setting, and receive personalized support during one-on-one office hours.
+  </p>
+
+  <p>
+    Everyone can tune into the keynote and AMA, but space is limited for the workshops, office hours, and learning lounges. Request an invite below to secure your spot — we'll see you on November 3!
+  </p>
+
+  <div class="{% className keynoteCss, 'ctas' %}">
+    <div>
+      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className keynoteCss, 'request-btn' %}">Request an invite</a>
+      <p>Log in with your Google account</p>
+    </div>
+    {% set icslink = "fullevent.ics?2021-3" %}
+    <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}" target="_blank" rel="noopener noreferrer">
+      Add to calendar
+    </a>
+  </div>
+{% endblock %}
+
+{% block right %}
+  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
+  {% css page, keynoteCss %}
+
+  <div class="{% className utilsCSS, 'aspect-ratio' %} {% className keynoteCss, 'media' %}" style="--aspect-ratio: calc(165/150)">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/hero-darkmode.svg')">
+      <img class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset('/assets/hero.svg')" alt="CDS 2021">
+    </picture>
+  </div>
+{% endblock %}
+
+{% block rightClass %}
+  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
+  {% css page, keynoteCss %}
+
+  {% className keynoteCss, 'right-block' %}
+{% endblock %}
+

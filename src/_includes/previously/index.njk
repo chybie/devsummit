@@ -4,73 +4,47 @@
 {% css page, css %}
 {%- set contentCSS = "/_includes/content.css" -%}
 {% css page, contentCSS %}
+{%- set carouselCss = "/_includes/carousel/style.css" -%}
+{% css page, carouselCss %}
 
-{% set images = [
-  {
-    url: "1",
-    alt: "Women Techmakers at Chrome Dev Summit 2019"
-  }, {
-    url: "2",
-    alt: "The sandbox area"
-  }, {
-    url: "3",
-    alt: "Audience watching the main stage"
-  }, {
-    url: "4",
-    alt: "The MCs"
-  }, {
-    url: "5",
-    alt: "Parisa speaking"
-  }, {
-    url: "6",
-    alt: "Attendees chatting"
-  }, {
-    url: "7",
-    alt: "Attendees chatting"
-  }, {
-    url: "8",
-    alt: "Attendees watching"
-  }, {
-    url: "9",
-    alt: "Dion speaking"
-  }
-] %}
+{%- set utilsCSS = "/_includes/utils.css" -%}
+{% css page, utilsCSS %}
 
 {% macro imageTag(image) %}
   <img decoding="async" alt="{{ image.alt }}" loading="lazy" src="confboxAsset(/_includes/previously/assets/{{ image.url }}.jpg)">
 {% endmacro %}
 
-<section class="{% className moduleCSS, 'root-alt' %} {% className contentCSS, 'content-area' %}">
-  {% from 'squiggle-banner/index.njk' import squiggleTop %}
-  {{ squiggleTop(page, gray=true) }}
+<section class="{% className moduleCSS, 'section' %} {% className css, 'section' %}">
+  <div class="{% className contentCSS, 'content-area' %}">
 
-  <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Previously" %}</h1>
+    {% set carouselId%}{% className css, 'carousel' %}{% endset %}
 
-  <p>
-    No, this year won’t look the same, but it’s still fun to see some moments from past summits. All previous sessions are on YouTube:
-    <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIDA1uGhqy45bqlul0VcvKMr">2019</a>,
-    <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIDjlCx1PcphPpmf43aKOAdF">2018</a>,
-    <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcICUD5nBfRdAR6Fveosnqa5m">2017</a>,
-    <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIBTs2KPy1E6tIYaWoFcG3uj">2016</a>,
-    <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcICcHeQY02XLvoGL34rZFWZn">2015</a>. You get the picture!
-  </p>
-
-  <div class="{% className css, 'pics' %}">
-    <div class="{% className css, 'initial-pics' %}">
-      {{ imageTag(images[0]) }}
-      {{ imageTag(images[1]) }}
-      {{ imageTag(images[2]) }}
+    <div class="{% className css, 'heading-nav' %}">
+      <h2 class="{% className contentCSS, 'section-heading' %}">Highlights from past summits</h2>
     </div>
-    <div class="{% className css, 'extra-pics' %}">
-      {{ imageTag(images[3]) }}
-      <div></div>
-      {{ imageTag(images[4]) }}
-      {{ imageTag(images[5]) }}
-      {{ imageTag(images[6]) }}
-      <div></div>
-      {{ imageTag(images[7]) }}
-      <div></div>
-      {{ imageTag(images[8]) }}
-    </div>
+
+    {% carousel carouselId %}
+      {% for previousSummit in collections.previousSummits %}
+        {% carouselSlide %}
+          <article>
+              <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
+                <a href="https://www.youtube.com/playlist?list={{ previousSummit.data.youtubeId }}" target="_blank" rel="noopener noreferrer">
+                    <img class="{% className utilsCSS, 'media-fill' %}"
+                         src="confboxAsset('/assets/{{ previousSummit.data.thumbnail }}')"
+                         loading="lazy"
+                         alt="placeholder">
+                </a>
+              </div>
+
+            <header>
+              {{ previousSummit.data.title }} {{ previousSummit.data.year }}
+            </header>
+            <footer>
+              {{ previousSummit.data.videos }} videos
+            </footer>
+          </article>
+        {% endcarouselSlide %}
+      {% endfor %}
+    {% endcarousel %}
   </div>
 </section>

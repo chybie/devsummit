@@ -3,9 +3,12 @@ const fs = require('fs');
 const date = require('date-and-time');
 const nunjucks = require('nunjucks');
 const { dirname, basename } = require('path');
-const createSchedule = require('./src/schedule/script/create-schedule');
-const createWorkshops = require('./src/schedule/script/create-workshops');
-const createCalendarWidget = require('./src/_includes/calendar-widget/script/create-widget.js');
+//const createSchedule = require('./src/schedule/script/create-schedule');
+//const createWorkshops = require('./src/schedule/script/create-workshops');
+const createCalendarWidget = require('./src/_includes/calendar-widget/script/create-widget');
+const createCarousel = require('./src/_includes/carousel/script/create-carousel');
+const createCarouselControls = require('./src/_includes/carousel/script/create-controls');
+const createCarouselSlide = require('./src/_includes/carousel/script/create-slide');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
 
 const {
@@ -248,6 +251,46 @@ module.exports = function(eleventyConfig) {
     return date.format(offsetTime, format);
   });
 
+  eleventyConfig.addPairedShortcode('carousel', (content, id) => {
+    return new nunjucks.runtime.SafeString(
+      `
+          ${createCarousel(
+            id,
+            content,
+            modCSS.getAllCamelCased('/_includes/carousel/style.css'),
+          )}
+          <script>
+              const el = document.currentScript.previousElementSibling;
+              {
+                import('confboxAsset(/_includes/carousel/script/index.js)').then(
+                        ({ enhance }) => enhance(el)
+                );
+              }
+          </script>
+        `,
+    );
+  });
+
+  eleventyConfig.addPairedShortcode('carouselSlide', content => {
+    return new nunjucks.runtime.SafeString(
+      createCarouselSlide(
+        content,
+        modCSS.getAllCamelCased('/_includes/carousel/style.css'),
+      ),
+    );
+  });
+
+  eleventyConfig.addShortcode('carouselControls', id => {
+    const slidesCss = '/_includes/carousel/style.css';
+
+    return new nunjucks.runtime.SafeString(
+      createCarouselControls(
+        id,
+        modCSS.getAllCamelCased('/_includes/carousel/style.css'),
+      ),
+    );
+  });
+
   /** Turn a local date string into a timestamp */
   eleventyConfig.addShortcode(
     'timestamp',
@@ -297,6 +340,21 @@ module.exports = function(eleventyConfig) {
     return sections;
   });
 
+  eleventyConfig.addCollection('featuredFaqs', collection => {
+    const faqs = collection
+      .getFilteredByTag('featured-faq')
+      .filter(f => typeof f.data.title !== 'undefined')
+      .slice(0, 3);
+
+    return faqs;
+  });
+
+  eleventyConfig.addCollection('previousSummits', collection => {
+    return collection
+      .getFilteredByTag('previousSummits')
+      .sort((a, b) => b.data.year - a.data.year);
+  });
+
   eleventyConfig.addCollection('jsSchedule', collection => {
     return buildScheduleData(
       collection.getFilteredByTag('session'),
@@ -312,12 +370,12 @@ module.exports = function(eleventyConfig) {
     );
   });
 
-  eleventyConfig.addCollection('jsWorkshops', collection => {
+  /*eleventyConfig.addCollection('jsWorkshops', collection => {
     return buildWorkshopData(
       collection.getFilteredByTag('workshop'),
       collection.getFilteredByTag('speakers'),
     );
-  });
+  });*/
 
   return config;
 };

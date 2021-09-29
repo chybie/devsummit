@@ -1,47 +1,36 @@
 {%- set moduleCSS = "/_includes/module.css" -%}
-{% css page,
-moduleCSS %}
+{% css page,moduleCSS %}
 {%- set css = "/_includes/footer/style.css" -%}
-{% css page,
-css %}
+{% css page,css %}
 
-<div class="{% className moduleCSS, 'root' %} {% className css, 'root' %}">
-  {% from 'squiggle-banner/index.njk' import squiggleTop %}
-  {{ squiggleTop(page, gray=false) }}
-  <nav class="{% className css, 'footer-nav' %}">
-    <a href="{{conf.path}}schedule/">Talks</a>
-    <a href="{{conf.path}}schedule/#learning-content">Learning Content</a>
-    <a href="{{conf.path}}schedule/#extended">CDS Extended</a>
-    <a href="{{conf.path}}community-guidelines/">Guidelines</a>
-  </nav>
-  <div class="{% className css, 'divider' %}"></div>
-  <ul class="{% className css, 'social' %}">
-    <li>
-      <a href="https://twitter.com/chromiumdev" rel="noopener noreferrer" target="_blank">
-        <span class="{% className css, 'icon-mask' %} {% className css, 'icon-twitter' %}">Twitter</span></a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/user/ChromeDevelopers" rel="noopener noreferrer" target="_blank">
-        <span class="{% className css, 'icon-mask' %} {% className css, 'icon-youtube' %}">YouTube</span></a>
-    </li>
-    <li>
-      <a href="mailto:chrome-dev-summit@google.com">
-        <span class="{% className css, 'icon-mask' %} {% className css, 'icon-email' %}">Email</span></a>
-    </li>
-  </ul>
-  <div class="{% className css, 'logo' %}"></div>
-  <ul class="{% className css, 'legal' %}">
-    {#<li>
-      <a href="https://github.com/GoogleChrome/devsummit" rel="noopener noreferrer" target="_blank">
-        <span class="{% className css, 'icon-mask' %}" style="--icon: url(confboxAsset(/_includes/footer/assets/github.svg)"></span>
-        Source Code</a>
-    </li>#}
-    <li>
-      <a href="https://policies.google.com/" rel="noopener noreferrer" target="_blank">Privacy &amp; Terms</a>
-    </li>
-    <li>
-      <a href="{{conf.path}}community-guidelines/">Community Guidelines</a>
-    </li>
-    <li>© Google 2020</li>
-  </ul>
-</div>
+<footer class="{% className moduleCSS, 'root' %} {% className css, 'root' %}">
+  <div>
+    <div class="{% className css, 'logo-legal' %}">
+      <div class="{% className css, 'logo' %}">
+        <img src="confboxAsset(/_includes/footer/assets/google.svg)" alt="Google" loading="lazy">
+      </div>
+
+      <nav class="{% className css, 'legal' %}">
+        <a href="https://policies.google.com/" rel="noopener noreferrer" target="_blank">Privacy &amp; Terms</a>
+      </nav>
+    </div>
+
+    <ul class="{% className css, 'social' %}">
+      <li>
+        <a href="https://twitter.com/chromiumdev" rel="noopener noreferrer" target="_blank">
+          <span class="{% className css, 'icon-mask' %} {% className css, 'icon-twitter' %}">Twitter</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/user/ChromeDevelopers" rel="noopener noreferrer" target="_blank">
+          <span class="{% className css, 'icon-mask' %} {% className css, 'icon-youtube' %}">YouTube</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/GoogleChrome/devsummit" rel="noopener noreferrer" target="_blank">
+          <span class="{% className css, 'icon-mask' %} {% className css, 'icon-github' %}" style="--icon: url(confboxAsset(/_includes/footer/assets/github.svg))">Source code</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

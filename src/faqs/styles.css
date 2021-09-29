@@ -1,19 +1,143 @@
-.markdown {
-  & p,
-  & li {
-    font-size: 0.9em;
+.nav {
+  margin-bottom: 3.5rem;
+
+  a {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    line-height: 1.76rem;
   }
 
-  & ul > li {
-    margin-bottom: 1rem;
+  @media (min-width: 720px) {
+    button {
+      line-height: 1.42rem;
+    }
   }
 
-  & h3 {
-    font-size: 0.8em;
+  @media (min-width: 1024px) {
+    margin-bottom: 0;
   }
 }
 
-:root {
-  --squiggle-display: block;
-  --squiggle-url: url('confboxAsset(/assets/arts/3.svg)');
+.content-left {
+  header {
+    margin-bottom: 1.17rem;
+  }
+
+  @media (min-width: 720px) {
+    position: sticky;
+    top: var(--vertical-padding);
+
+    header {
+      margin-bottom: 2.28rem;
+    }
+  }
+}
+
+.accordion {
+  display: block;
+  margin-bottom: 3.5rem;
+
+  .accordion-item {
+    display: block;
+    border-top: 1px solid var(--black);
+
+    > div {
+      display: none;
+    }
+
+    &[open='1'] {
+      > div {
+        display: block;
+      }
+
+      [slot='title'] img {
+        transform: rotate(90deg);
+      }
+    }
+
+    &:last-child {
+      border-bottom: 1px solid var(--black);
+    }
+
+    > div {
+      padding-bottom: 1.82rem;
+
+      p {
+        margin: 0;
+        padding-bottom: 1rem;
+      }
+
+      *:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    [slot='title'] {
+      font-weight: 500;
+      padding: 1.75rem 0;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      span {
+        max-width: 87%;
+      }
+
+      img {
+        transform: rotate(270deg);
+        transition: transform 0.1s ease;
+        height: 13px;
+      }
+
+      @media (prefers-reduced-motion) {
+        img {
+          transition: none;
+        }
+      }
+    }
+  }
+
+  &[no-js] {
+    .accordion-item:hover,
+    .accordion-item:active {
+      > div {
+        display: block;
+      }
+
+      [slot='title'] img {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  @media (min-width: 720px) {
+    margin-bottom: 4.6rem;
+
+    web-accordion-item {
+      > div {
+        padding-bottom: 1.75rem;
+      }
+
+      [slot='title'] {
+        padding: 1.82rem 0;
+      }
+    }
+  }
+}
+
+.section-title {
+  font-size: 1.76rem;
+  margin-bottom: 1.76rem;
+  font-weight: 500;
+
+  @media (min-width: 720px) {
+    font-size: 1.71rem;
+    margin-bottom: 2.3rem;
+  }
 }

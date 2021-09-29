@@ -1,0 +1,13 @@
+.fifty-fifty {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 2.6rem;
+
+    > div {
+      width: calc(50% - 1.3rem);
+    }
+  }
+}

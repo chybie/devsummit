@@ -4,7 +4,6 @@ description: Join the Chrome team for our two-day summit on the latest technique
 
 {% extends 'layouts/main/index.njk' %}
 
-
 {% block content %}
   <script type="application/ld+json">
     {
@@ -19,11 +18,6 @@ description: Join the Chrome team for our two-day summit on the latest technique
   </script>
 
   {% include 'keynote/index.njk' %}
-  {% from 'squiggle-banner/index.njk' import squiggleBanner %}
-  {{ squiggleBanner(page, '--green', grayTop=true) }}
-  {% include 'schedule/index.njk' %}
-  {{ squiggleBanner(page, '--red', grayBottom=true) }}
   {% include 'previously/index.njk' %}
-  {{ squiggleBanner(page, '--orange', grayTop=true) }}
-  {% include 'subscribe-promo/index.njk' %}
+  {% include 'home-faqs/index.njk' %}
 {% endblock %}

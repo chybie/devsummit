@@ -1,0 +1,98 @@
+.home-faqs {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+
+  p,
+  h2 {
+    margin-bottom: 0;
+  }
+
+  a {
+    display: none;
+  }
+
+  @media (min-width: 720px) {
+    margin-bottom: 2.28rem;
+
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.faqs-container {
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > a {
+      margin-top: 1.76rem;
+      font-weight: 500;
+    }
+
+    div {
+      a {
+        text-decoration: underline;
+      }
+
+      *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    display: flex;
+    gap: 1.14rem;
+
+    article {
+      width: 33.33%;
+
+      > a {
+        margin-top: 2.28rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.card {
+  background: var(--offwhite) 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  padding: 1.14rem;
+  margin-bottom: 1.17rem;
+
+  header {
+    font-weight: 500;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 720px) {
+    padding: 2.28rem;
+  }
+}
+
+.view-all {
+  font-weight: 500;
+}
+
+.mobile-link {
+  @media (min-width: 720px) {
+    display: none;
+  }
+}

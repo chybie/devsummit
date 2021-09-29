@@ -1,0 +1,15 @@
+{%- pageStart page -%}
+
+{%- set fiftyFiftyCss = "/_includes/layouts/fifty-fifty-module/style.css" -%}
+{% css page, fiftyFiftyCss %}
+
+<div class="{% className fiftyFiftyCss, 'fifty-fifty' %}">
+  {% block before %}{% endblock %}
+  <div class="{% block leftClass %}{% endblock %}">
+    {% block left %}{% endblock %}
+  </div>
+  <div class="{% block rightClass %}{% endblock %}">
+    {% block right %}{% endblock %}
+  </div>
+  {% block after %}{% endblock %}
+</div>

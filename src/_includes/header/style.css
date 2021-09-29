@@ -1,19 +1,13 @@
 .root {
   background: var(--white);
-  position: relative;
-  z-index: 1;
-  padding-bottom: 1px;
-
-  @media (min-width: 720px) {
-    padding: 0.5em 1em;
-    position: sticky;
-    top: 0;
-    display: grid;
-    grid-template-columns: [title] max-content 2.6em [reg] 1fr [extra-links] max-content;
-    place-items: center start;
-    font-size: 0.8rem;
-    z-index: 2;
-  }
+  padding: 0 1em;
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: [title] max-content 2.6em [reg] 1fr [extra-links] max-content;
+  place-items: center start;
+  font-size: 0.8rem;
+  z-index: 2;
 
   @media (min-width: 960px) {
     font-size: 1rem;
@@ -33,64 +27,43 @@
 }
 
 .title {
-  margin: 4.6em 0 3.8em;
   text-decoration: none;
-  display: block;
+  margin: 0;
+  z-index: 2;
+
+  img {
+    width: 95px;
+    height: auto;
+  }
 
   @media (min-width: 720px) {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 2.9em 1fr;
-    grid-gap: 0.7em;
-    align-items: center;
+    img {
+      width: 210px;
+    }
   }
 }
 
 .logo-container {
-  width: 25%;
-  margin: 0 auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 1.29rem 0;
 
   @media (min-width: 720px) {
-    width: auto;
-    margin: -6px;
+    padding: 0.95rem 0;
   }
 }
 
-.title-text {
-  font-family: 'Google Sans', roboto, sans-serif;
-  line-height: 0.9;
-  text-align: center;
-
+.logo-mobile {
   @media (min-width: 720px) {
-    line-height: 1.1;
-    text-align: left;
+    display: none;
   }
 }
 
-.title-main,
-.title-sub {
-  font-size: 9vw;
-
+.logo-desk {
+  display: none;
   @media (min-width: 720px) {
-    font-size: 0.8em;
-  }
-}
-
-.title-main {
-  color: var(--midgrey);
-}
-
-.title-sub {
-  color: var(--darkgrey);
-}
-
-.title-year {
-  display: block;
-  color: var(--darkgrey);
-  font-size: 23.1vw;
-
-  @media (min-width: 720px) {
-    font-size: 0.7em;
+    display: initial;
   }
 }
 
@@ -98,19 +71,16 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 3.2em 0;
+  margin: 0;
+  grid-column: extra-links;
 
-  @media (min-width: 720px) {
-    margin: 0;
-    grid-column: extra-links;
-  }
-
-  & a {
+  & main-menu > a:not(.request-btn) {
     font-family: 'Google Sans', roboto, sans-serif;
     line-height: normal;
     font-size: 0.8em;
     margin: 0.5em 0.55em;
     padding: 1em 0;
+    font-weight: 500;
 
     @media (min-width: 320px) {
       margin: 0.5em 0.7em;
@@ -123,55 +93,43 @@
     @media (min-width: 720px) {
       margin: 0 0.7em;
       font-size: 0.8em;
-      color: var(--offblack);
+      color: var(--black);
       text-decoration: none;
 
       &:hover {
-        color: var(--link-color);
+        color: var(--midgrey);
       }
     }
   }
+
+  .request-btn {
+    margin-left: 0.5em;
+  }
 }
 
-.updates-btn {
-  grid-area: 1 / reg;
-
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -50%);
-
-  @media (min-width: 720px) {
-    position: relative;
-    transform: none;
-    left: 0;
-    top: 0;
-  }
-
+.request-btn {
+  align-self: center;
   color: var(--white);
-  text-decoration: none;
   background: var(--blue);
-  box-shadow: 0 4px 6px var(--blue-a25);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8em;
   border-radius: 1000px;
+  font-family: 'Google Sans', roboto, sans-serif;
+  font-size: 0.705rem;
+  font-weight: 500;
+  height: 2.59rem;
+  line-height: 2.59rem;
+  padding: 0 1.1rem;
+  text-decoration: none;
   white-space: nowrap;
 
-  padding: 0.3em 0.9em;
-  font-size: 0.86rem;
-
   @media (min-width: 720px) {
-    font-size: 0.66rem;
+    font-size: 0.62rem;
+    height: 1.76rem;
+    line-height: 1.76rem;
   }
 
   &:hover {
     color: var(--white);
-    top: -1px;
-  }
-
-  &:active {
-    top: -1px;
+    background: var(--darkblue);
   }
 }
 

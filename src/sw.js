@@ -12,7 +12,8 @@ addEventListener('install', event => {
         ...files.filter(f => f.startsWith('/devsummit/assets/speakers/')),
         ...files.filter(f => f.startsWith('/devsummit/sessions/')),
         '/devsummit/',
-        '/devsummit/schedule/',
+        // Avoid caching a 404 for now, but this should be uncommented when the schedule is live
+        //'/devsummit/schedule/',
         '/devsummit/offline/',
       ]);
       const cache = await caches.open(cacheName);

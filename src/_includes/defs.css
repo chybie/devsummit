@@ -2,11 +2,21 @@
   --link-color: var(--blue);
   --link-hover-color: var(--darkblue);
 
-  --side-margin: 0.87rem;
+  --footer-bg-color: var(--black);
+  --footer-link-color: var(--white);
+
+  --side-margin: 1.17rem;
+  --footer-height: 167px;
+
+  @media (prefers-color-scheme: dark) {
+    --footer-bg-color: var(--white);
+    --footer-link-color: var(--black);
+  }
 
   /* FIXME: Put breakpoint in a var */
   @media (min-width: 720px) {
     --side-margin: 4.6rem;
+    --footer-height: 82px;
   }
 
   @media (min-width: 1920px) {
