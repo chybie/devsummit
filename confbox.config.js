@@ -16,7 +16,7 @@ module.exports = {
    */
   conferenceName: 'Chrome Dev Summit 2021',
   teaser:
-    "Join the Chrome team for our two-day summit to learn about the latest techniques for building for the modern Web, get an early insight into what we're working on, and to share your thoughts on how we can move the platform forward, together.",
+    "Join the Chrome team to learn about the latest techniques for building for the modern Web, get an early insight into what we're working on, and to share your thoughts on how we can move the platform forward, together.",
   /** Link for registration */
   registerLink:
     'https://events.withgoogle.com/chrome-dev-summit-2020/registrations/new/details/',
