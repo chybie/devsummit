@@ -1,0 +1,16 @@
+.header {
+  padding-bottom: 0;
+
+  header {
+    padding-bottom: var(--vertical-padding);
+    border-bottom: 1px solid var(--black);
+
+    p {
+      max-width: 38.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

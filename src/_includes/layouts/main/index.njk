@@ -66,6 +66,7 @@
   </head>
   <body>
     {% include 'header/index.njk' %}
+    {% block beforeContent %}{% endblock %}
     {% block content %}{{ content | safe }}{% endblock %}
     {% include 'footer/index.njk' %}
   <script type="module" src="confboxAsset(/_includes/layouts/main/offline.js)"></script>
