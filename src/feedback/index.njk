@@ -1,0 +1,31 @@
+---
+title: We'd love to hear from you
+subtitle: We want to hear from you, share your thoughts on this years Google Chrome Dev Summit by filling out our feedback form.
+---
+{% extends 'layouts/content/index.njk' %}
+{%- set reverseColsMobile = true -%}
+{%- set centerVertically = true -%}
+
+{% block leftAfter %}
+  {%- set feedbackCSS = "/feedback/styles.css" -%}
+  {% css page, feedbackCSS %}
+
+  {%- set buttonCss = "/_includes/button.css" -%}
+  {% css page, buttonCss %}
+
+  <a href=""
+     rel="noopener noreferrer"
+     class="{% className buttonCss, 'button' %} {% className feedbackCSS, 'cta' %}">Give feedback</a>
+{% endblock %}
+
+{% block right %}
+  {%- set utilsCSS = "/_includes/utils.css" -%}
+  {% css page, utilsCSS %}
+
+  <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(165/150)">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/hero-darkmode.svg')">
+      <img class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset('/assets/hero.svg')" alt="CDS 2021">
+    </picture>
+  </div>
+{% endblock %}

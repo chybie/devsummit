@@ -1,5 +1,8 @@
 {% extends 'layouts/fifty-fifty-module/index.njk' %}
 
+{%- set reverseColsMobile = true -%}
+{%- set centerVertically = true -%}
+
 {%- set moduleCSS = "/_includes/module.css" -%}
 {% css page, moduleCSS %}
 
@@ -9,6 +12,9 @@
 {% block left %}
   {%- set keynoteCss = "/_includes/keynote/style.css" -%}
   {% css page, keynoteCss %}
+
+  {%- set buttonCss = "/_includes/button.css" -%}
+  {% css page, buttonCss %}
 
   <h1 class="{% className keynoteCss, 'heading' %}">Discover. Connect. Inspire. <br/> Get ready for CDS 2021!</h1>
 
@@ -26,7 +32,7 @@
 
   <div class="{% className keynoteCss, 'ctas' %}">
     <div>
-      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className keynoteCss, 'request-btn' %}">Request an invite</a>
+      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className buttonCss, 'button' %}">Request an invite</a>
       <p>Log in with your Google account</p>
     </div>
     {% set icslink = "fullevent.ics?2021-3" %}
@@ -47,11 +53,3 @@
     </picture>
   </div>
 {% endblock %}
-
-{% block rightClass %}
-  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
-  {% css page, keynoteCss %}
-
-  {% className keynoteCss, 'right-block' %}
-{% endblock %}
-

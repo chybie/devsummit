@@ -3,7 +3,9 @@
 {%- set fiftyFiftyCss = "/_includes/layouts/fifty-fifty-module/style.css" -%}
 {% css page, fiftyFiftyCss %}
 
-<div class="{% className fiftyFiftyCss, 'fifty-fifty' %}">
+<div class="{% className fiftyFiftyCss, 'fifty-fifty' %}
+            {% if reverseColsMobile %}{% className fiftyFiftyCss, 'reverse-mobile' %}{% endif %}
+            {% if centerVertically %}{% className fiftyFiftyCss, 'center-vertically' %}{% endif %}">
   {% block before %}{% endblock %}
   <div class="{% block leftClass %}{% endblock %}">
     {% block left %}{% endblock %}
