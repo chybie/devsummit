@@ -1,3 +1,48 @@
+.nav {
+  margin-top: 1.75rem;
+  padding: 0 var(--side-margin);
+
+  a {
+    font-size: 0.8rem;
+    margin: 0 0.7em;
+    color: var(--midgrey);
+    text-decoration: none;
+    font-weight: 500;
+
+    &.active {
+      color: var(--black);
+      &:hover {
+        color: var(--black);
+        cursor: initial;
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      color: var(--black);
+    }
+
+    @media (min-width: 450px) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (min-width: 720px) {
+    --vertical-padding: 2.1rem;
+  }
+
+  @media (min-width: 1440px) {
+    --vertical-padding: 2.75rem;
+  }
+}
+
 .header {
   padding-bottom: 0;
 

@@ -349,6 +349,14 @@ module.exports = function(eleventyConfig) {
     return faqs;
   });
 
+  eleventyConfig.addCollection('scheduleSubPages', collection => {
+    const faqs = collection
+      .getFilteredByTag('schedule-sub-page')
+      .sort((a, b) => a.data.priority - b.data.priority);
+
+    return faqs;
+  });
+
   eleventyConfig.addCollection('previousSummits', collection => {
     return collection
       .getFilteredByTag('previousSummits')
