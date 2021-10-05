@@ -2,4 +2,87 @@
 title: Schedule
 subtitle: All sessions will be streamed live during the event, and will be available after the event on the Chrome Developers YouTube channel.
 ---
+
 {% extends 'layouts/schedule/index.njk' %}
+
+{% block content %}
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set cardCss = "/_includes/card/style.css" -%}
+    {% css page, cardCss %}
+
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set carouselCss = "/_includes/carousel/style.css" -%}
+    {% css page, carouselCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <div class="{% className gridCss, 'grid' %}" cols="2">
+            {%- for event in collections.featuredEvents -%}
+                <article class="{% className cardCss, 'card' %}" media="1">
+                    <a href="{{conf.path}}{{ event.data.link }}">
+                        <div class="{% className utilsCSS, 'aspect-ratio' %} {% className cardCss, 'card-media' %}" style="--aspect-ratio: calc(16/9)">
+                            <img class="{% className utilsCSS, 'media-fill' %}"
+                                 src="confboxAsset(/assets/16-9-placeholder.png)"
+                                 alt="{{ event.data.title }}">
+                        </div>
+
+                        <div class="{% className cardCss, 'content' %}">
+                            <div>
+                                <span class="{% className cardCss, 'tag' %}">{{ event.data.prettyType }}</span>
+
+                                <h2 class="{% className cardCss, 'title' %}">{{ event.data.title }}</h2>
+                            </div>
+
+                            <span class="{% className cardCss, 'footer' %}">
+                                DAY {{ event.data.day }}, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
+                            </span>
+                        </div>
+                    </a>
+                </article>
+            {%- endfor -%}
+        </div>
+    </section>
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <h3 class="{% className contentCSS, 'section-heading' %}">Workshops</h3>
+
+        <p class="{% className contentCSS, 'section-subheading' %}">Hands-on workshops with leading experts</p>
+
+        {% carousel 'workshop-carousel', 3 %}
+            {%- for workshop in collections.workshops -%}
+                {% if (loop.index <= 6) %}
+                    {% carouselSlide %}
+                        {% card workshop.data.title, workshop.data.prettyType %}
+                            <div>
+                                <div class="{% className cardCss, 'avatars' %}">
+                                    {%- for speaker in workshop.data.speakers -%}
+                                        {% set avatar = speaker.data.avatar %}
+                                        <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                                             class="{% className speakerCSS, 'speaker-avatar' %}"
+                                             alt="{{ speaker.data.name }} avatar"
+                                             loading="lazy"
+                                             width="80px"
+                                             height="80px"/>
+                                    {%- endfor -%}
+                                </div>
+
+                                <span class="{% className cardCss, 'footer' %}">
+                                    DAY 1, {% confDate workshop.data.start, 'hh:mm' %} – {% confDate workshop.data.end, 'hh:mm' %}
+                                </span>
+                            </div>
+                        {% endcard %}
+                    {% endcarouselSlide %}
+                {% endif %}
+            {%- endfor -%}
+        {% endcarousel %}
+    </section>
+{% endblock %}

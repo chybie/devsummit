@@ -1,22 +1,21 @@
 {% extends 'layouts/main/index.njk' %}
 
 {%- set moduleCSS = "/_includes/module.css" -%}
-{%- set css = "/_includes/layouts/schedule/style.css" -%}
+{%- set scheduleCss = "/_includes/layouts/schedule/style.css" -%}
 
 {% block beforeContent %}
     {% css page, moduleCSS %}
-    {% css page, css %}
+    {% css page, scheduleCss %}
 
-    <nav class="{% className css, 'nav' %}">
+    <nav class="{% className scheduleCss, 'nav' %}">
         {%- for subPage in collections.scheduleSubPages -%}
             {% set title = subPage.data.abbreviatedTitle if subPage.data.abbreviatedTitle else subPage.data.title %}
             {% set activeClass = null %}
             {% if page.fileSlug == subPage.fileSlug %}
                 {% set activeClass %}
-                    {% className css, 'active' %}
+                    {% className scheduleCss, 'active' %}
                 {% endset %}
             {% endif %}
-
 
             <a href="{{conf.path}}schedule/{{ subPage.fileSlug }}"
                class="{{ activeClass if activeClass else ''}}">
@@ -25,7 +24,7 @@
         {%- endfor -%}
     </nav>
 
-    <section class="{% className moduleCSS, 'root' %} {% className css, 'header' %}">
+    <section class="{% className moduleCSS, 'root' %} {% className scheduleCss, 'header' %}">
         <header>
             <h1 class="{% className moduleCSS, 'heading' %}">{{ title | safe}}</h1>
             <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle | safe }}</p>
@@ -33,8 +32,4 @@
     </section>
 {% endblock %}
 
-{% block content %}
-    <section class="{% className moduleCSS, 'root' %}">
-        Here
-    </section>
-{% endblock %}
+{% block content %}{% endblock %}

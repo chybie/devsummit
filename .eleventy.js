@@ -9,6 +9,7 @@ const createCalendarWidget = require('./src/_includes/calendar-widget/script/cre
 const createCarousel = require('./src/_includes/carousel/script/create-carousel');
 const createCarouselControls = require('./src/_includes/carousel/script/create-controls');
 const createCarouselSlide = require('./src/_includes/carousel/script/create-slide');
+const createCard = require('./src/_includes/card/script/create-card');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
 
 const {
@@ -251,11 +252,26 @@ module.exports = function(eleventyConfig) {
     return date.format(offsetTime, format);
   });
 
-  eleventyConfig.addPairedShortcode('carousel', (content, id) => {
+  eleventyConfig.addPairedShortcode('card', (content, title, tag, link) => {
+    return new nunjucks.runtime.SafeString(
+      `
+          ${createCard(
+            title,
+            tag,
+            link,
+            content,
+            modCSS.getAllCamelCased('/_includes/card/style.css'),
+          )}
+        `,
+    );
+  });
+
+  eleventyConfig.addPairedShortcode('carousel', (content, id, cols = 2) => {
     return new nunjucks.runtime.SafeString(
       `
           ${createCarousel(
             id,
+            cols,
             content,
             modCSS.getAllCamelCased('/_includes/carousel/style.css'),
           )}
@@ -357,10 +373,52 @@ module.exports = function(eleventyConfig) {
     return faqs;
   });
 
+  eleventyConfig.addCollection('featuredEvents', collection => {
+    const faqs = collection
+      .getFilteredByTag('featured-event')
+      .filter(e => ['keynote', 'ama'].includes(e.data.type))
+      .map(e => {
+        e.data.start = dateStrToTimestamp(e.data.start, utcOffset);
+        e.data.end = dateStrToTimestamp(e.data.end, utcOffset);
+        return e;
+      })
+      .sort((a, b) => a.data.priority - b.data.priority);
+
+    return faqs;
+  });
+
   eleventyConfig.addCollection('previousSummits', collection => {
     return collection
       .getFilteredByTag('previousSummits')
       .sort((a, b) => b.data.year - a.data.year);
+  });
+
+  eleventyConfig.addCollection('workshops', collection => {
+    const speakers = collection.getFilteredByTag('speakers');
+
+    const test = collection
+      .getFilteredByTag('event')
+      .filter(e => e.data.type === 'workshop')
+      .map(workshop => {
+        const workshopSpeakers = speakers.filter(s =>
+          workshop.data.speakers.includes(s.fileSlug),
+        );
+        if (!workshopSpeakers)
+          throw new Error(
+            `Could not find speakers with slug: ${workshop.data.speakers}`,
+          );
+
+        workshop.data.start = dateStrToTimestamp(
+          workshop.data.start,
+          utcOffset,
+        );
+        workshop.data.end = dateStrToTimestamp(workshop.data.end, utcOffset);
+        workshop.data.speakers = workshopSpeakers;
+        return workshop;
+      })
+      .sort((a, b) => Date(b.data.start) - Date(a.data.start));
+
+    return test;
   });
 
   eleventyConfig.addCollection('jsSchedule', collection => {

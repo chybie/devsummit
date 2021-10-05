@@ -25,9 +25,9 @@
 .speaker-avatar {
   border-radius: 50%;
   object-fit: cover;
-  height: 2.8em;
-  width: 2.8em;
-  margin-right: 1em;
+  height: 80px;
+  width: 80px;
+  margin-right: 0.48rem;
   border: 1px solid var(--offwhite);
 }
 

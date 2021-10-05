@@ -1,8 +1,10 @@
 .carousel_track {
+  --gap: 1.17rem;
+  --columns: 1;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 1.17rem;
+  gap: var(--gap);
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -23,18 +25,25 @@
   }
 
   @media (min-width: 720px) {
-    gap: 2.6rem;
+    --columns: 2;
+    --gap: 2.6rem;
+  }
+
+  @media (min-width: 1440px) {
+    [cols='3'] & {
+      --columns: 3;
+    }
   }
 }
 
 .carousel_slide {
+  display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   scroll-snap-align: start;
-  width: calc(100% - 2.34rem);
-
-  @media (min-width: 720px) {
-    width: calc(50% - 1.3rem);
-  }
+  width: calc(
+    (100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns))
+  );
 }
 
 .carousel_arrow {
