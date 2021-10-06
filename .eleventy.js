@@ -453,6 +453,16 @@ module.exports = function(eleventyConfig) {
     return getEventSpeakers(keynote, speakers);
   });
 
+  eleventyConfig.addCollection('amaSpeakers', collection => {
+    const speakers = collection.getFilteredByTag('speakers');
+
+    const ama = collection
+      .getFilteredByTag('event')
+      .find(e => e.data.type === 'ama');
+
+    return getEventSpeakers(ama, speakers);
+  });
+
   eleventyConfig.addCollection('jsSchedule', collection => {
     return buildScheduleData(
       collection.getFilteredByTag('session'),
