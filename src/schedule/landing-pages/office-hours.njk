@@ -5,3 +5,43 @@ priority: 300
 permalink: 'schedule/office-hours/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
+
+{% block afterTitles %}
+    {%- set buttonCss = "/_includes/button.css" -%}
+    {% css page, buttonCss %}
+
+    <a href="{{conf.requestInviteLink}}"
+       rel="noopener noreferrer"
+       target="_blank"
+       class="{% className buttonCss, 'button' %}">Request an invite</a>
+{% endblock %}
+
+{% block content %}
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    {%- set cardCss = "/_includes/card/style.css" -%}
+    {% css page, cardCss %}
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <p>Book your private office hour session</p>
+
+        <div class="{% className gridCss, 'grid' %}" cols="3">
+            {%- for event in collections.officeHours -%}
+                {% card event.data.title, event.data.prettyType %}
+                    <div>
+                        <span class="{% className cardCss, 'footer' %}">
+                          DAY 1, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
+                        </span>
+                    </div>
+                {% endcard %}
+            {%- endfor -%}
+        </div>
+    </section>
+{% endblock %}

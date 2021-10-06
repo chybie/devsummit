@@ -6,6 +6,18 @@ permalink: 'schedule/keynote/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
 
+{% block afterTitles %}
+    {%- set buttonCss = "/_includes/button.css" -%}
+    {% css page, buttonCss %}
+
+    <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="{% className buttonCss, 'button' %}">
+        Add to calendar
+    </a>
+{% endblock %}
+
 {% block content %}
     {%- set contentCSS = "/_includes/content.css" -%}
     {% css page, contentCSS %}

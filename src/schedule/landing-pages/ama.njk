@@ -7,6 +7,18 @@ permalink: 'schedule/ama/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
 
+{% block afterTitles %}
+    {%- set buttonCss = "/_includes/button.css" -%}
+    {% css page, buttonCss %}
+
+    <a href="#todo"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="{% className buttonCss, 'button' %}">
+        Ask a question
+    </a>
+{% endblock %}
+
 {% block content %}
     {%- set contentCSS = "/_includes/content.css" -%}
     {% css page, contentCSS %}
