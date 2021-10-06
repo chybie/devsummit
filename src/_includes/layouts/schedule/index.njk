@@ -7,23 +7,6 @@
     {% css page, moduleCSS %}
     {% css page, scheduleCss %}
 
-    <nav class="{% className scheduleCss, 'nav' %}">
-        {%- for subPage in collections.scheduleSubPages -%}
-            {% set title = subPage.data.abbreviatedTitle if subPage.data.abbreviatedTitle else subPage.data.title %}
-            {% set activeClass = null %}
-            {% if page.fileSlug == subPage.fileSlug %}
-                {% set activeClass %}
-                    {% className scheduleCss, 'active' %}
-                {% endset %}
-            {% endif %}
-
-            <a href="{{conf.path}}schedule/{{ subPage.fileSlug }}"
-               class="{{ activeClass if activeClass else ''}}">
-                {{ title }}
-            </a>
-        {%- endfor -%}
-    </nav>
-
     <section class="{% className moduleCSS, 'root' %} {% className scheduleCss, 'header' %}">
         <header>
             <h1 class="{% className moduleCSS, 'heading' %}">{{ title | safe}}</h1>
