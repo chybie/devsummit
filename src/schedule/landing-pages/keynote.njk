@@ -5,3 +5,37 @@ priority: 100
 permalink: 'schedule/keynote/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
+
+{% block content %}
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <h3 class="{% className contentCSS, 'section-heading' %}">Speakers</h3>
+
+        <p class="{% className contentCSS, 'section-subheading' %}">Our CDS 2021 Keynote speakers</p>
+
+        <div class="{% className gridCss, 'grid' %}  {% className scheduleCss, 'avatar-grid' %}" cols="6">
+            {%- for speaker in collections.keynoteSpeakers -%}
+                {% set avatar = speaker.data.avatar %}
+                <article>
+                    <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                         class="{% className speakerCSS, 'speaker-avatar' %}"
+                         alt="{{ speaker.data.name }} avatar"
+                         width="100%"
+                         height="auto"
+                         loading="lazy"/>
+
+                    <p>{{ speaker.data.name }}</p>
+                    <p>{{ speaker.data.title }}</p>
+                </article>
+            {%- endfor -%}
+        </div>
+    </section>
+{% endblock %}

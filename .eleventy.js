@@ -443,6 +443,16 @@ module.exports = function(eleventyConfig) {
       });
   });
 
+  eleventyConfig.addCollection('keynoteSpeakers', collection => {
+    const speakers = collection.getFilteredByTag('speakers');
+
+    const keynote = collection
+      .getFilteredByTag('event')
+      .find(e => e.data.type === 'keynote');
+
+    return getEventSpeakers(keynote, speakers);
+  });
+
   eleventyConfig.addCollection('jsSchedule', collection => {
     return buildScheduleData(
       collection.getFilteredByTag('session'),

@@ -10,5 +10,15 @@
     &[cols='3'] {
       grid-template-columns: 1fr 1fr 1fr;
     }
+
+    &[cols='6'] {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    &[cols='6'] {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
   }
 }
