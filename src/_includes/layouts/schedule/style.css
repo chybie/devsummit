@@ -59,3 +59,24 @@
     }
   }
 }
+
+.subheading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.85rem;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--darkgrey);
+    }
+  }
+}

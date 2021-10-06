@@ -2,6 +2,7 @@
   background: var(--offwhite);
   border-radius: 16px;
   padding: 1.18rem;
+  min-height: 21rem;
 
   &[media='1'] {
     padding: 0;
@@ -47,13 +48,33 @@
   line-height: 1.52rem;
   margin-bottom: 0.95rem;
   display: block;
+
+  @media (min-width: 1440px) {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+
+  @media (min-width: 1700px) {
+    font-size: 1rem;
+    line-height: 1.52rem;
+  }
 }
 
 .title {
-  font-size: 2.28rem;
-  line-height: 2.57rem;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
   margin: 0 0 2.52rem 0;
   font-weight: 500;
+
+  @media (min-width: 1440px) {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+
+  @media (min-width: 1700px) {
+    font-size: 2.28rem;
+    line-height: 2.28rem;
+  }
 }
 
 .avatars {

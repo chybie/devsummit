@@ -100,6 +100,20 @@ function buildWorkshopData(sessions, speakers) {
     .sort((a, b) => (a.start < b.start ? -1 : 1));
 }
 
+function getEventSpeakers(event, allSpeakers) {
+  if (typeof event.data.speakers === 'undefined') return [];
+
+  const eventSpeakerSlugs = event.data.speakers;
+  const workshopSpeakers = allSpeakers.filter(s =>
+    eventSpeakerSlugs.includes(s.fileSlug),
+  );
+
+  if (!workshopSpeakers)
+    throw new Error(`Could not find speakers with slugs: ${eventSpeakerSlugs}`);
+
+  return workshopSpeakers;
+}
+
 class ModularClassName {
   constructor(output) {
     this._output = output;
@@ -219,16 +233,6 @@ module.exports = function(eleventyConfig) {
         utcOffset,
         modCSS.getAllCamelCased('/schedule/style.css'),
         confboxPath,
-      ),
-    );
-  });
-
-  eleventyConfig.addShortcode('workshops', (sessions, speakers) => {
-    return new nunjucks.runtime.SafeString(
-      createWorkshops(
-        buildWorkshopData(sessions, speakers),
-        utcOffset,
-        modCSS.getAllCamelCased('/schedule/style.css'),
       ),
     );
   });
@@ -396,29 +400,47 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection('workshops', collection => {
     const speakers = collection.getFilteredByTag('speakers');
 
-    const test = collection
+    return collection
       .getFilteredByTag('event')
       .filter(e => e.data.type === 'workshop')
       .map(workshop => {
-        const workshopSpeakers = speakers.filter(s =>
-          workshop.data.speakers.includes(s.fileSlug),
-        );
-        if (!workshopSpeakers)
-          throw new Error(
-            `Could not find speakers with slug: ${workshop.data.speakers}`,
-          );
-
         workshop.data.start = dateStrToTimestamp(
           workshop.data.start,
           utcOffset,
         );
         workshop.data.end = dateStrToTimestamp(workshop.data.end, utcOffset);
-        workshop.data.speakers = workshopSpeakers;
+        workshop.data.speakers = getEventSpeakers(workshop, speakers);
         return workshop;
       })
       .sort((a, b) => Date(b.data.start) - Date(a.data.start));
+  });
 
-    return test;
+  eleventyConfig.addCollection('officeHours', collection => {
+    const speakers = collection.getFilteredByTag('speakers');
+
+    return collection
+      .getFilteredByTag('event')
+      .filter(e => e.data.type === 'office-hours')
+      .map(event => {
+        event.data.start = dateStrToTimestamp(event.data.start, utcOffset);
+        event.data.end = dateStrToTimestamp(event.data.end, utcOffset);
+        event.data.speakers = getEventSpeakers(event, speakers);
+        return event;
+      });
+  });
+
+  eleventyConfig.addCollection('learningLounge', collection => {
+    const speakers = collection.getFilteredByTag('speakers');
+
+    return collection
+      .getFilteredByTag('event')
+      .filter(e => e.data.type === 'learning-lounge')
+      .map(event => {
+        event.data.start = dateStrToTimestamp(event.data.start, utcOffset);
+        event.data.end = dateStrToTimestamp(event.data.end, utcOffset);
+        event.data.speakers = getEventSpeakers(event, speakers);
+        return event;
+      });
   });
 
   eleventyConfig.addCollection('jsSchedule', collection => {
@@ -435,13 +457,6 @@ module.exports = function(eleventyConfig) {
       { basic: true },
     );
   });
-
-  /*eleventyConfig.addCollection('jsWorkshops', collection => {
-    return buildWorkshopData(
-      collection.getFilteredByTag('workshop'),
-      collection.getFilteredByTag('speakers'),
-    );
-  });*/
 
   return config;
 };
