@@ -30,18 +30,26 @@ permalink: 'schedule/learning-lounge/index.html'
     {% css page, cardCss %}
 
     <section class="{% className moduleCSS, 'section' %}">
-        <p>Pathways to improve your knowledge</p>
+        <div>
+            <div class="{% className scheduleCss, 'grid-header' %}">
+                <p>Pathways to improve your knowledge</p>
 
-        <div class="{% className gridCss, 'grid' %}" cols="3">
-            {%- for event in collections.learningLounge -%}
-                {% card event.data.title, event.data.prettyType %}
-                    <div>
+                <div class="{% className scheduleCss, 'tz-switcher' %}">
+                    {% include "timezone-toggle/index.njk" %}
+                </div>
+            </div>
+
+            <div class="{% className gridCss, 'grid' %}" cols="3">
+                {%- for event in collections.learningLounge -%}
+                    {% card event.data.title, event.data.prettyType %}
+                        <div>
                         <span class="{% className cardCss, 'footer' %}">
                           DAY 1, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
                         </span>
-                    </div>
-                {% endcard %}
-            {%- endfor -%}
+                        </div>
+                    {% endcard %}
+                {%- endfor -%}
+            </div>
         </div>
     </section>
 {% endblock %}

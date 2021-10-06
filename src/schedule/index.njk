@@ -25,30 +25,36 @@ subtitle: All sessions will be streamed live during the event, and will be avail
     {% css page, speakerCSS %}
 
     <section class="{% className moduleCSS, 'section' %}">
-        <div class="{% className gridCss, 'grid' %}" cols="2">
-            {%- for event in collections.featuredEvents -%}
-                <article class="{% className cardCss, 'card' %}" media="1">
-                    <a href="{{conf.path}}{{ event.data.link }}">
-                        <div class="{% className utilsCSS, 'aspect-ratio' %} {% className cardCss, 'card-media' %}" style="--aspect-ratio: calc(16/9)">
-                            <img class="{% className utilsCSS, 'media-fill' %}"
-                                 src="confboxAsset(/assets/16-9-placeholder.png)"
-                                 alt="{{ event.data.title }}">
-                        </div>
+        <div>
+            <div class="{% className scheduleCss, 'tz-switcher' %}">
+                {% include "timezone-toggle/index.njk" %}
+            </div>
 
-                        <div class="{% className cardCss, 'content' %}">
-                            <div>
-                                <span class="{% className cardCss, 'tag' %}">{{ event.data.prettyType }}</span>
-
-                                <h2 class="{% className cardCss, 'title' %}">{{ event.data.title }}</h2>
+            <div class="{% className gridCss, 'grid' %}" cols="2">
+                {%- for event in collections.featuredEvents -%}
+                    <article class="{% className cardCss, 'card' %}" media="1">
+                        <a href="{{conf.path}}{{ event.data.link }}">
+                            <div class="{% className utilsCSS, 'aspect-ratio' %} {% className cardCss, 'card-media' %}" style="--aspect-ratio: calc(16/9)">
+                                <img class="{% className utilsCSS, 'media-fill' %}"
+                                     src="confboxAsset(/assets/16-9-placeholder.png)"
+                                     alt="{{ event.data.title }}">
                             </div>
 
-                            <span class="{% className cardCss, 'footer' %}">
+                            <div class="{% className cardCss, 'content' %}">
+                                <div>
+                                    <span class="{% className cardCss, 'tag' %}">{{ event.data.prettyType }}</span>
+
+                                    <h2 class="{% className cardCss, 'title' %}">{{ event.data.title }}</h2>
+                                </div>
+
+                                <span class="{% className cardCss, 'footer' %}">
                                 DAY {{ event.data.day }}, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
                             </span>
-                        </div>
-                    </a>
-                </article>
-            {%- endfor -%}
+                            </div>
+                        </a>
+                    </article>
+                {%- endfor -%}
+            </div>
         </div>
     </section>
 

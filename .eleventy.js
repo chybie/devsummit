@@ -279,14 +279,6 @@ module.exports = function(eleventyConfig) {
             content,
             modCSS.getAllCamelCased('/_includes/carousel/style.css'),
           )}
-          <script>
-              const el = document.currentScript.previousElementSibling;
-              {
-                import('confboxAsset(/_includes/carousel/script/index.js)').then(
-                        ({ enhance }) => enhance(el)
-                );
-              }
-          </script>
         `,
     );
   });
