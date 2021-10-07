@@ -7,8 +7,8 @@ module.exports = class Manifest {
   render() {
     return JSON.stringify(
       {
-        name: 'Chrome Dev Summit 2020',
-        short_name: 'CDS 2020',
+        name: 'Chrome Dev Summit 2021',
+        short_name: 'CDS 2021',
         start_url: '/devsummit/',
         display: 'standalone',
         background_color: '#f8f9fa',
