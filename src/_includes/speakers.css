@@ -25,10 +25,16 @@
 .speaker-avatar {
   border-radius: 50%;
   object-fit: cover;
-  height: 80px;
-  width: 80px;
-  margin-right: 0.48rem;
+  height: 45px;
+  width: 45px;
+  margin-right: 0.29rem;
   border: 1px solid var(--offwhite);
+
+  @media (min-width: 1024px) {
+    height: 80px;
+    width: 80px;
+    margin-right: 0.48rem;
+  }
 }
 
 .speaker-creds {

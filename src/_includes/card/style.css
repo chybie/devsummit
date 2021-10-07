@@ -1,8 +1,8 @@
 .card {
   background: var(--offwhite);
   border-radius: 16px;
-  padding: 1.18rem;
-  min-height: 21rem;
+  padding: 1.17rem;
+  min-height: 12rem;
 
   &[media='1'] {
     padding: 0;
@@ -28,10 +28,19 @@
   @media (min-width: 720px) {
     padding: 1.05rem;
   }
+
+  @media (min-width: 1024px) {
+    min-height: 21rem;
+    padding: 1.9rem;
+  }
 }
 
 .content {
-  padding: 1.05rem;
+  padding: 1.17rem;
+
+  @media (min-width: 1024px) {
+    padding: 1.9rem;
+  }
 }
 
 .card,
@@ -44,14 +53,16 @@
 }
 
 .tag {
-  font-size: 1rem;
-  line-height: 1.52rem;
-  margin-bottom: 0.95rem;
+  font-size: 0.71rem;
+  line-height: 1;
+  margin-bottom: 0.58rem;
   display: block;
+  font-weight: 500;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1024px) {
     font-size: 0.9rem;
     line-height: 1.3rem;
+    margin-bottom: 0.95rem;
   }
 
   @media (min-width: 1700px) {
@@ -61,27 +72,48 @@
 }
 
 .title {
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  font-size: 1.76rem;
+  line-height: 2rem;
   margin: 0 0 2.52rem 0;
   font-weight: 500;
 
+  [featured] & {
+    font-size: 1.88rem;
+    line-height: 2.11rem;
+  }
+
   @media (min-width: 1440px) {
     font-size: 1.8rem;
-    line-height: 1.8rem;
   }
 
   @media (min-width: 1700px) {
     font-size: 2.28rem;
     line-height: 2.28rem;
+
+    [featured] & {
+      font-size: 2.28rem;
+      line-height: 2.28rem;
+    }
   }
 }
 
 .avatars {
-  margin-bottom: 1.42rem;
+  margin-bottom: 0.58rem;
+
+  @media (min-width: 1024px) {
+    margin-bottom: 1.42rem;
+  }
 }
 
 .footer {
-  font-size: 0.81rem;
-  letter-spacing: 1.7px;
+  font-size: 0.71rem;
+  letter-spacing: 1px;
+  line-height: 0.65rem;
+  font-weight: 500;
+
+  @media (min-width: 1024px) {
+    font-size: 0.81rem;
+    line-height: 1rem;
+    letter-spacing: 1.7px;
+  }
 }

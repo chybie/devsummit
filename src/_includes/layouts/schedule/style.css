@@ -24,16 +24,6 @@
   p {
     margin-bottom: 0;
   }
-
-  a {
-    color: var(--black);
-    text-decoration: none;
-    font-weight: 500;
-
-    &:hover {
-      color: var(--darkgrey);
-    }
-  }
 }
 
 .avatar-grid {
@@ -52,13 +42,21 @@
 
     &:first-of-type {
       font-weight: 500;
-      margin: 1.85rem 0 0 0;
+      margin: 1.23rem 0 0 0;
     }
   }
 
   img {
     width: 100%;
     height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    p {
+      &:first-of-type {
+        margin: 1.85rem 0 0 0;
+      }
+    }
   }
 }
 
@@ -67,13 +65,42 @@
 }
 
 .grid-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.23rem;
 
-  > p,
-  > div {
-    margin-bottom: 0;
+  p {
+    margin-bottom: 1.94rem;
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.8rem;
+
+    > p,
+    > div {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.view-all {
+  margin-top: 1.76rem;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 500;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.view-all-desk {
+  display: none;
+  text-decoration: none;
+  font-weight: 500;
+
+  @media (min-width: 1024px) {
+    display: initial;
   }
 }

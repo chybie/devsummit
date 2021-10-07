@@ -21,11 +21,16 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 1rem;
-  padding: 1.3rem 1.76rem;
+  font-size: 0.94rem;
+  padding: 1.18rem 1.52rem;
   line-height: 1;
   flex: 1;
   color: var(--midgrey);
+
+  @media (min-width: 1440px) {
+    font-size: 1rem;
+    padding: 1.3rem 1.76rem;
+  }
 }
 
 .fake-label {

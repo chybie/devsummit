@@ -1,8 +1,6 @@
 .root {
-  margin: 0 auto;
-
-  @media (min-width: 480px) {
-    margin-right: 0;
+  @media (min-width: 1024px) {
+    margin: 0 0 0 auto;
   }
 }
 

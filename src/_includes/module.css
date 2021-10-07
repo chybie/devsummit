@@ -127,6 +127,7 @@
   }
 
   &:last-of-type {
+    margin-bottom: 3.5rem;
     > div {
       border-bottom: none;
     }

@@ -1,6 +1,6 @@
 .carousel_track {
   --gap: 1.17rem;
-  --columns: 1;
+  --columns: 1.15;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;

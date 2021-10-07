@@ -10,15 +10,13 @@
                 <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
                      class="{% className speakerCSS, 'speaker-avatar' %}"
                      alt="{{ speaker.data.name }} avatar"
-                     loading="lazy"
-                     width="80px"
-                     height="80px"/>
+                     loading="lazy"/>
               {%- endfor -%}
             </div>
 
             <span class="{% className cardCss, 'footer' %}">
-                                    DAY 1, {% confDate workshop.data.start, 'hh:mm' %} – {% confDate workshop.data.end, 'hh:mm' %}
-                                </span>
+              DAY 1, {% confDate workshop.data.start, 'hh:mm' %} – {% confDate workshop.data.end, 'hh:mm' %}
+            </span>
           </div>
         {% endcard %}
       {% endcarouselSlide %}

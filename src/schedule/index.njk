@@ -32,7 +32,7 @@ subtitle: All sessions will be streamed live during the event, and will be avail
 
             <div class="{% className gridCss, 'grid' %}" cols="2">
                 {%- for event in collections.featuredEvents -%}
-                    <article class="{% className cardCss, 'card' %}" media="1">
+                    <article class="{% className cardCss, 'card' %}" media="1" featured>
                         <a href="{{conf.path}}{{ event.data.link }}">
                             <div class="{% className utilsCSS, 'aspect-ratio' %} {% className cardCss, 'card-media' %}" style="--aspect-ratio: calc(16/9)">
                                 <img class="{% className utilsCSS, 'media-fill' %}"
@@ -59,36 +59,47 @@ subtitle: All sessions will be streamed live during the event, and will be avail
     </section>
 
     <section class="{% className moduleCSS, 'section' %}">
-        <h3 class="{% className contentCSS, 'section-heading' %}">Workshops</h3>
+        <div>
+            <h3 class="{% className contentCSS, 'section-heading' %}">Workshops</h3>
 
-        <span class="{% className scheduleCss, 'subheading-container' %}">
-            <p class="{% className contentCSS, 'section-subheading' %}">Hands-on workshops with leading experts</p>
+            <div class="{% className scheduleCss, 'subheading-container' %}">
+                <p class="{% className contentCSS, 'section-subheading' %}">Hands-on workshops with leading experts</p>
+                <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+            </div>
 
-            <a href="{{conf.path}}schedule/workshops/">View all</a>
-        </span>
+            {% include "workshop-carousel/index.njk" %}
 
-        {% include "workshop-carousel/index.njk" %}
+            <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+        </div>
     </section>
 
     <section class="{% className moduleCSS, 'section' %}">
-        <h3 class="{% className contentCSS, 'section-heading' %}">Office hours</h3>
+        <div>
+            <h3 class="{% className contentCSS, 'section-heading' %}">Office hours</h3>
 
-        <span class="{% className scheduleCss, 'subheading-container' %}">
-            <p class="{% className contentCSS, 'section-subheading' %}">Private office hours with Chrome experts</p>
-            <a href="{{conf.path}}schedule/office-hours/">View all</a>
-        </span>
+            <span class="{% className scheduleCss, 'subheading-container' %}">
+                <p class="{% className contentCSS, 'section-subheading' %}">Private office hours with Chrome experts</p>
+                <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+            </span>
 
-        {% include "office-hours-carousel/index.njk" %}
+            {% include "office-hours-carousel/index.njk" %}
+
+            <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+        </div>
     </section>
 
     <section class="{% className moduleCSS, 'section' %}">
-        <h3 class="{% className contentCSS, 'section-heading' %}">Learning lounge</h3>
+        <div>
+            <h3 class="{% className contentCSS, 'section-heading' %}">Learning lounge</h3>
 
-        <span class="{% className scheduleCss, 'subheading-container' %}">
-            <p class="{% className contentCSS, 'section-subheading' %}">Learn about all of the latest updates and tools</p>
-            <a href="{{conf.path}}schedule/learning-lounge/">View all</a>
-        </span>
+            <div class="{% className scheduleCss, 'subheading-container' %}">
+                <p class="{% className contentCSS, 'section-subheading' %}">Learn about all of the latest updates and tools</p>
+                <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+            </div>
 
-        {% include "learning-lounge-carousel/index.njk" %}
+            {% include "learning-lounge-carousel/index.njk" %}
+
+            <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+        </div>
     </section>
 {% endblock %}
