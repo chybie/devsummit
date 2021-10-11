@@ -19,7 +19,7 @@
             </div>
 
             <span class="{% className cardCss, 'footer' %}">
-              DAY {% dateToSummitDay workshop.data.start %}, {% confDate workshop.data.start, 'hh:mm' %} – {% confDate workshop.data.end, 'hh:mm' %}
+              {% userFriendlyEventDate workshop %}
             </span>
           </div>
         {% endcard %}

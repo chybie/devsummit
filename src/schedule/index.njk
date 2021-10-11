@@ -49,8 +49,8 @@ subtitle: |
                                 </div>
 
                                 <span class="{% className cardCss, 'footer' %}">
-                                DAY {% dateToSummitDay event.data.start %}, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
-                            </span>
+                                    {% userFriendlyEventDate event %}
+                                </span>
                             </div>
                         </a>
                     </article>
