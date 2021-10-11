@@ -1,0 +1,13 @@
+{% extends 'layouts/content/index.njk' %}
+
+{%- set eventCss = "/_includes/layouts/event/style.css" -%}
+
+{% block leftBefore %}
+    <p>
+        DAY {% dateToSummitDay start %}, {% confDate start, 'hh:mm' %} – {% confDate end, 'hh:mm' %}
+    </p>
+{% endblock %}
+
+{% block rightInner %}
+    Right
+{% endblock %}

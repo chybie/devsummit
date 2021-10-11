@@ -23,6 +23,8 @@
                     {% css page, css %}
 
                     <header class="{% className css, 'header' %}">
+                        {% block leftBefore %}{% endblock %}
+
                         <h1 class="{% className moduleCSS, 'heading' %}">{{ title | safe}}</h1>
                         <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle | safe }}</p>
 

@@ -9,7 +9,7 @@
         {% card event.data.title, event.data.prettyType, uri %}
           <div>
             <span class="{% className cardCss, 'footer' %}">
-              DAY 1, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
+              DAY {% dateToSummitDay event.data.start %}, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
             </span>
           </div>
         {% endcard %}

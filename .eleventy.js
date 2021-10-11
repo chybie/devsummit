@@ -11,6 +11,7 @@ const createCarouselControls = require('./src/_includes/carousel/script/create-c
 const createCarouselSlide = require('./src/_includes/carousel/script/create-slide');
 const createCard = require('./src/_includes/card/script/create-card');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
+const { timestampToSummitDay } = require('./src/utils/timestampToSummitDay');
 
 const {
   utcOffset,
@@ -326,6 +327,11 @@ module.exports = function(eleventyConfig) {
   /** Get the URI of an event */
   eleventyConfig.addShortcode('eventUri', event => {
     return `${confboxPath}events/${event.data.type}/${event.fileSlug}/`;
+  });
+
+  /** Get the day # from the start date. */
+  eleventyConfig.addShortcode('dateToSummitDay', startDate => {
+    return timestampToSummitDay(startDate).toString();
   });
 
   eleventyConfig.addCollection('faqs', collection => {
