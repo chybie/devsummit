@@ -4,6 +4,8 @@
 {%- set scheduleCss = "/_includes/layouts/schedule/style.css" -%}
 
 {% block beforeContent %}
+    <script type="module" async src="confboxAsset(/_includes/layouts/schedule/script/index.js)"></script>
+
     {% css page, moduleCSS %}
     {% css page, scheduleCss %}
 

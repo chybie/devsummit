@@ -47,9 +47,9 @@ permalink: 'schedule/learning-lounge/index.html'
 
                     {% card event.data.title, event.data.prettyType, uri %}
                         <div>
-                        <span class="{% className cardCss, 'footer' %}">
-                          DAY {% dateToSummitDay event.data.start %}, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}
-                        </span>
+                            <span class="{% className cardCss, 'footer' %}">
+                              {% userFriendlyEventDate event %}
+                            </span>
                         </div>
                     {% endcard %}
                 {%- endfor -%}

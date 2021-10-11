@@ -9,6 +9,7 @@ const createCalendarWidget = require('./src/_includes/calendar-widget/script/cre
 const createCarousel = require('./src/_includes/carousel/script/create-carousel');
 const createCarouselControls = require('./src/_includes/carousel/script/create-controls');
 const createCarouselSlide = require('./src/_includes/carousel/script/create-slide');
+const createUserFriendlyEventDate = require('./src/_includes/layouts/schedule/script/create-user-friendly-event-date');
 const createCard = require('./src/_includes/card/script/create-card');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
 const { timestampToSummitDay } = require('./src/utils/timestampToSummitDay');
@@ -19,87 +20,87 @@ const {
   extraSchedule,
 } = require('./lib/confbox-config');
 
-function buildScheduleData(sessions, speakers, { basic = false } = {}) {
-  const schedule = [
-    ...sessions.map(session => {
-      const obj = {
-        start: session.data.start,
-        end: session.data.end,
-        title: session.data.title,
-        speakers: session.data.speakers,
-        session: true,
-        livestreamed: true,
-        fileSlug: session.fileSlug,
-        nowNextLink: session.data.nowNextLink,
-        nowNextHTML: session.data.nowNextHTML,
-        event: !!session.data.event,
-      };
+// function buildScheduleData(sessions, speakers, { basic = false } = {}) {
+//   const schedule = [
+//     ...sessions.map(session => {
+//       const obj = {
+//         start: session.data.start,
+//         end: session.data.end,
+//         title: session.data.title,
+//         speakers: session.data.speakers,
+//         session: true,
+//         livestreamed: true,
+//         fileSlug: session.fileSlug,
+//         nowNextLink: session.data.nowNextLink,
+//         nowNextHTML: session.data.nowNextHTML,
+//         event: !!session.data.event,
+//       };
+//
+//       if (!basic) {
+//         obj.topics = session.data.topics;
+//         obj.avatar = session.data.avatar;
+//         obj.avatarAlt = session.data.avatarAlt || '';
+//         obj.body = session.data.description;
+//       }
+//
+//       return obj;
+//     }),
+//     ...extraSchedule.map(obj => ({ ...obj })),
+//   ].map(item => {
+//     // Convert dates to timestamps
+//     item.start = dateStrToTimestamp(item.start, utcOffset);
+//     item.end = dateStrToTimestamp(item.end, utcOffset);
+//
+//     // Wrap URLs in confboxAsset
+//     for (const key of ['icon', 'avatar']) {
+//       if (item[key]) item[key] = `confboxAsset(${item[key]})`;
+//     }
+//
+//     if (item.speakers) {
+//       item.speakers = item.speakers.map(speakerId => {
+//         const speaker = speakers.find(s => s.fileSlug == speakerId);
+//         if (!speaker) throw new Error(`Could not find speaker: ${speakerId}`);
+//         return {
+//           name: speaker.data.name,
+//           avatar: `confboxAsset(${speaker.data.avatar ||
+//             '/assets/speakers/default.svg'})`,
+//           avatarAlt: speaker.data.avatarAlt,
+//           title: speaker.data.title,
+//           link: speaker.data.link,
+//         };
+//       });
+//     }
+//
+//     return item;
+//   });
+//
+//   schedule.sort((a, b) => (a.start < b.start ? -1 : 1));
+//
+//   return schedule;
+// }
 
-      if (!basic) {
-        obj.topics = session.data.topics;
-        obj.avatar = session.data.avatar;
-        obj.avatarAlt = session.data.avatarAlt || '';
-        obj.body = session.data.description;
-      }
-
-      return obj;
-    }),
-    ...extraSchedule.map(obj => ({ ...obj })),
-  ].map(item => {
-    // Convert dates to timestamps
-    item.start = dateStrToTimestamp(item.start, utcOffset);
-    item.end = dateStrToTimestamp(item.end, utcOffset);
-
-    // Wrap URLs in confboxAsset
-    for (const key of ['icon', 'avatar']) {
-      if (item[key]) item[key] = `confboxAsset(${item[key]})`;
-    }
-
-    if (item.speakers) {
-      item.speakers = item.speakers.map(speakerId => {
-        const speaker = speakers.find(s => s.fileSlug == speakerId);
-        if (!speaker) throw new Error(`Could not find speaker: ${speakerId}`);
-        return {
-          name: speaker.data.name,
-          avatar: `confboxAsset(${speaker.data.avatar ||
-            '/assets/speakers/default.svg'})`,
-          avatarAlt: speaker.data.avatarAlt,
-          title: speaker.data.title,
-          link: speaker.data.link,
-        };
-      });
-    }
-
-    return item;
-  });
-
-  schedule.sort((a, b) => (a.start < b.start ? -1 : 1));
-
-  return schedule;
-}
-
-function buildWorkshopData(sessions, speakers) {
-  return sessions
-    .map(session => ({
-      start: dateStrToTimestamp(session.data.start, utcOffset),
-      end: dateStrToTimestamp(session.data.end, utcOffset),
-      title: session.data.title,
-      speakers:
-        session.data.speakers &&
-        session.data.speakers.map(speakerId => {
-          const speaker = speakers.find(s => s.fileSlug == speakerId);
-          if (!speaker) throw new Error(`Could not find speaker: ${speakerId}`);
-          return {
-            name: speaker.data.name,
-            avatar: `confboxAsset(${speaker.data.avatar ||
-              '/assets/speakers/default.svg'})`,
-            title: speaker.data.title,
-            link: speaker.data.link,
-          };
-        }),
-    }))
-    .sort((a, b) => (a.start < b.start ? -1 : 1));
-}
+// function buildWorkshopData(sessions, speakers) {
+//   return sessions
+//     .map(session => ({
+//       start: dateStrToTimestamp(session.data.start, utcOffset),
+//       end: dateStrToTimestamp(session.data.end, utcOffset),
+//       title: session.data.title,
+//       speakers:
+//         session.data.speakers &&
+//         session.data.speakers.map(speakerId => {
+//           const speaker = speakers.find(s => s.fileSlug == speakerId);
+//           if (!speaker) throw new Error(`Could not find speaker: ${speakerId}`);
+//           return {
+//             name: speaker.data.name,
+//             avatar: `confboxAsset(${speaker.data.avatar ||
+//               '/assets/speakers/default.svg'})`,
+//             title: speaker.data.title,
+//             link: speaker.data.link,
+//           };
+//         }),
+//     }))
+//     .sort((a, b) => (a.start < b.start ? -1 : 1));
+// }
 
 function getEventSpeakers(event, allSpeakers) {
   if (typeof event.data.speakers === 'undefined') return [];
@@ -226,27 +227,27 @@ module.exports = function(eleventyConfig) {
     return str.toLowerCase().replace(/\s/g, '-');
   });
 
-  eleventyConfig.addShortcode('schedule', (sessions, speakers) => {
-    return new nunjucks.runtime.SafeString(
-      createSchedule(
-        buildScheduleData(sessions, speakers),
-        utcOffset,
-        utcOffset,
-        modCSS.getAllCamelCased('/schedule/style.css'),
-        confboxPath,
-      ),
-    );
-  });
+  // eleventyConfig.addShortcode('schedule', (sessions, speakers) => {
+  //   return new nunjucks.runtime.SafeString(
+  //     createSchedule(
+  //       buildScheduleData(sessions, speakers),
+  //       utcOffset,
+  //       utcOffset,
+  //       modCSS.getAllCamelCased('/schedule/style.css'),
+  //       confboxPath,
+  //     ),
+  //   );
+  // });
 
-  eleventyConfig.addShortcode('calendarWidget', date => {
-    return new nunjucks.runtime.SafeString(
-      createCalendarWidget(
-        dateStrToTimestamp(date, utcOffset),
-        utcOffset,
-        modCSS.getAllCamelCased('/_includes/calendar-widget/style.css'),
-      ),
-    );
-  });
+  // eleventyConfig.addShortcode('calendarWidget', date => {
+  //   return new nunjucks.runtime.SafeString(
+  //     createCalendarWidget(
+  //       dateStrToTimestamp(date, utcOffset),
+  //       utcOffset,
+  //       modCSS.getAllCamelCased('/_includes/calendar-widget/style.css'),
+  //     ),
+  //   );
+  // });
 
   /** Format a date in the timezone of the conference */
   eleventyConfig.addShortcode('confDate', (timestamp, format) => {
@@ -255,6 +256,23 @@ module.exports = function(eleventyConfig) {
     }
     const offsetTime = new Date(timestamp.valueOf() + utcOffset);
     return date.format(offsetTime, format);
+  });
+
+  /** Formats the start & end dates of an event in readable form */
+  eleventyConfig.addShortcode('userFriendlyEventDate', event => {
+    const start = dateStrToTimestamp(event.data.start, utcOffset);
+    const end = dateStrToTimestamp(event.data.end, utcOffset);
+
+    return new nunjucks.runtime.SafeString(
+      `
+          ${createUserFriendlyEventDate(
+            start,
+            end,
+            event.data.region,
+            utcOffset,
+          )}
+        `,
+    );
   });
 
   eleventyConfig.addPairedShortcode('card', (content, title, tag, link) => {
@@ -384,11 +402,6 @@ module.exports = function(eleventyConfig) {
     const faqs = collection
       .getFilteredByTag('featured-event')
       .filter(e => ['keynote', 'ama'].includes(e.data.type))
-      .map(e => {
-        e.data.start = dateStrToTimestamp(e.data.start, utcOffset);
-        e.data.end = dateStrToTimestamp(e.data.end, utcOffset);
-        return e;
-      })
       .sort((a, b) => a.data.priority - b.data.priority);
 
     return faqs;
@@ -407,11 +420,6 @@ module.exports = function(eleventyConfig) {
       .getFilteredByTag('event')
       .filter(e => e.data.type === 'workshops')
       .map(workshop => {
-        workshop.data.start = dateStrToTimestamp(
-          workshop.data.start,
-          utcOffset,
-        );
-        workshop.data.end = dateStrToTimestamp(workshop.data.end, utcOffset);
         workshop.data.speakers = getEventSpeakers(workshop, speakers);
         return workshop;
       })
@@ -425,8 +433,6 @@ module.exports = function(eleventyConfig) {
       .getFilteredByTag('event')
       .filter(e => e.data.type === 'office-hours')
       .map(event => {
-        event.data.start = dateStrToTimestamp(event.data.start, utcOffset);
-        event.data.end = dateStrToTimestamp(event.data.end, utcOffset);
         event.data.speakers = getEventSpeakers(event, speakers);
         return event;
       });
@@ -439,8 +445,6 @@ module.exports = function(eleventyConfig) {
       .getFilteredByTag('event')
       .filter(e => e.data.type === 'learning-lounge')
       .map(event => {
-        event.data.start = dateStrToTimestamp(event.data.start, utcOffset);
-        event.data.end = dateStrToTimestamp(event.data.end, utcOffset);
         event.data.speakers = getEventSpeakers(event, speakers);
         return event;
       });
@@ -466,20 +470,20 @@ module.exports = function(eleventyConfig) {
     return getEventSpeakers(ama, speakers);
   });
 
-  eleventyConfig.addCollection('jsSchedule', collection => {
-    return buildScheduleData(
-      collection.getFilteredByTag('session'),
-      collection.getFilteredByTag('speakers'),
-    );
-  });
-
-  eleventyConfig.addCollection('jsScheduleBasic', collection => {
-    return buildScheduleData(
-      collection.getFilteredByTag('session'),
-      collection.getFilteredByTag('speakers'),
-      { basic: true },
-    );
-  });
+  // eleventyConfig.addCollection('jsSchedule', collection => {
+  //   return buildScheduleData(
+  //     collection.getFilteredByTag('session'),
+  //     collection.getFilteredByTag('speakers'),
+  //   );
+  // });
+  //
+  // eleventyConfig.addCollection('jsScheduleBasic', collection => {
+  //   return buildScheduleData(
+  //     collection.getFilteredByTag('session'),
+  //     collection.getFilteredByTag('speakers'),
+  //     { basic: true },
+  //   );
+  // });
 
   return config;
 };
