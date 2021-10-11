@@ -2,7 +2,11 @@
   {%- for event in collections.learningLounge -%}
     {% if (loop.index <= 6) %}
       {% carouselSlide %}
-        {% card event.data.title, event.data.prettyType %}
+        {% set uri %}
+          {% eventUri event %}
+        {% endset %}
+
+        {% card event.data.title, event.data.prettyType, uri %}
           <div>
             <span class="{% className cardCss, 'footer' %}">
               DAY 1, {% confDate event.data.start, 'hh:mm' %} – {% confDate event.data.end, 'hh:mm' %}

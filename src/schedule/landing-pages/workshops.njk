@@ -41,7 +41,11 @@ permalink: 'schedule/workshops/index.html'
 
             <div class="{% className gridCss, 'grid' %}" cols="3">
                 {%- for event in collections.workshops -%}
-                    {% card event.data.title, event.data.prettyType %}
+                    {% set uri %}
+                        {% eventUri event %}
+                    {% endset %}
+
+                    {% card event.data.title, event.data.prettyType, uri %}
                         <div>
                             <div class="{% className cardCss, 'avatars' %}">
                                 {%- for speaker in event.data.speakers -%}

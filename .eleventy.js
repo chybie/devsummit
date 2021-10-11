@@ -323,6 +323,11 @@ module.exports = function(eleventyConfig) {
     return new Date(timestamp.valueOf()).toISOString();
   });
 
+  /** Get the URI of an event */
+  eleventyConfig.addShortcode('eventUri', event => {
+    return `${confboxPath}events/${event.data.type}/${event.fileSlug}/`;
+  });
+
   eleventyConfig.addCollection('faqs', collection => {
     const faqs = collection
       .getFilteredByTag('faq')
@@ -394,7 +399,7 @@ module.exports = function(eleventyConfig) {
 
     return collection
       .getFilteredByTag('event')
-      .filter(e => e.data.type === 'workshop')
+      .filter(e => e.data.type === 'workshops')
       .map(workshop => {
         workshop.data.start = dateStrToTimestamp(
           workshop.data.start,

@@ -1,4 +1,4 @@
 module.exports = {
-  type: 'workshop',
+  type: 'workshops',
   prettyType: 'Workshop',
 };
