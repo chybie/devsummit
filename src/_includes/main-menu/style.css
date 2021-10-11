@@ -35,7 +35,9 @@
     > a,
     > div {
       display: none;
+    }
 
+    > div {
       &:last-of-type {
         display: inline-block;
       }
@@ -69,6 +71,7 @@
   transition: opacity 0.3s ease;
   padding: 6.5rem var(--side-margin);
   color: var(--black);
+  overflow: auto;
 
   [open='1'] & {
     height: calc(100% - 6.5rem * 2);
@@ -76,7 +79,12 @@
     top: 0;
   }
 
-  a {
+  nav {
+    padding-top: 1rem;
+  }
+
+  a:not(.header-btn),
+  [accordion-item] {
     display: block;
     font-weight: 500;
     font-size: 1.06rem;
@@ -85,6 +93,28 @@
     padding: 0.5rem 0;
     margin-bottom: 0.67rem;
     color: var(--black);
+  }
+
+  .header-btn {
+    display: inline-block;
+    margin: 0.5rem 0 0 0;
+    float: left;
+    clear: left;
+
+    &:last-child {
+      margin-top: 1.67rem;
+    }
+  }
+
+  [accordion-item] {
+    a {
+      color: var(--midgrey);
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
   }
 
   @media (min-width: 720px) {
@@ -161,16 +191,23 @@
   left: 0;
   bottom: -2.2rem;
   padding-top: 2.2rem;
-  flex-wrap: nowrap;
-  display: none;
 
   a {
     flex-shrink: 0;
     font-size: 0.8rem;
     margin: 0 0.7em;
+    font-weight: 400;
+  }
+}
+
+.sub-menu,
+.sub-menu-mobile {
+  flex-wrap: nowrap;
+  display: none;
+
+  a {
     color: var(--midgrey);
     text-decoration: none;
-    font-weight: 400;
 
     &.active {
       color: var(--black);
