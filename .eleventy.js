@@ -13,6 +13,7 @@ const createUserFriendlyEventDate = require('./src/_includes/layouts/schedule/sc
 const createCard = require('./src/_includes/card/script/create-card');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
 const { timestampToSummitDay } = require('./src/utils/timestamp-to-summit-day');
+const getUtcOffset = require('./src/utils/utc-offset');
 
 const {
   utcOffset,
@@ -260,17 +261,13 @@ module.exports = function(eleventyConfig) {
 
   /** Formats the start & end dates of an event in readable form */
   eleventyConfig.addShortcode('userFriendlyEventDate', event => {
-    const start = dateStrToTimestamp(event.data.start, utcOffset);
-    const end = dateStrToTimestamp(event.data.end, utcOffset);
+    const offset = getUtcOffset(event.data.timezone);
+    const start = dateStrToTimestamp(event.data.start, offset);
+    const end = dateStrToTimestamp(event.data.end, offset);
 
     return new nunjucks.runtime.SafeString(
       `
-          ${createUserFriendlyEventDate(
-            start,
-            end,
-            event.data.region,
-            utcOffset,
-          )}
+          ${createUserFriendlyEventDate(start, end, event.data.region, offset)}
         `,
     );
   });

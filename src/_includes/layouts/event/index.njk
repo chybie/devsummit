@@ -7,8 +7,17 @@
 {% block leftBefore %}
     {% css page, eventCss %}
 
+    {% set event = {
+        data: {
+            start:start,
+            end:end,
+            timezone: timezone,
+            region: region
+        }
+    } %}
+
     <p class="{% className eventCss, 'date' %}">
-        DAY {% dateToSummitDay start %}, {% confDate start, 'hh:mm' %} – {% confDate end, 'hh:mm' %}
+        {% userFriendlyEventDate event %}
     </p>
 {% endblock %}
 

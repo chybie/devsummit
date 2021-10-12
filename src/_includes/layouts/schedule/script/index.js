@@ -1,5 +1,4 @@
 import createUserFriendlyEventDate from './create-user-friendly-event-date';
-import { utcOffset as venueOffset, path } from 'confbox-config:';
 import {
   onChange,
   get as getTimezoneOption,
@@ -11,11 +10,12 @@ onChange(() => {
 });
 
 function render() {
-  const offset = getTimezoneOption() === 'venue' ? venueOffset : localOffset;
   const dates = document.querySelectorAll('[event-date]');
 
   dates.forEach(e => {
     const event = JSON.parse(e.dataset.event);
+    const offset = getTimezoneOption() === 'venue' ? event.offset : localOffset;
+
     e.innerHTML = createUserFriendlyEventDate(
       event.start,
       event.end,

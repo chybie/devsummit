@@ -10,7 +10,11 @@ function formatTimezone(offset) {
   const hours = Math.floor(offset / 1000 / 60 / 60);
   const minutes = (offset / 1000 / 60) % 60;
 
-  return (hours > 0 ? '+' : '') + hours + (minutes ? ':' + minutes : '');
+  return (
+    (hours > 0 ? '+' : '') +
+    hours +
+    (minutes ? ':' + minutes.toString().replace('-', '') : '')
+  );
 }
 
 function dateToTime(timestamp, utcOffset) {
@@ -30,7 +34,12 @@ module.exports = function createUserFriendlyEventDate(
 
   const day = timestampToSummitDay(start).toString();
   const offsetString = `UTC(${formatTimezone(utcOffset)})`;
-  const encoded = JSON.stringify({ start: start, end: end, region: region });
+  const encoded = JSON.stringify({
+    start: start,
+    end: end,
+    region: region,
+    offset: utcOffset,
+  });
 
   return html`
     <span event-date data-event="${encoded}">
