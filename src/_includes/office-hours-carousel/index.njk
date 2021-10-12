@@ -1,15 +1,21 @@
 {% carousel 'office-hours-carousel', 3 %}
-  {%- for event in collections.officeHours -%}
+  {%- for event in officeHours -%}
     {% if (loop.index <= 6) %}
-      {% carouselSlide %}
-        {% set uri %}
-          {% eventUri event %}
-        {% endset %}
+      {% set dateObj = {
+        data: {
+          start:event.start,
+          end:event.end,
+          timezone: event.timezone,
+          region: event.region
+        }
+      } %}
+      {% set uri = conf.path + event.permalink %}
 
-        {% card event.data.title, event.data.prettyType, uri %}
+      {% carouselSlide %}
+        {% card event.title, event.prettyType, uri %}
           <div>
             <span class="{% className cardCss, 'footer' %}">
-              {% userFriendlyEventDate event %}
+              {% userFriendlyEventDate dateObj %}
             </span>
           </div>
         {% endcard %}
