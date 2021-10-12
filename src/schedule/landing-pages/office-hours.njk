@@ -40,15 +40,21 @@ permalink: 'schedule/office-hours/index.html'
             </div>
 
             <div class="{% className gridCss, 'grid' %}" cols="3">
-                {%- for event in collections.officeHours -%}
-                    {% set uri %}
-                        {% eventUri event %}
-                    {% endset %}
+                {%- for event in officeHours -%}
+                    {% set dateObj = {
+                        data: {
+                            start:event.start,
+                            end:event.end,
+                            timezone: event.timezone,
+                            region: event.region
+                        }
+                    } %}
+                    {% set url = conf.path + event.permalink %}
 
-                    {% card event.data.title, event.data.prettyType, uri %}
+                    {% card event.title, event.prettyType, url %}
                         <div>
                         <span class="{% className cardCss, 'footer' %}">
-                          {% userFriendlyEventDate event %}
+                          {% userFriendlyEventDate dateObj %}
                         </span>
                         </div>
                     {% endcard %}

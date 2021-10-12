@@ -423,18 +423,6 @@ module.exports = function(eleventyConfig) {
       .sort((a, b) => Date(b.data.start) - Date(a.data.start));
   });
 
-  eleventyConfig.addCollection('officeHours', collection => {
-    const speakers = collection.getFilteredByTag('speakers');
-
-    return collection
-      .getFilteredByTag('event')
-      .filter(e => e.data.type === 'office-hours')
-      .map(event => {
-        event.data.speakers = getEventSpeakers(event, speakers);
-        return event;
-      });
-  });
-
   eleventyConfig.addCollection('learningLounge', collection => {
     const speakers = collection.getFilteredByTag('speakers');
 
