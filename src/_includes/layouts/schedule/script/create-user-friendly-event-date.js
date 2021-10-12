@@ -1,7 +1,7 @@
 const { html } = require('../../../../script/escape-html');
 const {
   timestampToSummitDay,
-} = require('../../../../utils/timestampToSummitDay');
+} = require('../../../../utils/timestamp-to-summit-day');
 const date = require('date-and-time');
 
 function formatTimezone(offset) {

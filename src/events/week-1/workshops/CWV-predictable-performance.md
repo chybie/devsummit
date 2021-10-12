@@ -3,7 +3,7 @@ title: 'CWV Predictable Performance'
 start: 2020/11/10 08:00
 end: 2020/11/10 09:30
 speakers:
-  - time-kadlec
+  - tim-kadlec
 region: amer/emea
 layout: layouts/event/index.njk
 ---

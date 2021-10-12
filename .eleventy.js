@@ -12,7 +12,7 @@ const createCarouselSlide = require('./src/_includes/carousel/script/create-slid
 const createUserFriendlyEventDate = require('./src/_includes/layouts/schedule/script/create-user-friendly-event-date');
 const createCard = require('./src/_includes/card/script/create-card');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
-const { timestampToSummitDay } = require('./src/utils/timestampToSummitDay');
+const { timestampToSummitDay } = require('./src/utils/timestamp-to-summit-day');
 
 const {
   utcOffset,
@@ -344,7 +344,7 @@ module.exports = function(eleventyConfig) {
 
   /** Get the URI of an event */
   eleventyConfig.addShortcode('eventUri', event => {
-    return `${confboxPath}events/${event.data.type}/${event.fileSlug}/`;
+    return `${confboxPath}events/week-${event.data.week}/${event.data.type}/${event.fileSlug}/`;
   });
 
   /** Get the day # from the start date. */
