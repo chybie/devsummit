@@ -176,8 +176,24 @@
     transition-delay: 200ms;
   }
 
+  &:focus-visible {
+    img {
+      opacity: 0.5;
+    }
+
+    .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+
+      @media (prefers-reduced-motion: reduce) {
+        -webkit-animation: none;
+        animation: none;
+      }
+    }
+  }
+
   &:hover,
-  &:focus-visible,
   &:focus-within,
   &:active {
     img {
