@@ -404,6 +404,18 @@ module.exports = function(eleventyConfig) {
     return faqs;
   });
 
+  eleventyConfig.addCollection('keynote', collection => {
+    return collection
+      .getFilteredByTag('event')
+      .filter(e => e.data.type === 'keynote');
+  });
+
+  eleventyConfig.addCollection('ama', collection => {
+    return collection
+      .getFilteredByTag('event')
+      .filter(e => e.data.type === 'ama');
+  });
+
   eleventyConfig.addCollection('previousSummits', collection => {
     return collection
       .getFilteredByTag('previousSummits')

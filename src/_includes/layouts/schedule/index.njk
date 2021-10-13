@@ -11,6 +11,8 @@
 
     <section class="{% className moduleCSS, 'root' %} {% className scheduleCss, 'header' %}">
         <header>
+            {% block beforeTitles %}{% endblock %}
+
             <h1 class="{% className moduleCSS, 'heading' %}">{{ title | safe}}</h1>
             <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle | safe }}</p>
 

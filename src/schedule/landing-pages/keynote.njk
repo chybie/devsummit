@@ -6,6 +6,15 @@ permalink: 'schedule/keynote/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
 
+{% block beforeTitles %}
+    {%- set eventCss = "/_includes/layouts/event/style.css" -%}
+    {% css page, eventCss %}
+
+    <p class="{% className eventCss, 'date' %}">
+        {% userFriendlyEventDate collections.keynote[0] %}
+    </p>
+{% endblock %}
+
 {% block afterTitles %}
     {%- set buttonCss = "/_includes/button.css" -%}
     {% css page, buttonCss %}
