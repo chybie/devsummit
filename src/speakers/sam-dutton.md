@@ -1,6 +1,6 @@
 ---
 name: Sam Dutton
-title: Google
+title: Developer Advocate
 avatar: /assets/speakers/sam-dutton.jpg
 link: https://web.dev/authors/samdutton/
 ---
