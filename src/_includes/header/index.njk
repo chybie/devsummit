@@ -40,7 +40,7 @@
   </a>
   <div class="{% className css, 'extra-links' %}">
     <main-menu class="{% className menuCss, 'root' %}">
-      <div class="{% className menuCss, 'has-sub-menu' %}" aria-haspopup="true">
+      <div class="{% className menuCss, 'has-sub-menu' %}" aria-haspopup="true" role="button" tabindex="0">
         <span>Schedule</span>
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/arrow_left.svg')">
@@ -54,7 +54,7 @@
 
         <nav class="{% className menuCss, 'sub-menu' %}">
           <a href="{{conf.path}}schedule/"
-             class="{{activeClass('schedule')}}">View all</a>
+             class="{{activeClass('schedule')}}"  tabindex="0">View all</a>
 
           {%- for subPage in collections.scheduleSubPages -%}
             {% set title = subPage.data.abbreviatedTitle if subPage.data.abbreviatedTitle else subPage.data.title %}

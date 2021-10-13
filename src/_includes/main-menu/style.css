@@ -170,6 +170,8 @@
   }
 
   &:hover,
+  &:focus-visible,
+  &:focus-within,
   &:active {
     img {
       opacity: 0.5;
