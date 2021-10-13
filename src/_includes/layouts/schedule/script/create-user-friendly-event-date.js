@@ -1,7 +1,4 @@
 const { html } = require('../../../../script/escape-html');
-const {
-  timestampToSummitDay,
-} = require('../../../../utils/timestamp-to-summit-day');
 const date = require('date-and-time');
 
 function formatTimezone(offset) {
@@ -17,10 +14,8 @@ function formatTimezone(offset) {
   );
 }
 
-function dateToTime(timestamp, utcOffset) {
-  const offsetTime = new Date(timestamp.valueOf() + utcOffset);
-
-  return date.format(offsetTime, 'HH:mm');
+function dateToTime(dateObj) {
+  return date.format(dateObj, 'HH:mm');
 }
 
 module.exports = function createUserFriendlyEventDate(
@@ -32,8 +27,11 @@ module.exports = function createUserFriendlyEventDate(
   start = parseInt(start);
   end = parseInt(end);
 
-  const day = timestampToSummitDay(start).toString();
   const offsetString = `UTC(${formatTimezone(utcOffset)})`;
+  const startDate = new Date(start.valueOf() + utcOffset);
+  const endDate = new Date(end.valueOf() + utcOffset);
+  const formattedStart = date.format(startDate, 'MMMM D');
+
   const encoded = JSON.stringify({
     start: start,
     end: end,
@@ -43,8 +41,8 @@ module.exports = function createUserFriendlyEventDate(
 
   return html`
     <span event-date data-event="${encoded}">
-      DAY ${day}, ${dateToTime(start, utcOffset)} –
-      ${dateToTime(end, utcOffset)} ${offsetString}
+      ${formattedStart}, ${dateToTime(startDate)} – ${dateToTime(endDate)}
+      ${offsetString}
     </span>
   `.toString();
 };
