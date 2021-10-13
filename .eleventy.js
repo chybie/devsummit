@@ -271,19 +271,23 @@ module.exports = function(eleventyConfig) {
     );
   });
 
-  eleventyConfig.addPairedShortcode('card', (content, title, tag, link) => {
-    return new nunjucks.runtime.SafeString(
-      `
+  eleventyConfig.addPairedShortcode(
+    'card',
+    (content, title, tag, link, target = '') => {
+      return new nunjucks.runtime.SafeString(
+        `
           ${createCard(
             title,
             tag,
             link,
+            target,
             content,
             modCSS.getAllCamelCased('/_includes/card/style.css'),
           )}
         `,
-    );
-  });
+      );
+    },
+  );
 
   eleventyConfig.addPairedShortcode('carousel', (content, id, cols = 2) => {
     return new nunjucks.runtime.SafeString(

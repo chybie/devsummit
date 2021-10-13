@@ -67,7 +67,7 @@ permalink: 'schedule/office-hours/index.html'
                     {%- for session in day.sessions -%}
                         {% set url = conf.path + session.permalink %}
 
-                        {% card session.title, session.prettyType, conf.requestInviteLink %}
+                        {% card session.title, session.prettyType, conf.requestInviteLink, '_blank' %}
                             <div>
                                 <span class="{% className cardCss, 'footer' %}">
                                     {{ eventDate(session) }}

@@ -1,9 +1,16 @@
 const { html, safe } = require('../../../script/escape-html');
 
-module.exports = function createCard(title, tag, link, content, classNameMap) {
+module.exports = function createCard(
+  title,
+  tag,
+  link,
+  target,
+  content,
+  classNameMap,
+) {
   return html`
     <article class="${classNameMap.card}">
-      <a href="${link}">
+      <a href="${link}" target="${target}">
         <div>
           <span class="${classNameMap.tag}">${tag}</span>
 
