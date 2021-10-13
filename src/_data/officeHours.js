@@ -140,7 +140,6 @@ function generateSessions() {
     });
   });
 
-  console.log(payload);
   return payload;
 }
 
