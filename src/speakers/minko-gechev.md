@@ -1,6 +1,6 @@
 ---
 name: Minko Gechev
-title: Google
+title: Developer Relations Engineer
 avatar: /assets/speakers/minko-gechev.jpg
 link: https://twitter.com/mgechev
 ---
