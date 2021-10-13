@@ -34,14 +34,12 @@
 
   &.js-enabled {
     > a,
-    > div {
+    > div:not(.mobile-menu) {
       display: none;
     }
 
-    > div {
-      &:last-of-type {
-        display: inline-block;
-      }
+    .mobile-menu {
+      display: inline-block;
     }
   }
 
@@ -58,6 +56,10 @@
         align-items: center;
         display: flex;
         cursor: pointer;
+      }
+
+      .mobile-menu {
+        display: none;
       }
     }
   }
