@@ -1,6 +1,6 @@
 ---
 name: Eiji Kitamura
-title: Google
+title: Developer Advocate
 avatar: /assets/speakers/eiji-kitamura.jpg
 link: https://web.dev/authors/agektmr/
 ---

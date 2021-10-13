@@ -1,5 +1,5 @@
 ---
 name: Frank Galligan
-title: Google
+title: Senior Staff Engineer
 avatar: /assets/speakers/frank-galligan.jpg
 ---

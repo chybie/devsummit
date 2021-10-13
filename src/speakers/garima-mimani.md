@@ -1,6 +1,6 @@
 ---
 name: Garima Mimani
-title: Google
+title: Web Ecosystem Consultant
 avatar: /assets/speakers/garima-mimani.jpg
 link: https://web.dev/authors/gmimani/
 ---

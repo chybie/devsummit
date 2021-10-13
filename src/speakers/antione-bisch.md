@@ -1,5 +1,5 @@
 ---
 name: Antione Bisch
-title: Google
+title: Web Ecosystem Consultant
 link: https://twitter.com/antoinebisch
 ---

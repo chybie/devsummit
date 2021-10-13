@@ -1,4 +1,4 @@
 ---
 name: Janice Wong
-title: Google
+title: Product Manager, Product Manager
 ---

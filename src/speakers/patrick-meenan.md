@@ -1,6 +1,6 @@
 ---
 name: Patrick Meenan
-title: Google
+title: Sr. Staff Software Engineer
 avatar: /assets/speakers/patrick-meenan.jpg
 link: https://twitter.com/patmeenan?lang=en
 ---
