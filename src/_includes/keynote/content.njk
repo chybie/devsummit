@@ -28,7 +28,12 @@
 
   <div class="{% className keynoteCss, 'ctas' %}">
     <div>
-      <a href="{{conf.path}}schedule/" rel="noopener noreferrer" target="_blank" class="{% className buttonCss, 'button' %}">View the schedule</a>
+      <a href="{{conf.path}}schedule/"
+         rel="noopener noreferrer"
+         target="_blank"
+         class="{% className buttonCss, 'button' %} {% className keynoteCss, 'button' %}">
+        View the schedule
+      </a>
       <p>Log in with your Google account</p>
     </div>
     {% set icslink = "fullevent.ics?2021-3" %}
