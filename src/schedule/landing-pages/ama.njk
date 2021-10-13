@@ -1,5 +1,5 @@
 ---
-title: Ask me anything
+title: AMA
 abbreviatedTitle: AMA
 subtitle: Ask Google leaders any questions you have about troubleshooting, building great web experiences, and the future of Chrome in this live ask-me-anything (AMA) session.
 priority: 200
@@ -11,12 +11,12 @@ permalink: 'schedule/ama/index.html'
     {%- set buttonCss = "/_includes/button.css" -%}
     {% css page, buttonCss %}
 
-{#    <a href="#todo"#}
-{#       target="_blank"#}
-{#       rel="noopener noreferrer"#}
-{#       class="{% className buttonCss, 'button' %}">#}
-{#        Send a question#}
-{#    </a>#}
+    <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="{% className buttonCss, 'button' %}">
+        Add to calendar
+    </a>
 {% endblock %}
 
 {% block content %}
