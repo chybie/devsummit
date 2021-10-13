@@ -39,8 +39,8 @@ permalink: 'schedule/office-hours/index.html'
     {%- set speakerCSS = "/_includes/speakers.css" -%}
     {% css page, speakerCSS %}
 
-    {%- set cardCss = "/_includes/card/style.css" -%}
-    {% css page, cardCss %}
+    {%- set officeHoursCss = "/_includes/office-hours/style.css" -%}
+    {% css page, officeHoursCss %}
 
     {%- for day in officeHoursByDay -%}
         <section class="{% className moduleCSS, 'section' %}">
@@ -67,13 +67,21 @@ permalink: 'schedule/office-hours/index.html'
                     {%- for session in day.sessions -%}
                         {% set url = conf.path + session.permalink %}
 
-                        {% card session.title, session.prettyType, conf.requestInviteLink, '_blank' %}
-                            <div>
-                                <span class="{% className cardCss, 'footer' %}">
+                        <article class="{% className officeHoursCss, 'card' %}">
+                            <a href="{{ conf.requestInviteLink }}" target="_blank">
+                                <div>
+                                    <span class="{% className officeHoursCss, 'tag' %}">{{ session.prettyType }}</span>
+
+                                    <h2 class="{% className officeHoursCss, 'title' %}">{{ session.title }}</h2>
+                                </div>
+
+                                <p class="{% className officeHoursCss, 'description' %}">{{ session.description }}</p>
+
+                                <span class="{% className officeHoursCss, 'footer' %}">
                                     {{ eventDate(session) }}
                                 </span>
-                            </div>
-                        {% endcard %}
+                            </a>
+                        </article>
                     {%- endfor -%}
                 </div>
             </div>
