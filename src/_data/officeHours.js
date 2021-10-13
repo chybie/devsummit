@@ -1,12 +1,3 @@
-const numberToWordMap = {
-  1: 'One',
-  2: 'Two',
-  3: 'Three',
-  4: 'Four',
-  5: 'Five',
-  6: 'Six',
-};
-
 const sessions = [
   {
     id: 1,
@@ -101,8 +92,8 @@ const datesRegions = [
     week: 2,
   },
   {
-    start: '2020/11/18 08:30',
-    end: '2020/11/18 11:30',
+    start: '2020/11/19 08:30',
+    end: '2020/11/19 11:30',
     region: 'apac',
     timezone: '+0530',
     week: 2,
@@ -116,7 +107,6 @@ function generateSessions() {
     sessions.forEach((s, sessionIndex) => {
       payload.push({
         title: s.title,
-        session: numberToWordMap[drIndex + 1],
         description: s.description,
         start: dr.start,
         end: dr.end,
