@@ -8,6 +8,16 @@
 
         {% card event.data.title, event.data.prettyType, uri %}
           <div>
+            <div class="{% className cardCss, 'avatars' %}">
+              {%- for speaker in event.data.speakers -%}
+                {% set avatar = speaker.data.avatar %}
+                <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                     class="{% className speakerCSS, 'speaker-avatar' %}"
+                     alt="{{ speaker.data.name }} avatar"
+                     loading="lazy"/>
+              {%- endfor -%}
+            </div>
+
             <span class="{% className cardCss, 'footer' %}">
               {% userFriendlyEventDate event %}
             </span>
