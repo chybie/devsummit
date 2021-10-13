@@ -46,9 +46,21 @@
     }
   }
 
-  img {
-    width: 100%;
+  .avatar-wrapper {
+    width: 75%;
     height: auto;
+    margin-right: 0;
+
+    img {
+      border-radius: 50%;
+      border: 1px solid var(--offwhite);
+    }
+  }
+
+  @media (min-width: 720px) {
+    .avatar-wrapper {
+      width: 58%;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -56,6 +68,12 @@
       &:first-of-type {
         margin: 1.85rem 0 0 0;
       }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .avatar-wrapper {
+      width: 72%;
     }
   }
 }

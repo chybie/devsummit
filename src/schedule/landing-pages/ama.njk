@@ -29,6 +29,9 @@ permalink: 'schedule/ama/index.html'
     {%- set speakerCSS = "/_includes/speakers.css" -%}
     {% css page, speakerCSS %}
 
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+
     <section class="{% className moduleCSS, 'section' %}">
         <h3 class="{% className contentCSS, 'section-heading' %}">Speakers</h3>
 
@@ -38,12 +41,14 @@ permalink: 'schedule/ama/index.html'
             {%- for speaker in collections.amaSpeakers -%}
                 {% set avatar = speaker.data.avatar %}
                 <article>
-                    <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
-                         class="{% className speakerCSS, 'speaker-avatar' %}"
-                         alt="{{ speaker.data.name }} avatar"
-                         width="100%"
-                         height="auto"
-                         loading="lazy"/>
+                    <div class="{% className scheduleCss, 'avatar-wrapper' %}">
+                        <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(1/1)">
+                            <img class="{% className utilsCSS, 'media-fill' %}"
+                                 src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                                 loading="lazy"
+                                 alt="{{ speaker.data.name }} avatar" />
+                        </div>
+                    </div>
 
                     <p>{{ speaker.data.name }}</p>
                     <p>{{ speaker.data.title }}</p>
