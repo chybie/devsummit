@@ -4,12 +4,16 @@ day: 1
 start: 2020/11/08 09:30
 end: 2020/11/08 10:15
 speakers:
-  - dion-almaer
+  - ben-goodger
   - ben-galbraith
   - parisa-tabriz
+  - paul-kinlan
   - una-kravets
-  - jecelyn-yeen
-  - sunit-jindal
+  - houssein-djirdeh
+  - barb-smith
+  - aanchal-bahadur
+  - pam-clark
+  - josh-grossberg
 link: schedule/keynote/
 priority: 100
 ---

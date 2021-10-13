@@ -5,11 +5,15 @@ start: 2020/11/08 09:30
 end: 2020/11/08 10:15
 link: schedule/ama/
 speakers:
-  - dion-almaer
+  - ben-goodger
   - ben-galbraith
   - parisa-tabriz
+  - paul-kinlan
   - una-kravets
-  - jecelyn-yeen
-  - sunit-jindal
+  - houssein-djirdeh
+  - barb-smith
+  - aanchal-bahadur
+  - pam-clark
+  - josh-grossberg
 priority: 200
 ---

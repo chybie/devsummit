@@ -1,6 +1,6 @@
 ---
 name: Ben Galbraith
-title: Web Platform, Google
+title: Director of Product Management, Chrome Web Platform
 avatar: /assets/speakers/ben-galbraith.jpg
 link: https://twitter.com/bgalbs
 ---

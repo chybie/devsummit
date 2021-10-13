@@ -1,5 +1,5 @@
 ---
 name: Ben Goodger
-title: Google
-#avatar: /assets/speakers/ben-goodger.jpg
+title: Director, Chrome Web Platform Eng, PM & DevRel
+avatar: /assets/speakers/ben-goodger.jpg
 ---
