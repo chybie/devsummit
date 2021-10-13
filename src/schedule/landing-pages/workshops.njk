@@ -10,10 +10,10 @@ permalink: 'schedule/workshops/index.html'
     {%- set buttonCss = "/_includes/button.css" -%}
     {% css page, buttonCss %}
 
-    <a href="{{ conf.registerLink }}"
+    <a href="{{conf.requestInviteLink}}"
        rel="noopener noreferrer"
        target="_blank"
-       class="{% className buttonCss, 'button' %}">Register</a>
+       class="{% className buttonCss, 'button' %}">Request an invite</a>
 {% endblock %}
 
 {% block content %}

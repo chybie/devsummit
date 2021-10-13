@@ -25,10 +25,10 @@
     {% css page, buttonCss %}
     {% css page, eventCss %}
 
-    <a href="{{ conf.registerLink }}"
+    <a href="{{conf.requestInviteLink}}"
        rel="noopener noreferrer"
        target="_blank"
-       class="{% className buttonCss, 'button' %} {% className eventCss, 'cta' %}">Register</a>
+       class="{% className buttonCss, 'button' %}">Request an invite</a>
 
     {% block description %}{{ content | safe }}{% endblock %}
 {% endblock %}
