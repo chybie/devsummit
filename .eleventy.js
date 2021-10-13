@@ -431,7 +431,7 @@ module.exports = function(eleventyConfig) {
         workshop.data.speakers = getEventSpeakers(workshop, speakers);
         return workshop;
       })
-      .sort((a, b) => Date(b.data.start) - Date(a.data.start));
+      .sort((a, b) => new Date(a.data.start) - new Date(b.data.start));
   });
 
   eleventyConfig.addCollection('learningLounge', collection => {
@@ -443,7 +443,8 @@ module.exports = function(eleventyConfig) {
       .map(event => {
         event.data.speakers = getEventSpeakers(event, speakers);
         return event;
-      });
+      })
+      .sort((a, b) => new Date(a.data.start) - new Date(b.data.start));
   });
 
   eleventyConfig.addCollection('keynoteSpeakers', collection => {
