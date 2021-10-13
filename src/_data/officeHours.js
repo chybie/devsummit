@@ -1,7 +1,3 @@
-const date = require('date-and-time');
-
-const sessionDuration = 30;
-
 const numberToWordMap = {
   1: 'One',
   2: 'Two',
@@ -84,32 +80,32 @@ const sessions = [
 
 const datesRegions = [
   {
-    date: '2020/11/11',
+    start: '2020/11/11 09:00',
+    end: '2020/11/11 12:00',
     region: 'amer/emea',
     timezone: '-0700',
     week: 1,
-    schedule: ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30'],
   },
   {
-    date: '2020/11/12',
+    start: '2020/11/12 09:00',
+    end: '2020/11/12 12:00',
     region: 'amer/emea',
     timezone: '-0700',
     week: 1,
-    schedule: ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30'],
   },
   {
-    date: '2020/11/18',
+    start: '2020/11/18 17:30',
+    end: '2020/11/18 20:30',
     region: 'apac/emea',
-    timezone: '+5300',
+    timezone: '+0530',
     week: 2,
-    schedule: ['17:30', '18:00', '18:30', '19:00', '19:30', '20:00'],
   },
   {
-    date: '2020/11/19',
+    start: '2020/11/18 08:30',
+    end: '2020/11/18 11:30',
     region: 'apac',
-    timezone: '+5300',
+    timezone: '+0530',
     week: 2,
-    schedule: ['08:30', '09:00', '09:30', '10:00', '10:30', '11:00'],
   },
 ];
 
@@ -117,25 +113,21 @@ function generateSessions() {
   let payload = [];
 
   datesRegions.forEach((dr, drIndex) => {
-    dr.schedule.forEach((time, timeIndex) => {
-      const dateTimeStr = `${dr.date} ${time}`;
-
-      sessions.forEach(s => {
-        let endDate = date.addMinutes(new Date(dateTimeStr), sessionDuration);
-
-        payload.push({
-          title: `Session ${numberToWordMap[timeIndex + 1]}: ${s.title}`,
-          description: s.description,
-          start: dateTimeStr,
-          end: date.format(endDate, 'YYYY/MM/DD HH:mm'),
-          region: dr.region,
-          timezone: dr.timezone,
-          permalink: `events/week-${dr.week}/office-hours/${drIndex +
-            1}-${timeIndex + 1}-${s.id}-${s.title.toLowerCase()}/`,
-          week: dr.week,
-          type: 'office-hours',
-          prettyType: 'Office hours',
-        });
+    sessions.forEach((s, sessionIndex) => {
+      payload.push({
+        title: s.title,
+        session: numberToWordMap[drIndex + 1],
+        description: s.description,
+        start: dr.start,
+        end: dr.end,
+        region: dr.region,
+        timezone: dr.timezone,
+        permalink: `events/week-${dr.week}/office-hours/${drIndex + 1}-${
+          s.id
+        }-${s.title.toLowerCase()}/`,
+        week: dr.week,
+        type: 'office-hours',
+        prettyType: 'Office hours',
       });
     });
   });

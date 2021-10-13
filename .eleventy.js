@@ -264,7 +264,6 @@ module.exports = function(eleventyConfig) {
     const offset = getUtcOffset(event.data.timezone);
     const start = dateStrToTimestamp(event.data.start, offset);
     const end = dateStrToTimestamp(event.data.end, offset);
-
     return new nunjucks.runtime.SafeString(
       `
           ${createUserFriendlyEventDate(start, end, event.data.region, offset)}

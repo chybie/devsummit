@@ -24,9 +24,6 @@ module.exports = function createUserFriendlyEventDate(
   region,
   utcOffset,
 ) {
-  start = parseInt(start);
-  end = parseInt(end);
-
   const offsetString = `UTC(${formatTimezone(utcOffset)})`;
   const startDate = new Date(start.valueOf() + utcOffset);
   const endDate = new Date(end.valueOf() + utcOffset);

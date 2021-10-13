@@ -83,7 +83,7 @@
 }
 
 .grid-header {
-  margin-bottom: 2.23rem;
+  margin-bottom: 2.6rem;
 
   p {
     margin-bottom: 1.94rem;
@@ -93,7 +93,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2.8rem;
 
     > p,
     > div {

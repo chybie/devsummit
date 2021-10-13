@@ -6,6 +6,19 @@ permalink: 'schedule/office-hours/index.html'
 ---
 {% extends 'layouts/schedule/index.njk' %}
 
+{% macro eventDate (event) %}
+    {% set dateObj = {
+        data: {
+            start:event.start,
+            end:event.end,
+            timezone: event.timezone,
+            region: event.region
+        }
+    } %}
+
+    {% userFriendlyEventDate dateObj %}
+{% endmacro %}
+
 {% block afterTitles %}
     {%- set buttonCss = "/_includes/button.css" -%}
     {% css page, buttonCss %}
@@ -29,37 +42,41 @@ permalink: 'schedule/office-hours/index.html'
     {%- set cardCss = "/_includes/card/style.css" -%}
     {% css page, cardCss %}
 
-    <section class="{% className moduleCSS, 'section' %}">
-        <div>
-            <div class="{% className scheduleCss, 'grid-header' %}">
-                <p>Book your private office hour session</p>
+    {%- for day in officeHoursByDay -%}
+        <section class="{% className moduleCSS, 'section' %}">
+            <div>
+                {% if loop.index == 1 %}
+                    <div>
+                        <div class="{% className scheduleCss, 'grid-header' %}">
+                            <p>Book your private office hour session</p>
 
-                <div class="{% className scheduleCss, 'tz-switcher' %}">
-                    {% include "timezone-toggle/index.njk" %}
+                            <div class="{% className scheduleCss, 'tz-switcher' %}">
+                                {% include "timezone-toggle/index.njk" %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <h3 class="{% className contentCSS, 'section-heading' %}">Session {{ day.session }}</h3>
+
+                <div class="{% className scheduleCss, 'subheading-container' %}">
+                    <p class="{% className contentCSS, 'section-subheading' %}">{{ eventDate(day) }}</p>
+                </div>
+
+                <div class="{% className gridCss, 'grid' %}" cols="3">
+                    {%- for session in day.sessions -%}
+                        {% set url = conf.path + session.permalink %}
+
+                        {% card session.title, session.prettyType, url %}
+                            <div>
+                                <span class="{% className cardCss, 'footer' %}">
+                                    {{ eventDate(session) }}
+                                </span>
+                            </div>
+                        {% endcard %}
+                    {%- endfor -%}
                 </div>
             </div>
-
-            <div class="{% className gridCss, 'grid' %}" cols="3">
-                {%- for event in officeHours -%}
-                    {% set dateObj = {
-                        data: {
-                            start:event.start,
-                            end:event.end,
-                            timezone: event.timezone,
-                            region: event.region
-                        }
-                    } %}
-                    {% set url = conf.path + event.permalink %}
-
-                    {% card event.title, event.prettyType, url %}
-                        <div>
-                        <span class="{% className cardCss, 'footer' %}">
-                          {% userFriendlyEventDate dateObj %}
-                        </span>
-                        </div>
-                    {% endcard %}
-                {%- endfor -%}
-            </div>
-        </div>
-    </section>
+        </section>
+    {%- endfor -%}
 {% endblock %}
