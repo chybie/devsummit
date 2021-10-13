@@ -57,7 +57,7 @@ description: If your question isn’t listed here, please <a href="mailto:chrome
       <div class="{% className faqCSS, 'accordion' %} {% className accordionCss, 'accordion' %}" no-js>
          {% for faq in section.items %}
             {% if (faq.data.title) and (faq.data.title != section.title) %}
-               <div class="{% className faqCSS, 'accordion-item' %}" accordion-item>
+               <div class="{% className faqCSS, 'accordion-item' %}" accordion-item role="button" tabindex="0">
                   <p class="{% className faqCSS, 'title' %} {% className accordionCss, 'title' %}">
                      <span>{{ faq.data.title }}</span>
 

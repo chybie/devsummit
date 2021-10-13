@@ -13,6 +13,13 @@ let EnhanceAccordion = function(element) {
     item.addEventListener('click', e => {
       toggle(e.currentTarget);
     });
+
+    item.addEventListener('keydown', e => {
+      console.log(e.key);
+      if (e.key === 'Enter') {
+        toggle(e.currentTarget);
+      }
+    });
   });
 
   return {
