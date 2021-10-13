@@ -15,6 +15,10 @@ permalink: "{{ post.permalink }}"
 {% set title = post.title  %}
 {% set speakers = [] %}
 
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
 {% block description %}
     <p>
         {{ post.description | safe }}

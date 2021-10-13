@@ -10,10 +10,5 @@ speakers:
   - parisa-tabriz
   - paul-kinlan
   - una-kravets
-  - houssein-djirdeh
-  - barb-smith
-  - aanchal-bahadur
-  - pam-clark
-  - josh-grossberg
 priority: 200
 ---
