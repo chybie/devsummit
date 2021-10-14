@@ -2,7 +2,7 @@ const sessions = [
   {
     id: 1,
     title: 'Accessibility',
-    description: 'Bring any questions related to Lit and Polymer.',
+    description: 'Get your questions answered about Accessibility.',
   },
   {
     id: 2,
