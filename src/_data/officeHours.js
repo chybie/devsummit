@@ -14,7 +14,7 @@ const sessions = [
     id: 3,
     title: 'Chrome OS',
     description:
-      'Come with your burning questions about Chrome OS. Learn how to deploy PWAs on Play Store on Chromebooks, how to create web experiences on Chrome OS as a developer environment and more.',
+      'Come with your burning questions about Chrome OS: Learn how to deploy PWAs on Google Play Store or how to build great web experiences with Linux on Chrome OS.',
   },
   {
     id: 4,
