@@ -17,7 +17,7 @@ html {
     font-size: 17px;
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1600px) {
     font-size: 21px;
   }
 }
