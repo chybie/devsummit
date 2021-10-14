@@ -56,3 +56,8 @@
 .speaker-title {
   font-size: 0.75em;
 }
+
+.speaker-role {
+  font-size: 0.75em;
+  opacity: 0.75;
+}

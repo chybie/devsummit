@@ -58,6 +58,11 @@ permalink: 'schedule/ama/index.html'
                     </div>
 
                     <p>{{ speaker.data.name }}</p>
+
+                    {% if speaker.data.speakerRole %}
+                        <p class="{% className speakerCSS, 'speaker-role' %}">{{ speaker.data.speakerRole }}</p>
+                    {% endif %}
+
                     <p>{{ speaker.data.title }}</p>
                 </article>
             {%- endfor -%}
