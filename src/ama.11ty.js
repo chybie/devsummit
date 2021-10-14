@@ -9,12 +9,14 @@ module.exports = class iCal {
   }
 
   render({ conf, collections }) {
+    const location = conf.origin + conf.path;
     const session = collections.ama[0];
     const name = `${session.data.title} - ${conf.conferenceName}`;
 
     return icalGenerator(name, [
       {
         name,
+        location,
         start: dateStrToTimestamp(session.data.start, conf.utcOffset),
         end: dateStrToTimestamp(session.data.end, conf.utcOffset),
       },
