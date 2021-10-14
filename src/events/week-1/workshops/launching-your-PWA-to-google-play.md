@@ -1,5 +1,5 @@
 ---
-title: 'Launching your PWA to Google Play'
+title: 'Launching your PWA to Google Play Store'
 start: 2020/11/10 09:30
 end: 2020/11/10 11:00
 speakers:

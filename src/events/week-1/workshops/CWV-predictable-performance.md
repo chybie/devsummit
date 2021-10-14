@@ -1,5 +1,5 @@
 ---
-title: 'CWV Predictable Performance'
+title: 'Predictable performance'
 start: 2020/11/10 08:00
 end: 2020/11/10 09:30
 speakers:

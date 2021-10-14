@@ -1,5 +1,5 @@
 ---
-title: 'CSS Layout'
+title: 'CSS layout workshop'
 start: 2020/11/17 17:30
 end: 2020/11/17 19:00
 speakers:

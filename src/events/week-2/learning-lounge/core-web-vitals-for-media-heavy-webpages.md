@@ -1,5 +1,5 @@
 ---
-title: 'Core Web Vitals for Media Heavy Webpages'
+title: 'CWV for media heavy webpages'
 start: 2020/11/16 09:30
 end: 2020/11/16 10:30
 speakers:

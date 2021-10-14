@@ -1,5 +1,5 @@
 ---
-title: 'Gain Security and Powerful Features with Cross-Origin Isolation'
+title: 'Gain security and powerful features with cross-origin isolation'
 start: 2020/11/17 10:00
 end: 2020/11/17 11:30
 speakers:

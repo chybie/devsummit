@@ -1,5 +1,5 @@
 ---
-title: 'DevTools Design Tooling'
+title: 'DevTools design tooling'
 start: 2020/11/18 10:00
 end: 2020/11/18 11:30
 speakers:

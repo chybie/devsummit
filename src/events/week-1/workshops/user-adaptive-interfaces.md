@@ -1,5 +1,5 @@
 ---
-title: 'User Adaptive Interfaces'
+title: 'User-adaptive interfaces'
 start: 2020/11/09 11:00
 end: 2020/11/09 12:30
 speakers:

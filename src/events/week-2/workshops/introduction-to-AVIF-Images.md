@@ -1,5 +1,5 @@
 ---
-title: 'Introduction to AVIF Images'
+title: 'Introduction to AVIF images'
 start: 2020/11/18 08:30
 end: 2020/11/18 10:00
 speakers:

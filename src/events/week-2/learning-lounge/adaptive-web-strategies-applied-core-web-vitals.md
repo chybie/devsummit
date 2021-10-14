@@ -1,5 +1,5 @@
 ---
-title: 'Adaptive Web strategies applied to Core Web Vitals'
+title: 'Adaptive web strategies applied to Core Web Vitals'
 start: 2020/11/15 18:30
 end: 2020/11/15 19:30
 speakers:

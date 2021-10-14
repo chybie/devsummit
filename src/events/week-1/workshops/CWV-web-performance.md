@@ -1,5 +1,5 @@
 ---
-title: 'CWV Web Performance'
+title: 'Web performance 101: What is web performance and why does it matter?'
 start: 2020/11/09 12:30
 end: 2020/11/09 14:00
 speakers:
