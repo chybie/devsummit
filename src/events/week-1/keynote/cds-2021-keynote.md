@@ -5,7 +5,7 @@ start: 2020/11/08 09:30
 end: 2020/11/08 10:15
 thumbnail: cds21-keynote-thumb
 speakers:
-  - ben-goodger
+  - ben-galbraith
   - houssein-djirdeh
   - barb-smith
   - aanchal-bahadur
