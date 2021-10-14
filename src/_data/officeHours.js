@@ -53,7 +53,7 @@ const sessions = [
     id: 10,
     title: 'Privacy',
     description:
-      'Ask us anything related to WebOTP to empower your phone number verification implementation.',
+      'Meet with the members of the Privacy team to ask about Privacy-related questions.',
   },
   {
     id: 11,
