@@ -124,11 +124,6 @@
   }
 }
 
-.section-subheading {
-  margin-top: 0;
-  margin-bottom: 1.85rem;
-}
-
 .section .divider {
   border: none;
   border-top: 1px solid var(--darkoffwhite);

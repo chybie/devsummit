@@ -44,8 +44,6 @@ permalink: 'schedule/ama/index.html'
     <section class="{% className moduleCSS, 'section' %}">
         <h3 class="{% className contentCSS, 'section-heading' %}">Speakers</h3>
 
-        <p class="{% className contentCSS, 'section-subheading' %}">Our AMA session speakers</p>
-
         <div class="{% className gridCss, 'grid' %}  {% className scheduleCss, 'avatar-grid' %}" cols="6">
             {%- for speaker in collections.amaSpeakers -%}
                 {% set avatar = speaker.data.avatar %}
