@@ -15,7 +15,7 @@ function formatTimezone(offset) {
 }
 
 function dateToTime(dateObj) {
-  return date.format(dateObj, 'HH:mm');
+  return date.format(dateObj, 'HH:mm', true);
 }
 
 module.exports = function createUserFriendlyEventDate(
@@ -25,9 +25,9 @@ module.exports = function createUserFriendlyEventDate(
   utcOffset,
 ) {
   const offsetString = `UTC(${formatTimezone(utcOffset)})`;
-  const startDate = new Date(start.valueOf() + utcOffset);
-  const endDate = new Date(end.valueOf() + utcOffset);
-  const formattedStart = date.format(startDate, 'MMMM D');
+  const startDate = new Date(start + utcOffset);
+  const endDate = new Date(end + utcOffset);
+  const formattedStart = date.format(startDate, 'MMMM D', true);
 
   const encoded = JSON.stringify({
     start: start,
