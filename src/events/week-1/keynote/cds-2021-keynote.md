@@ -1,5 +1,5 @@
 ---
-title: 'CDS 2021 Keynote: Chrome and the Web in 2021'
+title: 'Keynote: Chrome in 2021'
 day: 1
 start: 2021/11/03 09:00
 end: 2021/11/03 10:00
