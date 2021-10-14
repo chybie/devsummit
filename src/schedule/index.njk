@@ -65,12 +65,16 @@ subtitle: |
         <div>
             <div class="{% className scheduleCss, 'subheading-container' %}">
                 <h3 class="{% className contentCSS, 'section-heading' %}">Workshops</h3>
-                <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+                <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all workshops
+                </a>
             </div>
 
             {% include "workshop-carousel/index.njk" %}
 
-            <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+            <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all' %}">
+                View all workshops
+            </a>
         </div>
     </section>
 
@@ -78,12 +82,16 @@ subtitle: |
         <div>
             <span class="{% className scheduleCss, 'subheading-container' %}">
                  <h3 class="{% className contentCSS, 'section-heading' %}">Office hours</h3>
-                <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+                <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all office hours
+                </a>
             </span>
 
             {% include "office-hours-carousel/index.njk" %}
 
-            <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+            <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all' %}">
+                View all office hours
+            </a>
         </div>
     </section>
 
@@ -91,12 +99,16 @@ subtitle: |
         <div>
             <div class="{% className scheduleCss, 'subheading-container' %}">
                 <h3 class="{% className contentCSS, 'section-heading' %}">Learning lounge</h3>
-                <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all-desk' %}">View all</a>
+                <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all learning lounge
+                </a>
             </div>
 
             {% include "learning-lounge-carousel/index.njk" %}
 
-            <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all' %}">View all</a>
+            <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all' %}">
+                View all learning lounge
+            </a>
         </div>
     </section>
 {% endblock %}
