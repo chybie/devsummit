@@ -11,7 +11,9 @@
     {% css page, contentCss %}
 
     <div class="{% className moduleCSS, 'root' %}">
-        <div class="{% className fiftyFiftyCss, 'fifty-fifty' %}">
+        <div class="{% className fiftyFiftyCss, 'fifty-fifty' %}
+                    {% if reverseColsMobile %}{% className fiftyFiftyCss, 'reverse-mobile' %}{% endif %}
+                    {% if centerVertically %}{% className fiftyFiftyCss, 'center-vertically' %}{% endif %}">
             <div>
                 {% block left %}
                     {%- set moduleCSS = "/_includes/module.css" -%}
@@ -21,12 +23,19 @@
                     {% css page, css %}
 
                     <header class="{% className css, 'header' %}">
-                        <h1 class="{% className moduleCSS, 'heading' %}">{{ title}}</h1>
-                        <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle }}</p>
+                        {% block leftBefore %}{% endblock %}
+
+                        <h1 class="{% className moduleCSS, 'heading' %}">{% block title %}{{ title | safe}}{% endblock %}</h1>
+
+                        {% if subtitle %}
+                            <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle | safe }}</p>
+                        {% endif %}
 
                         {% if description %}
                             <p class="{% className moduleCSS, 'tertiary-text' %}">{{ description | safe}}</p>
                         {% endif %}
+
+                        {% block leftAfter %}{% endblock %}
                     </header>
                 {% endblock %}
             </div>

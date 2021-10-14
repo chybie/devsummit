@@ -25,10 +25,16 @@
 .speaker-avatar {
   border-radius: 50%;
   object-fit: cover;
-  height: 2.8em;
-  width: 2.8em;
-  margin-right: 1em;
+  height: 45px;
+  width: 45px;
+  margin-right: 0.29rem;
   border: 1px solid var(--offwhite);
+
+  @media (min-width: 1024px) {
+    height: 80px;
+    width: 80px;
+    margin-right: 0.48rem;
+  }
 }
 
 .speaker-creds {
@@ -49,4 +55,9 @@
 
 .speaker-title {
   font-size: 0.75em;
+}
+
+.speaker-role {
+  font-size: 0.75em;
+  opacity: 0.75;
 }

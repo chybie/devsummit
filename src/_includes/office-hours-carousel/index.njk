@@ -1,0 +1,36 @@
+{%- set officeHoursCss = "/_includes/office-hours/style.css" -%}
+{% css page, officeHoursCss %}
+
+{% carousel 'office-hours-carousel', 3 %}
+  {%- for event in officeHours -%}
+    {% if (loop.index <= 6) %}
+      {% set dateObj = {
+        data: {
+          start:event.start,
+          end:event.end,
+          timezone: event.timezone,
+          region: event.region
+        }
+      } %}
+      {% set uri = conf.path + event.permalink %}
+
+      {% carouselSlide %}
+        <article class="{% className officeHoursCss, 'card' %}">
+          <a href="{{ conf.requestInviteLink }}" target="_blank">
+            <div>
+              <span class="{% className officeHoursCss, 'tag' %}">{{ event.prettyType }}</span>
+
+              <h2 class="{% className officeHoursCss, 'title' %}">{{ event.title }}</h2>
+            </div>
+
+            <p class="{% className officeHoursCss, 'description' %}">{{ event.description }}</p>
+
+            <span class="{% className officeHoursCss, 'footer' %}">
+              {% userFriendlyEventDate dateObj %}
+            </span>
+          </a>
+        </article>
+      {% endcarouselSlide %}
+    {% endif %}
+  {%- endfor -%}
+{% endcarousel %}

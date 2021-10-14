@@ -1,0 +1,60 @@
+{% extends 'layouts/content/index.njk' %}
+
+{%- set eventCss = "/_includes/layouts/event/style.css" -%}
+{%- set buttonCss = "/_includes/button.css" -%}
+{%- set speakerCSS = "/_includes/speakers.css" -%}
+
+{% block leftBefore %}
+    {% css page, eventCss %}
+
+    {% set event = {
+        data: {
+            start:start,
+            end:end,
+            timezone: timezone,
+            region: region
+        }
+    } %}
+
+    <p class="{% className eventCss, 'date' %}">
+        {% userFriendlyEventDate event %}
+    </p>
+{% endblock %}
+
+{% block leftAfter %}
+    {% css page, buttonCss %}
+    {% css page, eventCss %}
+
+    <a href="{{conf.requestInviteLink}}"
+       rel="noopener noreferrer"
+       target="_blank"
+       class="{% className buttonCss, 'button' %}">Request an invite</a>
+
+    {% block description %}{{ content | safe }}{% endblock %}
+{% endblock %}
+
+{% block rightInner %}
+    {% css page, speakerCSS %}
+    {% css page, eventCss %}
+
+    <div class="{% className eventCss, 'speakers' %}">
+        {%- for speaker in speakers -%}
+            <article class="{% className eventCss, 'speaker' %}">
+                <div>
+                    {% set avatar = speaker.data.avatar %}
+                    <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                         class="{% className speakerCSS, 'speaker-avatar' %} {% className eventCss, 'speaker-avatar' %}"
+                         height="100px"
+                         width="100px"
+                         alt="{{ speaker.data.name }} avatar"
+                         loading="lazy"/>
+                </div>
+
+                <div>
+                    <p>{{ speaker.data.name }}</p>
+                    <p>{{ speaker.data.title }}</p>
+                </div>
+            </article>
+        {%- endfor -%}
+    </div>
+{% endblock %}

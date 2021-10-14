@@ -1,0 +1,26 @@
+---
+pagination:
+    data: officeHours
+    size: 1
+    alias: post
+permalink: "{{ post.permalink }}"
+---
+
+{% extends 'layouts/event/index.njk' %}
+
+{% set start = post.start  %}
+{% set end = post.end  %}
+{% set timezone = post.timezone  %}
+{% set region = post.region  %}
+{% set title = post.title  %}
+{% set speakers = [] %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block description %}
+    <p>
+        {{ post.description | safe }}
+    </p>
+{% endblock %}

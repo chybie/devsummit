@@ -1,0 +1,88 @@
+---
+title: Office hours
+subtitle: Meet with representatives from different Chrome teams in a one-on-one setting to discuss challenges and opportunities to improve your web experience.
+priority: 300
+permalink: 'schedule/office-hours/index.html'
+---
+{% extends 'layouts/schedule/index.njk' %}
+
+{% macro eventDate (event) %}
+    {% set dateObj = {
+        data: {
+            start:event.start,
+            end:event.end,
+            timezone: event.timezone,
+            region: event.region
+        }
+    } %}
+
+    {% userFriendlyEventDate dateObj %}
+{% endmacro %}
+
+{% block afterTitles %}
+    {%- set buttonCss = "/_includes/button.css" -%}
+    {% css page, buttonCss %}
+
+    <a href="{{conf.requestInviteLink}}"
+       rel="noopener noreferrer"
+       target="_blank"
+       class="{% className buttonCss, 'button' %}">Request an invite</a>
+{% endblock %}
+
+{% block content %}
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    {%- set officeHoursCss = "/_includes/office-hours/style.css" -%}
+    {% css page, officeHoursCss %}
+
+    {%- for day in officeHoursByDay -%}
+        <section class="{% className moduleCSS, 'section' %}">
+            <div>
+                {% if loop.index == 1 %}
+                    <div>
+                        <div class="{% className scheduleCss, 'grid-header' %}">
+                            <div class="{% className scheduleCss, 'tz-switcher' %}">
+                                {% include "timezone-toggle/index.njk" %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+
+                <div class="{% className scheduleCss, 'subheading-container' %}">
+                    <h2 class="{% className contentCSS, 'section-heading' %}">{{ eventDate(day) }}</h2>
+                </div>
+
+                <div class="{% className gridCss, 'grid' %}" cols="3">
+                    {%- for session in day.sessions -%}
+                        {% set url = conf.path + session.permalink %}
+
+                        <article class="{% className officeHoursCss, 'card' %}">
+                            <a href="{{ conf.requestInviteLink }}" target="_blank">
+                                <div>
+                                    <span class="{% className officeHoursCss, 'tag' %}">{{ session.prettyType }}</span>
+
+                                    <h2 class="{% className officeHoursCss, 'title' %}">{{ session.title }}</h2>
+                                </div>
+
+                                <p class="{% className officeHoursCss, 'description' %}">{{ session.description }}</p>
+
+                                <span class="{% className officeHoursCss, 'footer' %}">
+                                    {{ eventDate(session) }}
+                                </span>
+                            </a>
+                        </article>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </section>
+    {%- endfor -%}
+{% endblock %}

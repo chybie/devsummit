@@ -5,32 +5,16 @@ import {
   localOffset,
 } from './option';
 import { utcOffset as venueOffset } from 'confbox-config:';
-import { staticLabel } from 'classnames:_includes/toggle.css';
-
-function formatTimezone(offset) {
-  if (offset === 0) return '';
-
-  const hours = Math.floor(offset / 1000 / 60 / 60);
-  const minutes = (offset / 1000 / 60) % 60;
-
-  return (hours > 0 ? '+' : '') + hours + (minutes ? ':' + minutes : '');
-}
 
 export function enhance(form) {
-  form.style.visibility = 'visible';
-
+  // Hide if local time zone matches venue time zone
   if (venueOffset === localOffset) {
-    form.innerHTML = `<span class="${staticLabel}">UTC${formatTimezone(
-      venueOffset,
-    )}</span>`;
-    return;
+    document.querySelector('.js-your-time').style.display = 'none';
   }
 
-  const [venue, local] = form.querySelectorAll('[name=timezone]');
-  const [venueZone, localZone] = form.querySelectorAll('.js-zone');
+  form.style.visibility = 'visible';
 
-  venueZone.textContent = formatTimezone(venueOffset);
-  localZone.textContent = formatTimezone(localOffset);
+  const [venue, local] = form.querySelectorAll('[name=timezone]');
 
   form.addEventListener('change', () => {
     setOption(venue.checked ? 'venue' : 'local');

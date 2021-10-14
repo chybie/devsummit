@@ -19,7 +19,7 @@ module.exports = {
     "Join the Chrome team to learn about the latest techniques for building for the modern Web, get an early insight into what we're working on, and to share your thoughts on how we can move the platform forward, together.",
   /** Link for registration */
   registerLink:
-    'https://events.withgoogle.com/chrome-dev-summit-2020/registrations/new/details/',
+    'https://uc.appengine.google.com/_ah/conflogin?state=%7EAJKiYcH4tHCCGQvFC24xPGsPwREOD5Ou4FfYWaYrgw2gQd7NMFbzko8RRfsuNJ2s6F76xDyDzPb9EbX-11umWJdhjhQlSEhf26KtTxY-Ez0dhPG2uLXKjhJ5LBdcD70WboNlX8Qp5cBGawnHxUX4zfAlnD2eU6e2QX4ND_MoA5dnEoSTQCGQlVBTn_CxRjd9O83-c7J7q8PDrEvGvLcvteLwDQ3TthlKHR_SGnorcwh1W1xBaS0rJp0&pli=1',
   /** Link for updates */
   updatesLink: 'https://web.dev/newsletter/',
   /** Link for requesting invite */

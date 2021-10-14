@@ -107,9 +107,8 @@
 }
 
 .section-heading {
-  font: normal 1.05rem 'Google Sans', roboto, sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  font: normal 1.76rem 'Google Sans', roboto, sans-serif;
+  line-height: 2rem;
   color: var(--black);
   font-weight: 500;
   margin-top: 0;
@@ -117,18 +116,12 @@
 
   @media (min-width: 1440px) {
     font-size: 1.8rem;
-    line-height: 1.8rem;
   }
 
   @media (min-width: 1700px) {
     font-size: 2.28rem;
     line-height: 2.28rem;
   }
-}
-
-.section-subheading {
-  margin-top: 0;
-  margin-bottom: 1.85rem;
 }
 
 .section .divider {

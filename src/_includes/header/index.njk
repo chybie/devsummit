@@ -1,9 +1,20 @@
 {% set utilsCSS = "/_includes/utils.css" %}
 {% css page,utilsCSS %}
+
 {% set css = "/_includes/header/style.css" %}
 {% css page,css %}
+
 {%- set menuCss = "/_includes/main-menu/style.css" -%}
 {% css page, menuCss %}
+
+{%- set accordionCss = "/_includes/accordion/style.css" -%}
+{% css page, accordionCss %}
+
+{% macro activeClass (subPageSlug) %}
+  {% if page.fileSlug == subPageSlug %}
+    {% className menuCss, 'active' %}
+  {% endif %}
+{% endmacro %}
 
 <div class="{% className css, 'root' %}">
   <a class="{% className css, 'title' %}" href="{{conf.path}}">
@@ -29,14 +40,84 @@
   </a>
   <div class="{% className css, 'extra-links' %}">
     <main-menu class="{% className menuCss, 'root' %}">
+      <div class="{% className menuCss, 'has-sub-menu' %}" aria-haspopup="true" role="button" tabindex="0">
+        <span>Schedule</span>
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/arrow_left.svg')">
+          <img src="confboxAsset('/assets/arrow_left-black.svg')"
+               width="10px"
+               height="10px"
+               alt="Show"
+               loading="lazy"
+          />
+        </picture>
+
+        <nav class="{% className menuCss, 'sub-menu' %}">
+          <a href="{{conf.path}}schedule/"
+             class="{{activeClass('schedule')}}"  tabindex="0">View all</a>
+
+          {%- for subPage in collections.scheduleSubPages -%}
+            {% set title = subPage.data.abbreviatedTitle if subPage.data.abbreviatedTitle else subPage.data.title %}
+
+            <a href="{{conf.path}}schedule/{{ subPage.fileSlug }}"
+               class="{{activeClass(subPage.fileSlug)}}">
+              {{ title }}
+            </a>
+          {%- endfor -%}
+        </nav>
+      </div>
+{#      <a href="{{conf.path}}learning-content/">Learning content</a>#}
       <a href="{{conf.path}}faqs/">FAQs</a>
       <a href="{{conf.path}}community-guidelines/">Guidelines</a>
-      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className css, 'request-btn' %}">Request an invite</a>
+{#      <a href="{{conf.path}}feedback/">Feedback</a>#}
+{#      <a href="#todo" rel="noopener noreferrer" target="_blank" class="{% className menuCss, 'header-btn' %}">Join the conversation</a>#}
+      <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className menuCss, 'header-btn' %}">Request an invite</a>
       <button class="{% className menuCss, 'menu-toggle' %}" aria-label="Open menu"></button>
 
       <div class="{% className menuCss, 'mobile-menu' %}">
+        <div class="{% className accordionCss, 'accordion' %}">
+          <div accordion-item>
+            <p class="{% className accordionCss, 'title' %}" tabindex="0">
+              Schedule
+
+              <picture>
+                <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/arrow_left.svg')">
+                <img src="confboxAsset('/assets/arrow_left-black.svg')"
+                     alt="Show"
+                     loading="lazy"
+                />
+              </picture>
+            </p>
+
+            <nav class="{% className menuCss, 'sub-menu-mobile' %}">
+              <a href="{{conf.path}}schedule/"
+                 class="{{activeClass('schedule')}}">View all</a>
+
+              {%- for subPage in collections.scheduleSubPages -%}
+                {% set title = subPage.data.abbreviatedTitle if subPage.data.abbreviatedTitle else subPage.data.title %}
+
+                <a href="{{conf.path}}schedule/{{ subPage.fileSlug }}"
+                   class="{{activeClass(subPage.fileSlug)}}">
+                  {{ title }}
+                </a>
+              {%- endfor -%}
+            </nav>
+          </div>
+        </div>
+        <script>
+          {
+            const el = document.currentScript.previousElementSibling;
+            import('confboxAsset(/_includes/accordion/script/index.js)').then(
+                    ({ enhance }) => enhance(el)
+            );
+          }
+        </script>
+{#        <a href="{{conf.path}}learning-content/">Learning content</a>#}
         <a href="{{conf.path}}faqs/">FAQs</a>
         <a href="{{conf.path}}community-guidelines/">Guidelines</a>
+{#        <a href="{{conf.path}}feedback/">Feedback</a>#}
+{#        <a href="#todo" rel="noopener noreferrer" target="_blank" class="{% className menuCss, 'header-btn' %}">Join the conversation</a>#}
+        <a href="{{conf.requestInviteLink}}" rel="noopener noreferrer" target="_blank" class="{% className menuCss, 'header-btn' %}">Request an invite</a>
       </div>
     </main-menu>
     <script>

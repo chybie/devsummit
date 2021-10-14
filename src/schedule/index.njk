@@ -1,0 +1,112 @@
+---
+title: Schedule
+subtitle: |
+    We've got over two weeks full of exciting programs on the horizon. Watch our keynote on November 3, get answers to all your questions in our livestream AMA, participate in workshops and interactive learning lounges with a group of engineers and industry experts, and receive one-on-one support during office hours. <br/> <br/> Check out the full schedule below to make sure you don't miss out!
+---
+
+{% extends 'layouts/schedule/index.njk' %}
+
+{% block content %}
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set cardCss = "/_includes/card/style.css" -%}
+    {% css page, cardCss %}
+
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set carouselCss = "/_includes/carousel/style.css" -%}
+    {% css page, carouselCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <div>
+            <div class="{% className scheduleCss, 'tz-switcher' %}">
+                {% include "timezone-toggle/index.njk" %}
+            </div>
+
+            <div class="{% className gridCss, 'grid' %}" cols="2">
+                {%- for event in collections.featuredEvents -%}
+                    <article class="{% className cardCss, 'card' %}" media="1" featured>
+                        <a href="{{conf.path}}{{ event.data.link }}">
+                            <div class="{% className utilsCSS, 'aspect-ratio' %} {% className cardCss, 'card-media' %}" style="--aspect-ratio: calc(16/9)">
+                                <img class="{% className utilsCSS, 'media-fill' %}"
+                                     src="confboxAsset(/assets/{{ event.data.thumbnail }}.png)"
+                                     alt="{{ event.data.title }}">
+                            </div>
+
+                            <div class="{% className cardCss, 'content' %}">
+                                <div>
+                                    <span class="{% className cardCss, 'tag' %}">{{ event.data.prettyType }}</span>
+
+                                    <h2 class="{% className cardCss, 'title' %}">{{ event.data.title }}</h2>
+                                </div>
+
+                                <span class="{% className cardCss, 'footer' %}">
+                                    {% userFriendlyEventDate event %}
+                                </span>
+                            </div>
+                        </a>
+                    </article>
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <div>
+            <div class="{% className scheduleCss, 'subheading-container' %}">
+                <h3 class="{% className contentCSS, 'section-heading' %}">Workshops</h3>
+                <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all workshops
+                </a>
+            </div>
+
+            {% include "workshop-carousel/index.njk" %}
+
+            <a href="{{conf.path}}schedule/workshops/" class="{% className scheduleCss, 'view-all' %}">
+                View all workshops
+            </a>
+        </div>
+    </section>
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <div>
+            <span class="{% className scheduleCss, 'subheading-container' %}">
+                 <h3 class="{% className contentCSS, 'section-heading' %}">Office hours</h3>
+                <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all office hours
+                </a>
+            </span>
+
+            {% include "office-hours-carousel/index.njk" %}
+
+            <a href="{{conf.path}}schedule/office-hours/" class="{% className scheduleCss, 'view-all' %}">
+                View all office hours
+            </a>
+        </div>
+    </section>
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <div>
+            <div class="{% className scheduleCss, 'subheading-container' %}">
+                <h3 class="{% className contentCSS, 'section-heading' %}">Learning lounges</h3>
+                <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all-desk' %}">
+                    View all learning lounges
+                </a>
+            </div>
+
+            {% include "learning-lounge-carousel/index.njk" %}
+
+            <a href="{{conf.path}}schedule/learning-lounge/" class="{% className scheduleCss, 'view-all' %}">
+                View all learning lounges
+            </a>
+        </div>
+    </section>
+{% endblock %}

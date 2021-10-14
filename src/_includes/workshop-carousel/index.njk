@@ -1,0 +1,29 @@
+{% carousel 'workshop-carousel', 3 %}
+  {%- for workshop in collections.workshops -%}
+    {% if (loop.index <= 6) %}
+      {% set uri %}
+        {% eventUri workshop %}
+      {% endset %}
+
+      {% carouselSlide %}
+        {% card workshop.data.title, workshop.data.prettyType, uri %}
+          <div>
+            <div class="{% className cardCss, 'avatars' %}">
+              {%- for speaker in workshop.data.speakers -%}
+                {% set avatar = speaker.data.avatar %}
+                <img src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                     class="{% className speakerCSS, 'speaker-avatar' %}"
+                     alt="{{ speaker.data.name }} avatar"
+                     loading="lazy"/>
+              {%- endfor -%}
+            </div>
+
+            <span class="{% className cardCss, 'footer' %}">
+              {% userFriendlyEventDate workshop %}
+            </span>
+          </div>
+        {% endcard %}
+      {% endcarouselSlide %}
+    {% endif %}
+  {%- endfor -%}
+{% endcarousel %}

@@ -13,6 +13,13 @@ let EnhanceAccordion = function(element) {
     item.addEventListener('click', e => {
       toggle(e.currentTarget);
     });
+
+    item.addEventListener('keydown', e => {
+      console.log(e.key);
+      if (e.key === 'Enter') {
+        toggle(e.currentTarget);
+      }
+    });
   });
 
   return {
@@ -21,6 +28,10 @@ let EnhanceAccordion = function(element) {
   };
 };
 
-export function enhance(elements) {
-  elements.forEach(e => EnhanceAccordion(e));
+export function enhance(target) {
+  if (NodeList.prototype.isPrototypeOf(target)) {
+    target.forEach(e => EnhanceAccordion(e));
+  } else {
+    EnhanceAccordion(target);
+  }
 }

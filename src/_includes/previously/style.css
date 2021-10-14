@@ -1,17 +1,9 @@
 .section {
   overflow: hidden;
-
-  article img {
-    border-radius: 10px;
-  }
 }
 
 .carousel {
   article {
-    > div {
-      margin-bottom: 1.66rem;
-    }
-
     header {
       font-weight: 500;
     }
@@ -33,4 +25,11 @@
   > h2 {
     margin-bottom: 0;
   }
+}
+
+.previous-summit-link {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 3px 3px 1.66rem;
 }

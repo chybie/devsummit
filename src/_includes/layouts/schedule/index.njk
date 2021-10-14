@@ -1,0 +1,24 @@
+{% extends 'layouts/main/index.njk' %}
+
+{%- set moduleCSS = "/_includes/module.css" -%}
+{%- set scheduleCss = "/_includes/layouts/schedule/style.css" -%}
+
+{% block beforeContent %}
+    <script type="module" async src="confboxAsset(/_includes/layouts/schedule/script/index.js)"></script>
+
+    {% css page, moduleCSS %}
+    {% css page, scheduleCss %}
+
+    <section class="{% className moduleCSS, 'root' %} {% className scheduleCss, 'header' %}">
+        <header>
+            {% block beforeTitles %}{% endblock %}
+
+            <h1 class="{% className moduleCSS, 'heading' %}">{{ title | safe}}</h1>
+            <p class="{% className moduleCSS, 'subheading' %}">{{ subtitle | safe }}</p>
+
+            {% block afterTitles %}{% endblock %}
+        </header>
+    </section>
+{% endblock %}
+
+{% block content %}{% endblock %}

@@ -1,9 +1,13 @@
-.decoration {
-  background: url('confboxAsset(/assets/arts/5.png)') no-repeat center center;
-  height: 100%;
-  background-size: contain;
+@import '../../_includes/card/style.css';
 
-  @media (prefers-color-scheme: dark) {
-    filter: contrast(0.7);
-  }
+.card {
+  justify-content: flex-start;
+}
+
+.title {
+  margin-bottom: 1.26rem;
+}
+
+.description {
+  margin: 0 0 auto;
 }

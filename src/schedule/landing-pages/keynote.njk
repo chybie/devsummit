@@ -1,0 +1,65 @@
+---
+title: Keynote
+subtitle: Learn about new guidance and platform updates, discover tools to build better web experiences, and hear from developers making the most of Chrome’s advanced capabilities.
+priority: 100
+permalink: 'schedule/keynote/index.html'
+---
+{% extends 'layouts/schedule/index.njk' %}
+
+{% block beforeTitles %}
+    {%- set eventCss = "/_includes/layouts/event/style.css" -%}
+    {% css page, eventCss %}
+
+    <p class="{% className eventCss, 'date' %}">
+        {% userFriendlyEventDate collections.keynote[0] %}
+    </p>
+{% endblock %}
+
+{% block afterTitles %}
+    {%- set buttonCss = "/_includes/button.css" -%}
+    {% css page, buttonCss %}
+    {% set icslink = "keynote.ics?1" %}
+    <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="{% className buttonCss, 'button' %}">
+        Add to calendar
+    </a>
+{% endblock %}
+
+{% block content %}
+    {%- set contentCSS = "/_includes/content.css" -%}
+    {% css page, contentCSS %}
+
+    {%- set gridCss = "/_includes/grid.css" -%}
+    {% css page, gridCss %}
+
+    {%- set speakerCSS = "/_includes/speakers.css" -%}
+    {% css page, speakerCSS %}
+
+    {%- set utilsCSS = "/_includes/utils.css" -%}
+    {% css page, utilsCSS %}
+
+    <section class="{% className moduleCSS, 'section' %}">
+        <h3 class="{% className contentCSS, 'section-heading' %}">Speakers</h3>
+
+        <div class="{% className gridCss, 'grid' %}  {% className scheduleCss, 'avatar-grid' %}" cols="6">
+            {%- for speaker in collections.keynoteSpeakers -%}
+                {% set avatar = speaker.data.avatar %}
+                <article>
+                    <div class="{% className scheduleCss, 'avatar-wrapper' %}">
+                        <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(1/1)">
+                            <img class="{% className utilsCSS, 'media-fill' %}"
+                                 src="confboxAsset({{ avatar if avatar else "/assets/speakers/default.svg" }})"
+                                 loading="lazy"
+                                 alt="{{ speaker.data.name }} avatar" />
+                        </div>
+                    </div>
+
+                    <p>{{ speaker.data.name }}</p>
+                    <p>{{ speaker.data.title }}</p>
+                </article>
+            {%- endfor -%}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,39 @@
+---
+title: Learning content
+subtitle: Learn more about these new features, web development tools, and see step-by-step tutorials by visiting web.dev or watch videos on our Google Chrome Developers YouTube channel.
+---
+{% extends 'layouts/content/index.njk' %}
+{%- set reverseColsMobile = true -%}
+{%- set centerVertically = true -%}
+
+{% block leftAfter %}
+  {%- set learningContentCSS = "/learning-content/styles.css" -%}
+  {% css page, learningContentCSS %}
+
+  {%- set buttonCss = "/_includes/button.css" -%}
+  {% css page, buttonCss %}
+
+  <div class="{% className learningContentCSS, 'ctas' %}">
+    <a href="https://web.dev"
+       rel="noopener noreferrer"
+       target="_blank"
+       class="{% className buttonCss, 'button' %}">Visit web.dev</a>
+
+    <a href="https://www.youtube.com/channel/UCnUYZLuoy1rq1aVMwx4aTzw"
+       rel="noopener noreferrer"
+       target="_blank"
+       class="{% className buttonCss, 'button' %}">Watch videos</a>
+  </div>
+{% endblock %}
+
+{% block right %}
+  {%- set utilsCSS = "/_includes/utils.css" -%}
+  {% css page, utilsCSS %}
+
+  <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(165/150)">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/hero-darkmode.svg')">
+      <img class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset('/assets/hero.svg')" alt="CDS 2021">
+    </picture>
+  </div>
+{% endblock %}

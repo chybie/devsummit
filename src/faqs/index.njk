@@ -48,14 +48,17 @@ description: If your question isn’t listed here, please <a href="mailto:chrome
    {%- set faqCSS = "/faqs/styles.css" -%}
    {% css page, faqCSS %}
 
+   {%- set accordionCss = "/_includes/accordion/style.css" -%}
+   {% css page, accordionCss %}
+
    {% for section in collections.faqs %}
       <p id="{% idify section.title %}"  class="{% className faqCSS, 'section-title' %}">{{ section.title }}</p>
 
-      <div class="{% className faqCSS, 'accordion' %}" no-js>
+      <div class="{% className faqCSS, 'accordion' %} {% className accordionCss, 'accordion' %}" no-js>
          {% for faq in section.items %}
             {% if (faq.data.title) and (faq.data.title != section.title) %}
-               <div class="{% className faqCSS, 'accordion-item' %}" accordion-item>
-                  <p slot="title">
+               <div class="{% className faqCSS, 'accordion-item' %}" accordion-item role="button" tabindex="0">
+                  <p class="{% className faqCSS, 'title' %} {% className accordionCss, 'title' %}">
                      <span>{{ faq.data.title }}</span>
 
                       <picture>

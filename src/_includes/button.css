@@ -1,0 +1,26 @@
+.button {
+  display: inline-block;
+  align-self: center;
+  color: var(--white);
+  background: var(--blue);
+  border-radius: 1000px;
+  font-family: 'Google Sans', roboto, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 500;
+  padding: 0.9em 2.2em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @media (min-width: 1024px) {
+    font-size: 0.75rem;
+  }
+
+  @media (min-width: 1600px) {
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    color: var(--white);
+    background: var(--darkblue);
+  }
+}

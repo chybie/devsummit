@@ -1,0 +1,41 @@
+.date {
+  margin-bottom: 1.76rem;
+}
+
+.cta {
+  margin-top: 0.59rem;
+  margin-bottom: 1.28rem;
+}
+
+.speakers {
+  @media (min-width: 1024px) {
+    margin-top: 5rem;
+    padding-left: 7.4rem;
+  }
+}
+
+.speaker {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.95rem;
+
+  p {
+    margin: 0;
+    padding-left: 1.6rem;
+
+    &:first-of-type {
+      font-weight: 500;
+    }
+  }
+
+  .speaker-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    p {
+      padding-left: 2.2rem;
+    }
+  }
+}

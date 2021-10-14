@@ -29,13 +29,13 @@
   margin-bottom: 1.17rem;
 
   @media (min-width: 1024px) {
-    font-size: 2.25rem;
-    line-height: 2.55rem;
+    font-size: 3.15rem;
+    line-height: 3.4rem;
   }
 
   @media (min-width: 1280px) {
-    font-size: 3.8rem;
-    line-height: 3.85rem;
+    font-size: 4.2rem;
+    line-height: 4.4rem;
   }
 
   @media (min-width: 1440px) {
@@ -56,7 +56,7 @@
   margin-top: 0;
 
   @media (min-width: 1024px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   @media (min-width: 1440px) {
@@ -127,6 +127,7 @@
   }
 
   &:last-of-type {
+    margin-bottom: 3.5rem;
     > div {
       border-bottom: none;
     }

@@ -20,21 +20,25 @@
     {% set carouselId%}{% className css, 'carousel' %}{% endset %}
 
     <div class="{% className css, 'heading-nav' %}">
-      <h2 class="{% className contentCSS, 'section-heading' %}">Highlights from past summits</h2>
+      <h2 class="{% className contentCSS, 'section-heading' %}">Highlights from past summits!</h2>
     </div>
 
     {% carousel carouselId %}
       {% for previousSummit in collections.previousSummits %}
         {% carouselSlide %}
           <article>
-              <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
-                <a href="https://www.youtube.com/playlist?list={{ previousSummit.data.youtubeId }}" target="_blank" rel="noopener noreferrer">
-                    <img class="{% className utilsCSS, 'media-fill' %}"
-                         src="confboxAsset('/assets/{{ previousSummit.data.thumbnail }}')"
-                         loading="lazy"
-                         alt="placeholder">
-                </a>
-              </div>
+            <a
+              class="{% className utilsCSS, 'aspect-ratio' %} {% className css, 'previous-summit-link' %}"
+              href="https://www.youtube.com/playlist?list={{ previousSummit.data.youtubeId }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="--aspect-ratio: calc(16/9)"
+            >
+              <img class="{% className utilsCSS, 'media-fill' %}"
+                   src="confboxAsset('/assets/{{ previousSummit.data.thumbnail }}')"
+                   loading="lazy"
+                   alt="placeholder">
+            </a>
 
             <header>
               {{ previousSummit.data.title }} {{ previousSummit.data.year }}

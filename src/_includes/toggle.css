@@ -1,6 +1,6 @@
 .root {
   visibility: hidden;
-  background: var(--lessdarkoffwhite);
+  background: var(--offwhite);
   padding: 0.3rem;
   border-radius: 1000px;
   max-width: max-content;
@@ -13,6 +13,12 @@
 .radio {
   opacity: 0;
   position: absolute;
+  z-index: -1;
+
+  &:focus-visible + span {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+  }
 }
 
 .fake-label,
@@ -21,10 +27,16 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 0.8rem;
-  padding: 0.6rem 1.3rem;
+  font-size: 0.94rem;
+  padding: 1.18rem 1.52rem;
   line-height: 1;
   flex: 1;
+  color: var(--midgrey);
+
+  @media (min-width: 1440px) {
+    font-size: 1rem;
+    padding: 1.3rem 1.76rem;
+  }
 }
 
 .fake-label {
@@ -32,10 +44,9 @@
 }
 
 .radio:checked ~ .fake-label {
-  background: var(--white);
+  background: var(--black);
   border-radius: 1000px;
-  color: var(--darkblue);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  color: var(--white);
 }
 
 .label {
