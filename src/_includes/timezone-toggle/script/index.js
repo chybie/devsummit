@@ -9,9 +9,7 @@ import { utcOffset as venueOffset } from 'confbox-config:';
 export function enhance(form) {
   // Hide if local time zone matches venue time zone
   if (venueOffset === localOffset) {
-    form.style.display = 'none';
-
-    return;
+    document.querySelector('.js-your-time').style.display = 'none';
   }
 
   form.style.visibility = 'visible';
