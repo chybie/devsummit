@@ -43,8 +43,6 @@ permalink: 'schedule/keynote/index.html'
     <section class="{% className moduleCSS, 'section' %}">
         <h3 class="{% className contentCSS, 'section-heading' %}">Speakers</h3>
 
-        <p class="{% className contentCSS, 'section-subheading' %}">Our CDS 2021 Keynote speakers</p>
-
         <div class="{% className gridCss, 'grid' %}  {% className scheduleCss, 'avatar-grid' %}" cols="6">
             {%- for speaker in collections.keynoteSpeakers -%}
                 {% set avatar = speaker.data.avatar %}
