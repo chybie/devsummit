@@ -19,7 +19,7 @@ permalink: 'schedule/ama/index.html'
 {% block afterTitles %}
     {%- set buttonCss = "/_includes/button.css" -%}
     {% css page, buttonCss %}
-    {% set icslink = "ama.ics" %}
+    {% set icslink = "ama.ics?1" %}
     <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}"
        target="_blank"
        rel="noopener noreferrer"
