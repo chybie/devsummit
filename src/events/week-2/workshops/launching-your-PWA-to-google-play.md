@@ -8,4 +8,4 @@ region: apac/emea
 layout: layouts/event/index.njk
 ---
 
-Android and Chrome OS users turn to the Play store to discover and review apps, but this has usually meant Android apps. What about your PWA? In this workshop, you'll learn the basics of creating a Play store listing, bundle your PWA for distribution in Play, create a release to test and release your PWA, and answer some common questions about deploying your PWA to Play.
+Android and Chrome OS users turn to the Play Store to discover and review apps, but this has usually meant Android apps. In this workshop, you'll learn the basics of deploying your PWA to Play Store: how to create a listing, bundle your PWA for distribution, create a release to test, release your PWA, and more.

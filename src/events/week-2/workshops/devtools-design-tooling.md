@@ -8,4 +8,4 @@ region: apac
 layout: layouts/event/index.njk
 ---
 
-In this workshop, you will learn about various DevTools design tooling to supercharge your design productivity!
+In this workshop, you will learn about various DevTools design tooling to supercharge your design productivity.

@@ -10,4 +10,4 @@ region: amer/emea
 layout: layouts/event/index.njk
 ---
 
-In this learning lounge you'll join an Angular team member who will answer your questions and help you with library and app reviews in real time!
+In this learning lounge you'll join an Angular team member who will answer your questions and help you with library and app reviews in real time.
