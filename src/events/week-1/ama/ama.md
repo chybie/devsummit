@@ -1,5 +1,5 @@
 ---
-title: 'Live Q&A: Ask Me Anything'
+title: 'Live Q&A: Ask me anything'
 day: 1
 start: 2021/11/03 10:00
 end: 2021/11/03 11:00
