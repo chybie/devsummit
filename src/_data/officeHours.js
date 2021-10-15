@@ -51,9 +51,9 @@ const sessions = [
   },
   {
     id: 10,
-    title: 'Privacy',
+    title: 'Privacy & Identity',
     description:
-      'Meet with the members of the Privacy team to ask about Privacy-related questions.',
+      'Meet with members of the Privacy and Identity teams for your questions on effectively managing sensitive information on the web from cookies, to user-agent, to WebOTP, and more.',
   },
   {
     id: 11,
