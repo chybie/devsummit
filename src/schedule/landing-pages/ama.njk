@@ -21,21 +21,12 @@ permalink: 'schedule/ama/index.html'
     {% css page, buttonCss %}
     {% set icslink = "ama.ics?1" %}
 
-    <div class="{% className scheduleCss, 'ctas' %}">
-        <a href="https://calendar.google.com/calendar/r?cid={{conf.webcalOrigin}}{{conf.path}}{{icslink}}"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="{% className buttonCss, 'button' %}">
-            Add to calendar
-        </a>
-
-        <a href="{{ conf.amaLink }}"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="{% className buttonCss, 'button' %}">
-            Send a question
-        </a>
-    </div>
+    <a href="{{ conf.amaLink }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="{% className buttonCss, 'button' %}">
+        Send a question
+    </a>
 {% endblock %}
 
 {% block content %}
