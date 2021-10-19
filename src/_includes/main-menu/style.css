@@ -163,6 +163,7 @@
 .has-sub-menu {
   display: flex;
   align-items: center;
+  position: relative;
 
   img {
     margin-left: 0.39rem;
@@ -215,15 +216,11 @@
 
 .sub-menu {
   position: absolute;
-  right: -1rem;
-  width: 100vw;
+  left: 0;
   bottom: -3.2rem;
   padding: 1.2rem 1rem 1.2rem 0;
-  background: var(--white);
-  justify-content: flex-end;
   opacity: 0;
   display: flex;
-
   a {
     flex-shrink: 0;
     font-size: 0.8rem;
@@ -234,8 +231,22 @@
       margin-right: 0;
     }
   }
+
+  &:before {
+    content: '';
+    width: 100%;
+    left: 0;
+    position: fixed;
+    height: 41px;
+    top: 73px;
+    background: white;
+    z-index: -1;
+  }
 }
 
+.sub-menu-mobile {
+  background: var(--white);
+}
 .sub-menu,
 .sub-menu-mobile {
   flex-wrap: nowrap;
