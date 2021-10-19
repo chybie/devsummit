@@ -2,6 +2,8 @@
 
 {%- set reverseColsMobile = true -%}
 {%- set centerVertically = true -%}
+{%- set keynoteCss = "/_includes/keynote/style.css" -%}
+{%- set buttonCss = "/_includes/button.css" -%}
 
 {%- set moduleCSS = "/_includes/module.css" -%}
 {% css page, moduleCSS %}
@@ -10,10 +12,7 @@
 {% css page, utilsCSS %}
 
 {% block left %}
-  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
   {% css page, keynoteCss %}
-
-  {%- set buttonCss = "/_includes/button.css" -%}
   {% css page, buttonCss %}
 
   <h1 class="{% className keynoteCss, 'heading' %}">Discover. Connect. Inspire. <br/> Get ready for CDS 2021!</h1>
@@ -44,13 +43,26 @@
 {% endblock %}
 
 {% block right %}
-  {%- set keynoteCss = "/_includes/keynote/style.css" -%}
-  {% css page, keynoteCss %}
+  <article class="{% className keynoteCss, 'card' %}">
+    <a href="{{ conf.requestInviteLink }}" target="_blank">
+      <div>
+        <h2 class="{% className keynoteCss, 'title' %}">Ask a question</h2>
+        <p class="{% className moduleCSS, 'subheading' %}">Ask Google leaders your burning questions about building great web experiences.</p>
+      </div>
 
-  <div class="{% className utilsCSS, 'aspect-ratio' %} {% className keynoteCss, 'media' %}" style="--aspect-ratio: calc(165/150)">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/hero-darkmode.svg')">
-      <img class="{% className utilsCSS, 'media-fill' %}" src="confboxAsset('/assets/hero.svg')" alt="CDS 2021">
-    </picture>
-  </div>
+      <div class="{% className keynoteCss, 'footer-container' %}">
+        <span class="{% className keynoteCss, 'footer' %}">Submit your question</span>
+
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="confboxAsset('/assets/ic_link.svg')">
+          <img src="confboxAsset('/assets/ic_link-black.svg')"
+               height="24px"
+               width="24px"
+               alt="Ask a question"
+               loading="lazy"
+          />
+        </picture>
+      </div>
+    </a>
+  </article>
 {% endblock %}

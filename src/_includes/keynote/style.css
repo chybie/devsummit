@@ -1,3 +1,5 @@
+@import '../../_includes/card/style.css';
+
 .heading {
   font: 1.5rem 'Google Sans', roboto, sans-serif;
   color: var(--black);
@@ -90,8 +92,36 @@
   }
 }
 
-.media {
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 24px;
+
   img {
-    border-radius: 10px;
+    display: block;
+    width: auto;
+  }
+
+  @media (min-width: 320px) {
+    img {
+      height: 18px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    img {
+      height: 24px;
+    }
+  }
+}
+
+.footer {
+  letter-spacing: 0;
+  font-weight: 500;
+
+  @media (min-width: 1024px) {
+    font-size: 0.9rem;
+    line-height: 1.14rem;
   }
 }

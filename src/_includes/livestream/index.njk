@@ -1,3 +1,6 @@
+{%- set css = "/_includes/livestream/style.css" -%}
+{% css page, css %}
+
 {% if conf.liveStreamUrl %}
   {%- set utilsCSS = "/_includes/utils.css" -%}
   {% css page, utilsCSS %}
@@ -8,7 +11,7 @@
   <section class="{% className moduleCSS, 'seamless-section' %}">
     <div>
       <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
-        <iframe class="{% className utilsCSS, 'media-fill' %}"
+        <iframe class="{% className utilsCSS, 'media-fill' %}  {% className css, 'embed' %}"
                 src="{{ conf.liveStreamUrl }}"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
