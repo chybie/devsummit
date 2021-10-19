@@ -25,6 +25,7 @@ module.exports = {
   /** Link for requesting invite */
   requestInviteLink:
     'https://events.withgoogle.com/chrome-dev-summit-2021/registrations/new',
+  liveStreamUrl: 'https://www.youtube.com/embed/XZcmtqL4JPI',
   /**
    * Data of the conference venue.
    */

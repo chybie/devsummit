@@ -1,17 +1,19 @@
-{% extends "layouts/media-module/index.njk" %}
-
-{% block moduleClass %}{% className moduleCSS, 'root-alt' %}{% endblock %}
-
-{% block main %}
-  <h1 id="livestream" class="{% className moduleCSS, 'heading' %}">{% headingSlug "Remote" %}</h1>
-  <p>We want Chrome Dev Summit to be exciting for everyone. If you can’t join us in person, watch our <strong>livestream</strong> on our <a href="https://www.youtube.com/user/ChromeDevelopers" rel="noopener noreferrer" target="_blank">YouTube channel</a> to view all the sessions and get access to exclusive livestream-only content.</p>
-  <p>You can also experience Chrome Dev Summit in your region by joining our <strong>CDS Extended</strong> events. Extended events are all about our remote audience, enabling developers from across the globe to gather with their peers and experience the Summit within their own community. <a href="{{conf.path}}remote/#extended">Find an Extended event</a> in your city and join the excitement at a watch party or meetup.</p>
-{% endblock %}
-
-{% block media %}
+{% if conf.liveStreamUrl %}
   {%- set utilsCSS = "/_includes/utils.css" -%}
   {% css page, utilsCSS %}
-  <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
-    <iframe class="{% className utilsCSS, 'media-fill' %}" src="https://www.youtube.com/embed/XZcmtqL4JPI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-{% endblock %}
+
+  {%- set moduleCSS = "/_includes/module.css" -%}
+  {% css page, moduleCSS %}
+
+  <section class="{% className moduleCSS, 'seamless-section' %}">
+    <div>
+      <div class="{% className utilsCSS, 'aspect-ratio' %}" style="--aspect-ratio: calc(16/9)">
+        <iframe class="{% className utilsCSS, 'media-fill' %}"
+                src="{{ conf.liveStreamUrl }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+{% endif %}
