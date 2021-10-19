@@ -27,7 +27,7 @@ module.exports = {
     'https://events.withgoogle.com/chrome-dev-summit-2021/registrations/new',
   liveChatLink: 'https://discord.com/invite/3zp4dd7JJW',
   amaLink: 'https://app.sli.do/event/9e3j6xhe',
-  liveStreamUrl: 'https://www.youtube.com/embed/XZcmtqL4JPI',
+  liveStreamUrl: null,
   /**
    * Data of the conference venue.
    */
