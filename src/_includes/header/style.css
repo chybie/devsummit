@@ -36,7 +36,7 @@
     height: auto;
   }
 
-  @media (min-width: 720px) {
+  @media (min-width: 1024px) {
     img {
       width: 210px;
     }
@@ -55,14 +55,14 @@
 }
 
 .logo-mobile {
-  @media (min-width: 720px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 }
 
 .logo-desk {
   display: none;
-  @media (min-width: 720px) {
+  @media (min-width: 1024px) {
     display: initial;
   }
 }
