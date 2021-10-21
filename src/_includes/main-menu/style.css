@@ -239,7 +239,7 @@
     position: fixed;
     height: 56px;
     top: 73px;
-    background: white;
+    background: var(--white);
     z-index: -1;
   }
 }
